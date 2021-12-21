@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="button">#3B4248</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="bottomNav">#293346</color>
+    <color name="background">#FFFFFF</color>
+    <color name="green">#64FF6C</color>
+    <color name="red">#F71976</color>
+    <color name="textSecondary">#BDBDBD</color>
+    <color name="textPrimary">#F2F2F2</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

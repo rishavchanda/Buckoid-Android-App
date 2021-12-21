@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        />
+
+    <item
+        android:id="@+id/expense"
+        android:title="Expense"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        />
+    <item
+        android:id="@+id/savings"
+        android:title="Savings"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        />
+</menu>
