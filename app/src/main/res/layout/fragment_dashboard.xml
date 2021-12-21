@@ -8,6 +8,19 @@
     tools:context=".fragments.Dashboard">
 
     <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        android:elevation="0dp"
+        android:backgroundTint="@color/cardBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:backgroundTint="@color/purple_200"
@@ -24,12 +37,12 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:backgroundTint="#0000ffff"
-                android:tint="@color/black"
                 android:src="@drawable/ic_baseline_add_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

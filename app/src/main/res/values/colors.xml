@@ -4,8 +4,8 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="button">#3B4248</color>
     <color name="cardBackground">#FFFFFF</color>
-    <color name="bottomNav">#293346</color>
-    <color name="background">#FFFFFF</color>
+    <color name="bottomNav">#FFFFFF</color>
+    <color name="background">#F9F9F9</color>
     <color name="green">#64FF6C</color>
     <color name="red">#F71976</color>
     <color name="textSecondary">#BDBDBD</color>
