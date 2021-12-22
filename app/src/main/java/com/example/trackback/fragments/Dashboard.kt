@@ -1,5 +1,6 @@
 package com.example.trackback.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import org.eazegraph.lib.models.PieModel
 
 import android.graphics.Color
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.trackback.FullScreenActivity
 import com.example.trackback.R
 import com.example.trackback.databinding.FragmentDashboardBinding
 
@@ -37,6 +40,13 @@ class Dashboard : Fragment() {
         //mPieChart.addPieSlice(PieModel("Academics", 100F, ContextCompat.getColor(requireContext(), R.color.cardBackground)))
 
         mPieChart.startAnimation()
+
+        binding.addNew.setOnClickListener(View.OnClickListener {
+            requireActivity().run{
+                startActivity(Intent(this, FullScreenActivity::class.java))
+                //finish()
+            }
+        })
         return binding.root
     }
 
