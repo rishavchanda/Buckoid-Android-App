@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    tools:context=".fragments.AddExpense">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/selector1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fitsSystemWindows="true"
+        android:layout_margin="16dp"
+        android:padding="2dp"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/food"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            style="@style/selector_button"
+            app:iconGravity="textTop"
+            app:icon="@drawable/ic_baseline_fastfood_24"
+            app:iconSize="32dp"
+            android:textSize="10sp"
+            app:iconPadding="12dp"
+            android:text="Food" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/shopping"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            style="@style/selector_button"
+            app:iconGravity="textTop"
+            app:icon="@drawable/ic_baseline_shopping_cart_24"
+            app:iconSize="32dp"
+            android:textSize="10sp"
+            app:iconPadding="12dp"
+            android:text="Shopping" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/transport"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            style="@style/selector_button"
+            app:iconGravity="textTop"
+            app:icon="@drawable/ic_baseline_directions_transit_24"
+            app:iconSize="32dp"
+            android:textSize="10sp"
+            app:iconPadding="12dp"
+            android:text="Transport" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/selector2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selector1"
+        android:fitsSystemWindows="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="2dp"
+        android:layout_marginTop="-16dp"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/health"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            style="@style/selector_button"
+            app:iconGravity="textTop"
+            app:icon="@drawable/ic_baseline_favorite_24"
+            app:iconSize="32dp"
+            android:textSize="10sp"
+            app:iconPadding="12dp"
+            android:text="Health" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/others"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            style="@style/selector_button"
+            app:iconGravity="textTop"
+            app:icon="@drawable/ic_baseline_category_24"
+            app:iconSize="32dp"
+            android:textSize="10sp"
+            app:iconPadding="12dp"
+            android:text="Other" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/academics"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            style="@style/selector_button"
+            app:iconGravity="textTop"
+            app:icon="@drawable/ic_baseline_auto_stories_24"
+            app:iconSize="32dp"
+            android:textSize="10sp"
+            app:iconPadding="12dp"
+            android:text="Education" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
