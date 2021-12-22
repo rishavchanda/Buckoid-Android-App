@@ -17,4 +17,9 @@
         android:title="Savings"
         android:icon="@drawable/ic_baseline_dashboard_24"
         />
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        />
 </menu>

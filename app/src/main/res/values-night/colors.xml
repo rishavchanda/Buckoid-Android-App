@@ -6,10 +6,17 @@
     <color name="cardBackground">#2F3A4F</color>
     <color name="bottomNav">#293346</color>
     <color name="background">#232C3D</color>
-    <color name="green">#64FF6C</color>
-    <color name="red">#F71976</color>
-    <color name="textSecondary">#828282</color>
-    <color name="textPrimary">#333333</color>
+    <color name="textSecondary">#BDBDBD</color>
+    <color name="textPrimary">#F2F2F2</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#0000FFFF</color>
+
+    //Pi chart colors
+    <color name="green">#64FF6C</color>
+    <color name="red">#F71976</color>
+    <color name="lightBrown">#CDA67F</color>
+    <color name="violet">#9C27B0</color>
+    <color name="yellow">#FED70E</color>
+    <color name="lightBlue">#00D5F2</color>
 </resources>
