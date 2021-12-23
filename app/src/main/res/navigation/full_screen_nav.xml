@@ -9,5 +9,14 @@
         android:id="@+id/addExpense"
         android:name="com.example.trackback.fragments.AddExpense"
         android:label="fragment_add_expense"
-        tools:layout="@layout/fragment_add_expense" />
+        tools:layout="@layout/fragment_add_expense" >
+        <action
+            android:id="@+id/action_addExpense_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.trackback.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
