@@ -8,7 +8,7 @@
     tools:context=".fragments.Dashboard">
 
    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/main_card"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_margin="16dp"
@@ -84,33 +84,28 @@
     </androidx.cardview.widget.CardView>
 
 
-   <!-- <androidx.cardview.widget.CardView
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:backgroundTint="@color/purple_200"
-        app:cardCornerRadius="50dp"
-        android:elevation="10dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Transactions"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/main_card"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:layout_marginTop="22dp"
+        tools:listitem="@layout/transaction_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:backgroundTint="#0000ffff"
-                android:src="@drawable/ic_baseline_add_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/black" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>-->
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new"
