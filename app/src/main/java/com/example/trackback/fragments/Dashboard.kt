@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import org.eazegraph.lib.models.PieModel
 
 import android.graphics.Color
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.example.trackback.FullScreenActivity
 import com.example.trackback.R
+import com.example.trackback.ViewModel.TransactionViewModel
 import com.example.trackback.databinding.FragmentDashboardBinding
 
 import org.eazegraph.lib.charts.PieChart
@@ -23,6 +26,8 @@ class Dashboard : Fragment() {
 
     lateinit var bindDashboard: FragmentDashboardBinding
 
+    val viewModel: TransactionViewModel by viewModels()
+    var totalExpense = 0.0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,12 +46,25 @@ class Dashboard : Fragment() {
 
         mPieChart.startAnimation()
 
+        viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
+            for(i in transactionList)
+            {
+                totalExpense += i.amount
+            }
+            binding.expense.setText("₹"+totalExpense.toString())
+        })
+
         binding.addNew.setOnClickListener(View.OnClickListener {
             requireActivity().run{
                 startActivity(Intent(this, FullScreenActivity::class.java))
                 //finish()
             }
         })
+
+
+
+
+
         return binding.root
     }
 

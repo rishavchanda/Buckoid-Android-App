@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".fragments.AddExpense">
+    tools:context=".fragments.AddTransaction">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -190,6 +190,7 @@
         app:boxCornerRadiusBottomEnd="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_title"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:inputType="textPersonName"/>
@@ -211,6 +212,7 @@
         app:boxCornerRadiusBottomEnd="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_money"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:inputType="phone"/>
@@ -232,6 +234,7 @@
         app:boxCornerRadiusBottomEnd="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_date"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:clickable="false"
@@ -254,6 +257,7 @@
 
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_note"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:maxLength="300"

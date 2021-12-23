@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/addExpense"
-        android:name="com.example.trackback.fragments.AddExpense"
+        android:name="com.example.trackback.fragments.AddTransaction"
         android:label="fragment_add_expense"
-        tools:layout="@layout/fragment_add_expense" >
+        tools:layout="@layout/fragment_add_transaction" >
         <action
             android:id="@+id/action_addExpense_to_mainActivity2"
             app:destination="@id/mainActivity2" />
