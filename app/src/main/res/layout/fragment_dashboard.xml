@@ -7,9 +7,32 @@
     android:background="@color/background"
     tools:context=".fragments.Dashboard">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:backgroundTint="#0000ffff"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_menu_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topBar">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -126,7 +149,7 @@
 
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new"
         android:layout_width="wrap_content"

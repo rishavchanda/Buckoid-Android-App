@@ -1,7 +1,6 @@
 package com.example.trackback.Database
 
 import android.content.Context
-import androidx.core.content.ContextCompat
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -15,7 +14,7 @@ abstract class TransactionDatabase : RoomDatabase() {
 
     companion object
     {
-        var INSTANCE:TransactionDatabase?=null
+        private var INSTANCE:TransactionDatabase?=null
         fun getDatabaseInstance(context: Context): TransactionDatabase{
             val tempInstance= INSTANCE
             if (tempInstance!=null){

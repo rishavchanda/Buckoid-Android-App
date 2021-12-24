@@ -15,10 +15,10 @@
     //Pi chart Colors
     <color name="green">#64FF6C</color>
     <color name="red">#F71976</color>
-    <color name="lightBrown">#CDA67F</color>
-    <color name="violet">#9C27B0</color>
-    <color name="lightBlue">#00D5F2</color>
+    <color name="lightBrown">#6612FC</color>
+    <color name="violet">#FF5722</color>
     <color name="yellow">#FED70E</color>
+    <color name="lightBlue">#00D5F2</color>
 
 
 </resources>

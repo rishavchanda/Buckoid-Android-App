@@ -1,34 +1,34 @@
 package com.example.trackback.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackback.Model.Transaction
 import com.example.trackback.R
 import com.example.trackback.databinding.TransactionItemBinding
 
-class TransactionAdapter(val context: Context,val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>() {
+class TransactionAdapter(val context: Context, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>() {
 
-    class transactionViewHolder(val binding:TransactionItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
+    class transactionViewHolder(val binding:TransactionItemBinding) : RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TransactionAdapter.transactionViewHolder {
+    ): transactionViewHolder {
         return transactionViewHolder(TransactionItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     }
 
-    override fun onBindViewHolder(holder: TransactionAdapter.transactionViewHolder, position: Int) {
+    @SuppressLint("SetTextI18n")
+    override fun onBindViewHolder(holder: transactionViewHolder, position: Int) {
         val data = transList[position]
         holder.binding.title.text = data.title
-        holder.binding.money.text = "₹"+data.amount.toString()
+        holder.binding.money.text = "₹"+data.amount.toInt().toString()
         holder.binding.date.text = data.date
         holder.binding.category.text = data.category
 
@@ -53,18 +53,20 @@ class TransactionAdapter(val context: Context,val transList: List<Transaction>) 
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.red))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.red))
             }
-            "Others" -> {
+            "Other" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_category_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBrown))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.lightBrown))
             }
-            "Academics" -> {
+            "Education" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_auto_stories_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.green))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.green))
             }
 
         }
+
+        holder.binding.root.setOnClickListener { Navigation.findNavController(it).navigate(R.id.goToTransactionDetails) }
     }
 
     override fun getItemCount() = transList.size

@@ -9,5 +9,14 @@
         android:id="@+id/dashboard2"
         android:name="com.example.trackback.fragments.Dashboard"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/goToTransactionDetails"
+            app:destination="@id/transactionDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetails"
+        android:name="com.example.trackback.fragments.TransactionDetails"
+        android:label="fragment_transaction_details"
+        tools:layout="@layout/fragment_transaction_details" />
 </navigation>
