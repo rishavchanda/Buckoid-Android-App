@@ -36,32 +36,32 @@ class TransactionAdapter(val context: Context,val transList: List<Transaction>) 
             "Food" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_fastfood_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.yellow))
-                //holder.binding.
+                holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.yellow))
             }
             "Shopping" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_shopping_cart_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBlue))
-
+                holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.lightBlue))
             }
             "Transport" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_directions_transit_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.violet))
-
+                holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.violet))
             }
             "Health" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_favorite_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.red))
-
+                holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.red))
             }
             "Others" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_category_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBrown))
-
+                holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.lightBrown))
             }
             "Academics" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_auto_stories_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.green))
-
+                holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.green))
             }
 
         }
