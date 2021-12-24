@@ -35,18 +35,28 @@ class AddTransaction : Fragment() {
        val amount = binding.editMoney.text.toString()
        val note = binding.editNote.text.toString()
        val date = binding.editDate.text.toString()
-       val transaction = Transaction(
-           null,
-           title = title,
-           amount = amount.toDouble(),
-           note = note,
-           date = date,
-           category = category
 
-       )
-       viewModel.addTransaction(transaction)
-       Toast.makeText(context,"Transaction Added Successfully",Toast.LENGTH_SHORT).show()
+       if (title.equals("") || amount.equals("") || note.equals("") || date.equals("") || category.equals("")){
+           Toast.makeText(context, "Enter all required details", Toast.LENGTH_SHORT).show()
+       }else {
+           val transaction = Transaction(
+               null,
+               title = title,
+               amount = amount.toDouble(),
+               note = note,
+               date = date,
+               category = category
+
+           )
+           viewModel.addTransaction(transaction)
+           Toast.makeText(context, "Transaction Added Successfully", Toast.LENGTH_SHORT).show()
+           Navigation.findNavController(binding.root)
+               .navigate(R.id.action_addExpense_to_mainActivity2)
+       }
+
+
     }
+
 
 
 }

@@ -8,15 +8,11 @@
         />
 
     <item
-        android:id="@+id/expense"
-        android:title="Expense"
-        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:id="@+id/allTransaction"
+        android:title="Transactions"
+        android:icon="@drawable/ic_baseline_assessment_24"
         />
-    <item
-        android:id="@+id/savings"
-        android:title="Savings"
-        android:icon="@drawable/ic_baseline_dashboard_24"
-        />
+
     <item
         android:id="@+id/profile"
         android:title="Profile"
