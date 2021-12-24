@@ -10,9 +10,12 @@ import org.eazegraph.lib.models.PieModel
 
 import android.graphics.Color
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.trackback.Adapter.TransactionAdapter
 import com.example.trackback.FullScreenActivity
 import com.example.trackback.R
 import com.example.trackback.ViewModel.TransactionViewModel
@@ -47,6 +50,9 @@ class Dashboard : Fragment() {
         mPieChart.startAnimation()
 
         viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
+            binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList)
+
             for(i in transactionList)
             {
                 totalExpense += i.amount

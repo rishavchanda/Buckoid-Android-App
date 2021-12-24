@@ -2,7 +2,7 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="button">#3B4248</color>
+    <color name="button">#F9F9F9</color>
     <color name="cardBackground">#FFFFFF</color>
     <color name="bottomNav">#FFFFFF</color>
     <color name="background">#F9F9F9</color>
@@ -19,4 +19,6 @@
     <color name="violet">#9C27B0</color>
     <color name="lightBlue">#00D5F2</color>
     <color name="yellow">#FED70E</color>
+
+
 </resources>

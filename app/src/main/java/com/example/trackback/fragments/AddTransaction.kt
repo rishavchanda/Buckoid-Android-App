@@ -30,7 +30,7 @@ class AddTransaction : Fragment() {
     }
 
     private fun addNewTransaction(it: View?) {
-        val category = "Food"
+        val category = "Health"
        val title = binding.editTitle.text.toString()
        val amount = binding.editMoney.text.toString()
        val note = binding.editNote.text.toString()
