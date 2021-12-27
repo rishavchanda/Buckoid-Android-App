@@ -13,10 +13,44 @@
         <action
             android:id="@+id/goToTransactionDetails"
             app:destination="@id/transactionDetails" />
+        <action
+            android:id="@+id/action_dashboard2_to_addTransaction"
+            app:destination="@id/addTransaction" />
+
     </fragment>
     <fragment
         android:id="@+id/transactionDetails"
         android:name="com.example.trackback.fragments.TransactionDetails"
         android:label="fragment_transaction_details"
-        tools:layout="@layout/fragment_transaction_details" />
+        tools:layout="@layout/fragment_transaction_details" >
+
+
+        <argument
+            android:name="data"
+            app:argType="com.example.trackback.Model.Transaction" />
+        <action
+            android:id="@+id/action_transactionDetails_to_dashboard2"
+            app:destination="@id/dashboard2" />
+        <action
+            android:id="@+id/action_transactionDetails_to_addTransaction"
+            app:destination="@id/addTransaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTransaction"
+        android:name="com.example.trackback.fragments.AddTransaction"
+        android:label="fragment_add_transaction"
+        tools:layout="@layout/fragment_add_transaction" >
+        <action
+            android:id="@+id/action_addTransaction_to_dashboard2"
+            app:destination="@id/dashboard2" />
+        <argument
+            android:name="data"
+            app:argType="com.example.trackback.Model.Transaction" />
+        <argument
+            android:name="from"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_addTransaction_to_transactionDetails"
+            app:destination="@id/transactionDetails" />
+    </fragment>
 </navigation>

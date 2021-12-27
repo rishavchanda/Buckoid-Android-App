@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackback.Model.Transaction
 import com.example.trackback.R
 import com.example.trackback.databinding.TransactionItemBinding
+import com.example.trackback.fragments.DashboardDirections
 
 class TransactionAdapter(val context: Context, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>() {
 
@@ -66,9 +67,12 @@ class TransactionAdapter(val context: Context, private val transList: List<Trans
 
         }
 
-        holder.binding.root.setOnClickListener { Navigation.findNavController(it).navigate(R.id.goToTransactionDetails) }
+        val argument = DashboardDirections.goToTransactionDetails(data)
+        holder.binding.root.setOnClickListener { Navigation.findNavController(it).navigate(argument) }
     }
 
     override fun getItemCount() = transList.size
 
 }
+
+

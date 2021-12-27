@@ -15,12 +15,15 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.view.*
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class AddTransaction : Fragment(), View.OnClickListener {
+   val data by navArgs<AddTransactionArgs>()
    private lateinit var binding: FragmentAddTransactionBinding
    private var category = ""
 
@@ -31,10 +34,24 @@ class AddTransaction : Fragment(), View.OnClickListener {
     ): View {
         // Inflate the layout for this fragment
         binding =  FragmentAddTransactionBinding.inflate(inflater, container, false)
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        bottomNav.visibility = View.GONE
         setListner(binding)
         datePicker(binding)
+        if(data.from){
+            setDatas()
+            binding.addTransaction.setText("Save Transaction")
+            binding.titleAddTransacttion.setText("Edit Transaction")
+            binding.back.setOnClickListener {
+                val arg = AddTransactionDirections.actionAddTransactionToTransactionDetails(data.data)
+                Navigation.findNavController(binding.root)
+                    .navigate(arg)
+            }
+        }else{
+            binding.back.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_addTransaction_to_dashboard2) }
+        }
+
         binding.addTransaction.setOnClickListener{ addNewTransaction() }
-        binding.back.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_addExpense_to_mainActivity2) }
         return binding.root
     }
 
@@ -49,7 +66,13 @@ class AddTransaction : Fragment(), View.OnClickListener {
     }
 
 
-
+    private fun setDatas(){
+        binding.editTitle.setText(data.data.title)
+        binding.editDate.setText(data.data.date)
+        binding.editMoney.setText(data.data.amount.toString())
+        binding.editNote.setText(data.data.note)
+        category=data.data.category
+    }
     private fun addNewTransaction() {
        val title = binding.editTitle.text.toString()
        val amount = binding.editMoney.text.toString()
@@ -59,19 +82,38 @@ class AddTransaction : Fragment(), View.OnClickListener {
        if (title == "" || amount == "" || note == "" || date == "" || category == ""){
            Toast.makeText(context, "Enter all required details", Toast.LENGTH_SHORT).show()
        }else {
-           val transaction = Transaction(
-               null,
-               title = title,
-               amount = amount.toDouble(),
-               note = note,
-               date = date,
-               category = category
 
-           )
-           viewModel.addTransaction(transaction)
-           Toast.makeText(context, "Transaction Added Successfully", Toast.LENGTH_SHORT).show()
-           Navigation.findNavController(binding.root)
-               .navigate(R.id.action_addExpense_to_mainActivity2)
+           if ( data.from){
+               val transaction = Transaction(
+                   data.data.id,
+                   title = title,
+                   amount = amount.toDouble(),
+                   note = note,
+                   date = date,
+                   category = category
+
+               )
+               viewModel.updateTransaction(transaction)
+               Toast.makeText(context, "Transaction Updated Successfully", Toast.LENGTH_SHORT).show()
+               val arg = AddTransactionDirections.actionAddTransactionToTransactionDetails(transaction)
+               Navigation.findNavController(binding.root)
+                   .navigate(arg)
+           }else {
+               val transaction = Transaction(
+                   null,
+                   title = title,
+                   amount = amount.toDouble(),
+                   note = note,
+                   date = date,
+                   category = category
+
+               )
+               viewModel.addTransaction(transaction)
+               Toast.makeText(context, "Transaction Added Successfully", Toast.LENGTH_SHORT).show()
+               Navigation.findNavController(binding.root)
+                   .navigate(R.id.action_addTransaction_to_dashboard2)
+           }
+
        }
 
 

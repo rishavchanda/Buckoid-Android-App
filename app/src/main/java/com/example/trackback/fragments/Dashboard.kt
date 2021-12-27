@@ -9,12 +9,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trackback.Adapter.TransactionAdapter
-import com.example.trackback.FullScreenActivity
+import com.example.trackback.Model.Transaction
 import com.example.trackback.R
 import com.example.trackback.ViewModel.TransactionViewModel
 import com.example.trackback.databinding.FragmentDashboardBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.eazegraph.lib.models.PieModel
 
 
@@ -36,15 +38,12 @@ class Dashboard : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val binding = FragmentDashboardBinding.inflate(inflater, container, false)
-
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        bottomNav.visibility = View.VISIBLE
         getData(binding)
 
-        binding.addNew.setOnClickListener{
-            requireActivity().run{
-                startActivity(Intent(this, FullScreenActivity::class.java))
-                //finish()
-            }
-        }
+        val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","",0.0,"",""),false)
+        binding.addNew.setOnClickListener{Navigation.findNavController(binding.root).navigate(arg)}
         return binding.root
     }
 
