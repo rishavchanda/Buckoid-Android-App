@@ -6,15 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.trackback.R
+import com.example.trackback.ViewModel.TransactionViewModel
 import com.example.trackback.databinding.FragmentTransactionDetailsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class TransactionDetails : Fragment() {
 
     val transaction by navArgs<TransactionDetailsArgs>()
+    private val viewModel: TransactionViewModel by viewModels()
     lateinit var binding: FragmentTransactionDetailsBinding
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -37,7 +42,28 @@ class TransactionDetails : Fragment() {
 
         val argument = TransactionDetailsDirections.actionTransactionDetailsToAddTransaction(transaction.data,true)
         binding.edit.setOnClickListener { Navigation.findNavController(binding.root).navigate(argument) }
+        binding.delete.setOnClickListener { deleteTransaction() }
         return binding.root
+    }
+
+    private fun deleteTransaction() {
+        val bottomDialog: BottomSheetDialog = BottomSheetDialog(requireContext(),R.style.bottom_dialog)
+        bottomDialog.setContentView(R.layout.dialog_delete)
+
+        val delete=bottomDialog.findViewById<Button>(R.id.delete)
+        val cancel=bottomDialog.findViewById<Button>(R.id.cancel)
+
+        delete?.setOnClickListener{
+            viewModel.deleteTransaction(transaction.data.id!!)
+            bottomDialog.dismiss()
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_transactionDetails_to_dashboard2)
+        }
+        cancel?.setOnClickListener{
+            bottomDialog.dismiss()
+        }
+
+        bottomDialog.show()
     }
 
 

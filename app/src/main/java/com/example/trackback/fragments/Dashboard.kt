@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,6 +23,7 @@ import org.eazegraph.lib.models.PieModel
 
 class Dashboard : Fragment() {
 
+    lateinit var binding:FragmentDashboardBinding
     private val viewModel: TransactionViewModel by viewModels()
     private var totalExpense = 0.0
     private var totalGoal = 5000.0f
@@ -37,18 +39,35 @@ class Dashboard : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
         bottomNav.visibility = View.VISIBLE
-        getData(binding)
+        getData()
 
+       // setSearch()
         val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","",0.0,"",""),false)
         binding.addNew.setOnClickListener{Navigation.findNavController(binding.root).navigate(arg)}
         return binding.root
     }
 
+    private fun setSearch() {
+        val search = binding.search as SearchView
+        search.queryHint = "Search here.."
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //TransactionFiltering(newText)
+                return true
+            }
+
+        })
+    }
+
     @SuppressLint("SetTextI18n")
-    private fun getData(binding: FragmentDashboardBinding) {
+    private fun getData() {
         totalExpense = 0.0
         totalGoal = 5000.0f
         totalFood = 0.0f
@@ -94,12 +113,12 @@ class Dashboard : Fragment() {
             }else{
                 binding.indicator.setImageResource(R.drawable.ic_positive_amount)
             }
-            showPiChart(binding)
+            showPiChart()
         })
 
     }
 
-    private fun showPiChart(binding: FragmentDashboardBinding) {
+    private fun showPiChart() {
         val mPieChart = binding.piechart
 
         mPieChart.addPieSlice(PieModel("Food", totalFood, ContextCompat.getColor(requireContext(), R.color.yellow)))
@@ -119,3 +138,5 @@ class Dashboard : Fragment() {
 
 
 }
+
+
