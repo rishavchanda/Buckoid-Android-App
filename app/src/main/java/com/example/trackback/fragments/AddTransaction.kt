@@ -72,6 +72,26 @@ class AddTransaction : Fragment(), View.OnClickListener {
         binding.editMoney.setText(data.data.amount.toString())
         binding.editNote.setText(data.data.note)
         category=data.data.category
+        when (category) {
+            "Food" -> {
+                setCategory(binding.food, binding.food)
+            }
+            "Shopping" -> {
+                setCategory(binding.shopping, binding.shopping)
+            }
+            "Transport" -> {
+                setCategory(binding.transport, binding.transport)
+            }
+            "Health" -> {
+                setCategory(binding.health, binding.health)
+            }
+            "Others" -> {
+                setCategory(binding.others, binding.others)
+            }
+            "Education" -> {
+                setCategory(binding.academics, binding.academics)
+            }
+        }
     }
     private fun addNewTransaction() {
        val title = binding.editTitle.text.toString()
@@ -219,7 +239,7 @@ class AddTransaction : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun removeBackground(button: MaterialButton) {
+   private fun removeBackground(button: MaterialButton) {
         button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.transparent))
         button.setIconTintResource(R.color.textSecondary)
         button.setStrokeColorResource(R.color.textSecondary)
