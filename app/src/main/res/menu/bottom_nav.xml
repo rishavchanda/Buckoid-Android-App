@@ -8,7 +8,7 @@
         />
 
     <item
-        android:id="@+id/allTransaction"
+        android:id="@+id/transactions"
         android:title="Transactions"
         android:icon="@drawable/ic_baseline_assessment_24"
         />

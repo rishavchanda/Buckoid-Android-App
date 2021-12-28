@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/dashboard2">
+    app:startDestination="@id/dashboard">
 
     <fragment
-        android:id="@+id/dashboard2"
+        android:id="@+id/dashboard"
         android:name="com.example.trackback.fragments.Dashboard"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/goToTransactionDetails"
-            app:destination="@id/transactionDetails" />
+            app:destination="@id/transactionDetails"
+           />
         <action
             android:id="@+id/action_dashboard2_to_addTransaction"
-            app:destination="@id/addTransaction" />
+            app:destination="@id/addTransaction"
+             />
 
     </fragment>
     <fragment
@@ -30,7 +32,7 @@
             app:argType="com.example.trackback.Model.Transaction" />
         <action
             android:id="@+id/action_transactionDetails_to_dashboard2"
-            app:destination="@id/dashboard2" />
+            app:destination="@id/dashboard" />
         <action
             android:id="@+id/action_transactionDetails_to_addTransaction"
             app:destination="@id/addTransaction" />
@@ -42,7 +44,7 @@
         tools:layout="@layout/fragment_add_transaction" >
         <action
             android:id="@+id/action_addTransaction_to_dashboard2"
-            app:destination="@id/dashboard2" />
+            app:destination="@id/dashboard" />
         <argument
             android:name="data"
             app:argType="com.example.trackback.Model.Transaction" />
@@ -53,4 +55,14 @@
             android:id="@+id/action_addTransaction_to_transactionDetails"
             app:destination="@id/transactionDetails" />
     </fragment>
+    <fragment
+        android:id="@+id/transactions"
+        android:name="com.example.trackback.fragments.AllTransactions"
+        android:label="fragment_all_transactions"
+        tools:layout="@layout/fragment_all_transactions" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.trackback.fragments.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
