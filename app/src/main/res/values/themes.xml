@@ -20,6 +20,12 @@
         <item name="iconTint">@color/textSecondary</item>
     </style>
 
+    <style name="selector_button_two" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/purple_200</item>
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="iconTint">@color/purple_200</item>
+    </style>
+
     <style name="bottom_dialog" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/modal</item>
     </style>
@@ -27,5 +33,11 @@
     <style name="modal" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_dialog</item>
     </style>
+
+    <style name="button_overlay" >
+        <item name="colorSurface">@android:color/white</item>
+    </style>
+
+    <style name="SelectorTheme" parent="@style/Theme.MaterialComponents"/>
 
 </resources>
