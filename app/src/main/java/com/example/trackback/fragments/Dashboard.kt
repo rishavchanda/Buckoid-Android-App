@@ -45,7 +45,7 @@ class Dashboard : Fragment() {
         getData()
 
        // setSearch()
-        val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","",0.0,"",""),false)
+        val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","",0.0,"",0,0,0,""),false)
         binding.addNew.setOnClickListener{Navigation.findNavController(binding.root).navigate(arg)}
         return binding.root
     }
@@ -76,7 +76,7 @@ class Dashboard : Fragment() {
         totalHealth = 0.0f
         totalOthers = 0.0f
         totalAcademics = 0.0f
-        viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
+        viewModel.getMonthlyTransaction(12).observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
 

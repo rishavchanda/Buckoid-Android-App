@@ -10,6 +10,12 @@ interface TransactionDao {
     @Query("SELECT * FROM `Transaction`")
     fun getTransaction(): LiveData<List<Transaction>>
 
+    @Query("SELECT * FROM `Transaction` WHERE month=:month")
+    fun getMonthlyTransaction(month: Int): LiveData<List<Transaction>>
+
+    @Query("SELECT * FROM `Transaction` WHERE year=:year")
+    fun getYearlyTransaction(year: Int): LiveData<List<Transaction>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTransaction(transaction: Transaction)
 

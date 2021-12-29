@@ -10,6 +10,14 @@ class TransactionRepository(val dao: TransactionDao) {
         return dao.getTransaction()
     }
 
+    fun getMonthlyTransaction(month:Int): LiveData<List<Transaction>>{
+        return dao.getMonthlyTransaction(month)
+    }
+
+    fun getYearlyTransaction(year:Int): LiveData<List<Transaction>>{
+        return dao.getYearlyTransaction(year)
+    }
+
     fun insertTransaction(transaction: Transaction){
         dao.insertTransaction(transaction)
     }

@@ -26,6 +26,9 @@ class AddTransaction : Fragment(), View.OnClickListener {
    val data by navArgs<AddTransactionArgs>()
    private lateinit var binding: FragmentAddTransactionBinding
    private var category = ""
+    var day=0
+    var month=0
+    var year=0
 
    private val viewModel: TransactionViewModel by viewModels()
     override fun onCreateView(
@@ -110,6 +113,9 @@ class AddTransaction : Fragment(), View.OnClickListener {
                    amount = amount.toDouble(),
                    note = note,
                    date = date,
+                   day = day,
+                   month = month,
+                   year = year,
                    category = category
 
                )
@@ -125,6 +131,9 @@ class AddTransaction : Fragment(), View.OnClickListener {
                    amount = amount.toDouble(),
                    note = note,
                    date = date,
+                   day = day,
+                   month = month,
+                   year = year,
                    category = category
 
                )
@@ -144,14 +153,26 @@ class AddTransaction : Fragment(), View.OnClickListener {
     fun datePicker(binding:FragmentAddTransactionBinding){
         val cal = Calendar.getInstance()
         binding.editDate.setText(SimpleDateFormat("dd MMMM  yyyy").format(System.currentTimeMillis()))
-        val dateSetListener = OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
+        day = SimpleDateFormat("dd").format(System.currentTimeMillis()).toInt()
+        month = SimpleDateFormat("MM").format(System.currentTimeMillis()).toInt()
+        year = SimpleDateFormat("yyyy").format(System.currentTimeMillis()).toInt()
+        val dateSetListener = OnDateSetListener { _, Year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, Year)
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            val myFormat = "dd MMMM  yyyy" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            var myFormat = "dd MMMM  yyyy" // mention the format you need
+            var sdf = SimpleDateFormat(myFormat, Locale.US)
             binding.editDate.setText(sdf.format(cal.time))
+            myFormat="dd"
+            sdf = SimpleDateFormat(myFormat, Locale.US)
+            day =sdf.format(cal.time).toInt()
+            myFormat="MM"
+            sdf = SimpleDateFormat(myFormat, Locale.US)
+            month = sdf.format(cal.time).toInt()
+            myFormat="yyyy"
+            sdf = SimpleDateFormat(myFormat, Locale.US)
+            year = sdf.format(cal.time).toInt()
 
         }
 
