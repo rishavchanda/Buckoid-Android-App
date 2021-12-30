@@ -75,6 +75,8 @@ class Dashboard : Fragment() {
         val currentMonth = format.format(Calendar.getInstance().getTime())
         format =  SimpleDateFormat("yyyy")
         val currentYear = format.format(Calendar.getInstance().getTime())
+        format =  SimpleDateFormat("MMMM")
+        binding.date.text = "${format.format(Calendar.getInstance().getTime())} ${currentYear}"
 
 
         totalExpense = 0.0

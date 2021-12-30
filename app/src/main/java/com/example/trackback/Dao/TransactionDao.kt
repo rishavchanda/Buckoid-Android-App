@@ -7,7 +7,7 @@ import com.example.trackback.Model.Transaction
 @Dao
 interface TransactionDao {
 
-    @Query("SELECT * FROM `Transaction`")
+    @Query("SELECT * FROM `Transaction` ORDER BY year DESC,month DESC,day DESC,category DESC")
     fun getTransaction(): LiveData<List<Transaction>>
 
     @Query("SELECT * FROM `Transaction` WHERE month=:month AND year=:year")
