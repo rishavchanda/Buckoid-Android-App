@@ -10,8 +10,8 @@ interface TransactionDao {
     @Query("SELECT * FROM `Transaction`")
     fun getTransaction(): LiveData<List<Transaction>>
 
-    @Query("SELECT * FROM `Transaction` WHERE month=:month")
-    fun getMonthlyTransaction(month: Int): LiveData<List<Transaction>>
+    @Query("SELECT * FROM `Transaction` WHERE month=:month AND year=:year")
+    fun getMonthlyTransaction(month: Int,year: Int): LiveData<List<Transaction>>
 
     @Query("SELECT * FROM `Transaction` WHERE year=:year")
     fun getYearlyTransaction(year: Int): LiveData<List<Transaction>>

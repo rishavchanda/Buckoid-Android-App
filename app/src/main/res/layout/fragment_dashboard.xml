@@ -120,6 +120,17 @@
                         app:layout_constraintTop_toTopOf="@id/text2"
                         app:layout_constraintBottom_toBottomOf="@id/text2"
                         />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="January 2021"
+                        android:layout_margin="16dp"
+                        android:textColor="@color/textSecondary"
+                        android:background="@color/background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
                     <org.eazegraph.lib.charts.PieChart
                         android:id="@+id/piechart"
                         android:layout_width="160dp"

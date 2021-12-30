@@ -23,10 +23,9 @@ class TransactionViewModel(application: Application): AndroidViewModel(applicati
 
     fun getTransaction(): LiveData<List<Transaction>> = repository.getAllTransaction()
 
-    fun getMonthlyTransaction(month:Int): LiveData<List<Transaction>> = repository.getMonthlyTransaction(month)
+    fun getMonthlyTransaction(month:Int,Year:Int): LiveData<List<Transaction>> = repository.getMonthlyTransaction(month,Year)
 
-    fun getYearlyTransaction(year:Int): LiveData<List<Transaction>> = repository.getMonthlyTransaction(year)
-
+    fun getYearlyTransaction(year: Int): LiveData<List<Transaction>> = repository.getYearlyTransaction(year)
 
     fun deleteTransaction(id:Int){
         repository.deleteTransaction(id)

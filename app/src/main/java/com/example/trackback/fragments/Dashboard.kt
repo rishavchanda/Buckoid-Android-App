@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,6 +20,8 @@ import com.example.trackback.ViewModel.TransactionViewModel
 import com.example.trackback.databinding.FragmentDashboardBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.eazegraph.lib.models.PieModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class Dashboard : Fragment() {
@@ -68,6 +71,12 @@ class Dashboard : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun getData() {
+        var format =  SimpleDateFormat("MM")
+        val currentMonth = format.format(Calendar.getInstance().getTime())
+        format =  SimpleDateFormat("yyyy")
+        val currentYear = format.format(Calendar.getInstance().getTime())
+
+
         totalExpense = 0.0
         totalGoal = 5000.0f
         totalFood = 0.0f
@@ -76,7 +85,7 @@ class Dashboard : Fragment() {
         totalHealth = 0.0f
         totalOthers = 0.0f
         totalAcademics = 0.0f
-        viewModel.getMonthlyTransaction(12).observe(viewLifecycleOwner,{ transactionList ->
+        viewModel.getMonthlyTransaction(currentMonth.toInt(),currentYear.toInt()).observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
 
