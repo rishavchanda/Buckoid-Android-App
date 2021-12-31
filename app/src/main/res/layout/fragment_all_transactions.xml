@@ -68,6 +68,240 @@
         android:layout_margin="16dp"
         />
 
+            <HorizontalScrollView
+                android:id="@+id/selectors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    >
+                    <View
+                        android:layout_width="16dp"
+                        android:layout_height="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/January"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="January" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/February"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="February" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/March"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="March" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/April"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="April" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/May"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="May" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/June"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="June" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/July"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="July" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/August"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="August" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/September"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="September" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/October"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="October" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/November"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="November" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/December"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        style="@style/selector_button"
+                        android:layout_marginEnd="16dp"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:text="December" />
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/monthlyCard"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/cardBackground"
+                android:elevation="0dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectors">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Monthly Budget"
+                        android:textColor="@color/textSecondary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/budget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginTop="4dp"
+                        android:text="₹5000"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="22sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+                    <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Your Expenses"
+                        android:textColor="@color/textSecondary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/budget" />
+
+                    <TextView
+                        android:id="@+id/expense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:text="₹4000"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+                    <ImageView
+                        android:id="@+id/indicator"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_positive_amount"
+                        app:layout_constraintBottom_toBottomOf="@id/text2"
+                        app:layout_constraintStart_toEndOf="@id/text2"
+                        app:layout_constraintTop_toTopOf="@id/text2" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/round"
+                        android:paddingStart="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="4dp"
+                        android:text="January 2021"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <org.eazegraph.lib.charts.PieChart
+                        android:id="@+id/piechart"
+                        android:layout_width="160dp"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        app:egInnerPaddingColor="@color/cardBackground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/transactionRecyclerView"
                 android:layout_width="match_parent"
@@ -75,7 +309,7 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="90dp"
                 android:nestedScrollingEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintTop_toBottomOf="@+id/monthlyCard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
