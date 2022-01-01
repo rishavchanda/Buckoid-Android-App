@@ -7,24 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.trackback.Adapter.MonthlyTransactionAdapter
 import com.example.trackback.Adapter.TransactionAdapter
-import com.example.trackback.Model.MonthlyTransactions
 import com.example.trackback.R
 import com.example.trackback.ViewModel.TransactionViewModel
-import com.example.trackback.databinding.FragmentAddTransactionBinding
 import com.example.trackback.databinding.FragmentAllTransactionsBinding
 import com.google.android.material.button.MaterialButton
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import android.widget.ArrayAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class AllTransactions : Fragment() ,View.OnClickListener {
@@ -51,6 +47,8 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAllTransactionsBinding.inflate(inflater, container, false)
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        bottomNav.visibility = View.VISIBLE
         setListener()
         when(binding.toggleSelector.checkedButtonId) {
             R.id.all -> showAllTransactions()
@@ -79,7 +77,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
        binding.title.text = "All Transactions"
         viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList)
+            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"AllTransactions",transactionList)
         })
     }
 
@@ -126,7 +124,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalAcademics = 0.0f
         viewModel.getMonthlyTransaction(monthInt,year).observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
+            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"AllTransactions",transactionList.reversed())
 
             for(i in transactionList)
             {
@@ -222,7 +220,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalAcademics = 0.0f
         viewModel.getYearlyTransaction(year).observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
+            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"AllTransactions",transactionList.reversed())
 
             for(i in transactionList)
             {

@@ -89,7 +89,7 @@ class Dashboard : Fragment() {
         totalAcademics = 0.0f
         viewModel.getMonthlyTransaction(currentMonth.toInt(),currentYear.toInt()).observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
+            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"Dashboard",transactionList.reversed())
 
             for(i in transactionList)
             {

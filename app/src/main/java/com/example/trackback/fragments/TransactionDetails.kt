@@ -38,10 +38,20 @@ class TransactionDetails : Fragment() {
         binding.date.text = transaction.data.date
         binding.note.text = transaction.data.note
 
-        binding.back.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_dashboard2) }
+        binding.back.setOnClickListener {
+            if(transaction.fragment == "Dashboard"){
+                Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_dashboard2)
+            }else if(transaction.fragment == "AllTransactions"){
+                Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_transactions)
+            }else{
+                Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_dashboard2)
+            }
+        }
 
-        val argument = TransactionDetailsDirections.actionTransactionDetailsToAddTransaction(transaction.data,true)
-        binding.edit.setOnClickListener { Navigation.findNavController(binding.root).navigate(argument) }
+        binding.edit.setOnClickListener {
+            val argument = TransactionDetailsDirections.actionTransactionDetailsToAddTransaction(transaction.data,true)
+            Navigation.findNavController(binding.root).navigate(argument)
+        }
         binding.delete.setOnClickListener { deleteTransaction() }
         return binding.root
     }

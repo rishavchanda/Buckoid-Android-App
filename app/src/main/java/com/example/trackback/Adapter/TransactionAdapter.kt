@@ -4,15 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackback.Model.Transaction
 import com.example.trackback.R
 import com.example.trackback.databinding.TransactionItemBinding
-import com.example.trackback.fragments.DashboardDirections
+import com.example.trackback.fragments.*
 
-class TransactionAdapter(val context: Context, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>() {
+class TransactionAdapter(val context: Context,val fragment:String, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>() {
 
     class transactionViewHolder(val binding:TransactionItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -67,8 +68,18 @@ class TransactionAdapter(val context: Context, private val transList: List<Trans
 
         }
 
-        val argument = DashboardDirections.goToTransactionDetails(data)
-        holder.binding.root.setOnClickListener { Navigation.findNavController(it).navigate(argument) }
+
+        holder.binding.root.setOnClickListener {
+             if(fragment == "Dashboard"){
+                 val argument = DashboardDirections.goToTransactionDetails(data,fragment)
+                    Navigation.findNavController(it).navigate(argument)
+             }else if(fragment == "AllTransactions"){
+                 val argument = AllTransactionsDirections.allTransactionToTransactionDetails(data,fragment)
+                 Navigation.findNavController(it).navigate(argument)
+             }
+
+        }
+
     }
 
     override fun getItemCount() = transList.size

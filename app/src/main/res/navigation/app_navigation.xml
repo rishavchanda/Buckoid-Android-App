@@ -36,6 +36,12 @@
         <action
             android:id="@+id/action_transactionDetails_to_addTransaction"
             app:destination="@id/addTransaction" />
+        <action
+            android:id="@+id/action_transactionDetails_to_transactions"
+            app:destination="@id/transactions" />
+        <argument
+            android:name="fragment"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addTransaction"
@@ -59,7 +65,11 @@
         android:id="@+id/transactions"
         android:name="com.example.trackback.fragments.AllTransactions"
         android:label="fragment_all_transactions"
-        tools:layout="@layout/fragment_all_transactions" />
+        tools:layout="@layout/fragment_all_transactions" >
+        <action
+            android:id="@+id/allTransactionToTransactionDetails"
+            app:destination="@id/transactionDetails" />
+    </fragment>
     <fragment
         android:id="@+id/profile"
         android:name="com.example.trackback.fragments.Profile"
