@@ -74,10 +74,21 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         binding.selectors.visibility = View.GONE
         binding.monthlyCard.visibility = View.GONE
         binding.yearSpinner.visibility = View.GONE
+        binding.text1.visibility = View.GONE
        binding.title.text = "All Transactions"
         viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
-            binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"AllTransactions",transactionList)
+            if (transactionList.isEmpty()) {
+                binding.noTransactionsDoneText.text = "No transaction done Yet"
+                binding.noTransactionsDoneText.visibility = View.VISIBLE
+                binding.transactionRecyclerView.visibility = View.GONE
+            }else {
+                binding.noTransactionsDoneText.visibility = View.GONE
+                binding.transactionRecyclerView.visibility = View.VISIBLE
+                binding.transactionRecyclerView.layoutManager =
+                    LinearLayoutManager(requireContext())
+                binding.transactionRecyclerView.adapter =
+                    TransactionAdapter(requireContext(), "AllTransactions", transactionList)
+            }
         })
     }
 
@@ -96,6 +107,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         binding.selectors.visibility = View.VISIBLE
         binding.monthlyCard.visibility = View.VISIBLE
         binding.yearSpinner.visibility = View.VISIBLE
+        binding.text1.visibility = View.VISIBLE
         binding.title.text = "Monthly Transactions"
         binding.yearSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -122,45 +134,68 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalHealth = 0.0f
         totalOthers = 0.0f
         totalAcademics = 0.0f
-        viewModel.getMonthlyTransaction(monthInt,year).observe(viewLifecycleOwner,{ transactionList ->
-            binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"AllTransactions",transactionList.reversed())
+        viewModel.getMonthlyTransaction(monthInt,year).observe(viewLifecycleOwner,
+            { transactionList ->
+                if (transactionList.isEmpty()) {
+                    binding.noTransactionsDoneText.text = "No transaction done on $month $year "
+                    binding.noTransactionsDoneText.visibility = View.VISIBLE
+                    binding.monthlyCard.visibility = View.GONE
+                    binding.transactionRecyclerView.visibility = View.GONE
+                    binding.text1.visibility = View.GONE
+                } else {
+                    binding.monthlyCard.visibility = View.VISIBLE
+                    binding.noTransactionsDoneText.visibility = View.GONE
+                    binding.transactionRecyclerView.visibility = View.VISIBLE
+                    binding.text1.visibility = View.VISIBLE
+                    binding.transactionRecyclerView.layoutManager =
+                        LinearLayoutManager(requireContext())
+                    binding.transactionRecyclerView.adapter = TransactionAdapter(
+                        requireContext(),
+                        "AllTransactions",
+                        transactionList.reversed()
+                    )
 
-            for(i in transactionList)
-            {
-                totalExpense += i.amount
-                when (i.category) {
-                    "Food" -> {
-                        totalFood+=(i.amount.toFloat())
-                    }
-                    "Shopping" -> {
-                        totalShopping+=(i.amount.toFloat())
-                    }
-                    "Transport" -> {
-                        totalTransport+=(i.amount.toFloat())
-                    }
+                    for (i in transactionList) {
+                        totalExpense += i.amount
+                        when (i.category) {
+                            "Food" -> {
+                                totalFood += (i.amount.toFloat())
+                            }
+                            "Shopping" -> {
+                                totalShopping += (i.amount.toFloat())
+                            }
+                            "Transport" -> {
+                                totalTransport += (i.amount.toFloat())
+                            }
 
-                    "Health" -> {
-                        totalHealth+=(i.amount.toFloat())
+                            "Health" -> {
+                                totalHealth += (i.amount.toFloat())
+                            }
+                            "Other" -> {
+                                totalOthers += (i.amount.toFloat())
+                            }
+                            "Education" -> {
+                                totalAcademics += (i.amount.toFloat())
+                            }
+                        }
                     }
-                    "Other" -> {
-                        totalOthers+=(i.amount.toFloat())
+                    binding.expense.text = "₹${totalExpense.toInt()}"
+                    binding.budget.text = "₹${totalGoal.toInt()}"
+                    binding.date.text = "${month} ${year}"
+                    if (totalExpense > totalGoal) {
+                        binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
+                        binding.expense.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.red
+                            )
+                        )
+                    } else {
+                        binding.indicator.setImageResource(R.drawable.ic_positive_amount)
                     }
-                    "Education" -> {
-                        totalAcademics+=(i.amount.toFloat())
-                    }
+                    showPiChart()
                 }
-            }
-            binding.expense.text = "₹${totalExpense.toInt()}"
-            binding.budget.text = "₹${totalGoal.toInt()}"
-            binding.date.text = "${month} ${year}"
-            if (totalExpense>totalGoal){
-                binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
-                binding.expense.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
-            }else{
-                binding.indicator.setImageResource(R.drawable.ic_positive_amount)
-            }
-            showPiChart()
+
         })
     }
     private fun showPiChart() {
@@ -193,6 +228,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         binding.selectors.visibility = View.GONE
         binding.monthlyCard.visibility = View.VISIBLE
         binding.yearSpinner.visibility = View.VISIBLE
+        binding.text1.visibility = View.VISIBLE
         showYearlyTransaction()
         binding.yearSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -219,44 +255,65 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalOthers = 0.0f
         totalAcademics = 0.0f
         viewModel.getYearlyTransaction(year).observe(viewLifecycleOwner,{ transactionList ->
-            binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"AllTransactions",transactionList.reversed())
+            if(transactionList.isEmpty()){
+                binding.noTransactionsDoneText.text = "No transaction done on Year $year "
+                binding.noTransactionsDoneText.visibility = View.VISIBLE
+                binding.monthlyCard.visibility = View.GONE
+                binding.transactionRecyclerView.visibility = View.GONE
+                binding.text1.visibility = View.GONE
+            }else {
+                binding.monthlyCard.visibility = View.VISIBLE
+                binding.noTransactionsDoneText.visibility = View.GONE
+                binding.transactionRecyclerView.visibility = View.VISIBLE
+                binding.text1.visibility = View.VISIBLE
+                binding.transactionRecyclerView.layoutManager =
+                    LinearLayoutManager(requireContext())
+                binding.transactionRecyclerView.adapter = TransactionAdapter(
+                    requireContext(),
+                    "AllTransactions",
+                    transactionList.reversed()
+                )
 
-            for(i in transactionList)
-            {
-                totalExpense += i.amount
-                when (i.category) {
-                    "Food" -> {
-                        totalFood+=(i.amount.toFloat())
-                    }
-                    "Shopping" -> {
-                        totalShopping+=(i.amount.toFloat())
-                    }
-                    "Transport" -> {
-                        totalTransport+=(i.amount.toFloat())
-                    }
+                for (i in transactionList) {
+                    totalExpense += i.amount
+                    when (i.category) {
+                        "Food" -> {
+                            totalFood += (i.amount.toFloat())
+                        }
+                        "Shopping" -> {
+                            totalShopping += (i.amount.toFloat())
+                        }
+                        "Transport" -> {
+                            totalTransport += (i.amount.toFloat())
+                        }
 
-                    "Health" -> {
-                        totalHealth+=(i.amount.toFloat())
-                    }
-                    "Other" -> {
-                        totalOthers+=(i.amount.toFloat())
-                    }
-                    "Education" -> {
-                        totalAcademics+=(i.amount.toFloat())
+                        "Health" -> {
+                            totalHealth += (i.amount.toFloat())
+                        }
+                        "Other" -> {
+                            totalOthers += (i.amount.toFloat())
+                        }
+                        "Education" -> {
+                            totalAcademics += (i.amount.toFloat())
+                        }
                     }
                 }
+                binding.expense.text = "₹${totalExpense.toInt()}"
+                binding.budget.text = "₹${totalGoal.toInt()}"
+                binding.date.text = "Year: ${year}"
+                if (totalExpense > totalGoal) {
+                    binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
+                    binding.expense.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.red
+                        )
+                    )
+                } else {
+                    binding.indicator.setImageResource(R.drawable.ic_positive_amount)
+                }
+                showPiChart()
             }
-            binding.expense.text = "₹${totalExpense.toInt()}"
-            binding.budget.text = "₹${totalGoal.toInt()}"
-            binding.date.text = "Year: ${year}"
-            if (totalExpense>totalGoal){
-                binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
-                binding.expense.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
-            }else{
-                binding.indicator.setImageResource(R.drawable.ic_positive_amount)
-            }
-            showPiChart()
         })
     }
 

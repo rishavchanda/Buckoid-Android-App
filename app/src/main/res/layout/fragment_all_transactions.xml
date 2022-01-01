@@ -209,6 +209,23 @@
 
             </HorizontalScrollView>
 
+            <TextView
+                android:id="@+id/noTransactionsDoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:text="No Transactions were Done"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/selectors"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/monthlyCard"
                 android:layout_width="match_parent"
@@ -312,6 +329,18 @@
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Transactions"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/monthlyCard"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="22dp"
+                />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/transactionRecyclerView"
                 android:layout_width="match_parent"
@@ -319,7 +348,7 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="90dp"
                 android:nestedScrollingEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/monthlyCard" />
+                app:layout_constraintTop_toBottomOf="@+id/text1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

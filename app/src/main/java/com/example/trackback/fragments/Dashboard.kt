@@ -88,43 +88,57 @@ class Dashboard : Fragment() {
         totalOthers = 0.0f
         totalAcademics = 0.0f
         viewModel.getMonthlyTransaction(currentMonth.toInt(),currentYear.toInt()).observe(viewLifecycleOwner,{ transactionList ->
-            binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),"Dashboard",transactionList.reversed())
+            if(transactionList.isEmpty()){
+                binding.noTransactionsDoneText.text = "Add Your First Transaction of ${format.format(Calendar.getInstance().getTime())} $currentYear \n Click On + to add Transactions"
+                binding.noTransactionsDoneText.visibility = View.VISIBLE
+                binding.transactionRecyclerView.visibility = View.GONE
+            }else {
+                binding.noTransactionsDoneText.visibility = View.GONE
+                binding.transactionRecyclerView.visibility = View.VISIBLE
+                binding.transactionRecyclerView.layoutManager =
+                    LinearLayoutManager(requireContext())
+                binding.transactionRecyclerView.adapter =
+                    TransactionAdapter(requireContext(), "Dashboard", transactionList.reversed())
 
-            for(i in transactionList)
-            {
-                totalExpense += i.amount
-                when (i.category) {
-                    "Food" -> {
-                        totalFood+=(i.amount.toFloat())
-                    }
-                    "Shopping" -> {
-                        totalShopping+=(i.amount.toFloat())
-                    }
-                    "Transport" -> {
-                        totalTransport+=(i.amount.toFloat())
-                    }
+                for (i in transactionList) {
+                    totalExpense += i.amount
+                    when (i.category) {
+                        "Food" -> {
+                            totalFood += (i.amount.toFloat())
+                        }
+                        "Shopping" -> {
+                            totalShopping += (i.amount.toFloat())
+                        }
+                        "Transport" -> {
+                            totalTransport += (i.amount.toFloat())
+                        }
 
-                    "Health" -> {
-                        totalHealth+=(i.amount.toFloat())
-                    }
-                    "Other" -> {
-                        totalOthers+=(i.amount.toFloat())
-                    }
-                    "Education" -> {
-                        totalAcademics+=(i.amount.toFloat())
+                        "Health" -> {
+                            totalHealth += (i.amount.toFloat())
+                        }
+                        "Other" -> {
+                            totalOthers += (i.amount.toFloat())
+                        }
+                        "Education" -> {
+                            totalAcademics += (i.amount.toFloat())
+                        }
                     }
                 }
+                binding.expense.text = "₹${totalExpense.toInt()}"
+                binding.budget.text = "₹${totalGoal.toInt()}"
+                if (totalExpense > totalGoal) {
+                    binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
+                    binding.expense.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.red
+                        )
+                    )
+                } else {
+                    binding.indicator.setImageResource(R.drawable.ic_positive_amount)
+                }
+                showPiChart()
             }
-            binding.expense.text = "₹${totalExpense.toInt()}"
-            binding.budget.text = "₹${totalGoal.toInt()}"
-            if (totalExpense>totalGoal){
-                binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
-                binding.expense.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
-            }else{
-                binding.indicator.setImageResource(R.drawable.ic_positive_amount)
-            }
-            showPiChart()
         })
 
     }
