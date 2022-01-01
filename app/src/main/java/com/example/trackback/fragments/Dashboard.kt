@@ -92,9 +92,12 @@ class Dashboard : Fragment() {
                 binding.noTransactionsDoneText.text = "Add Your First Transaction of ${format.format(Calendar.getInstance().getTime())} $currentYear \n Click On + to add Transactions"
                 binding.noTransactionsDoneText.visibility = View.VISIBLE
                 binding.transactionRecyclerView.visibility = View.GONE
+                binding.text1.visibility = View.GONE
             }else {
+                binding.text1.visibility = View.VISIBLE
                 binding.noTransactionsDoneText.visibility = View.GONE
                 binding.transactionRecyclerView.visibility = View.VISIBLE
+            }
                 binding.transactionRecyclerView.layoutManager =
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter =
@@ -138,7 +141,7 @@ class Dashboard : Fragment() {
                     binding.indicator.setImageResource(R.drawable.ic_positive_amount)
                 }
                 showPiChart()
-            }
+
         })
 
     }
