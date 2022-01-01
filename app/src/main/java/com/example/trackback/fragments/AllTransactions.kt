@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -20,6 +21,11 @@ import com.example.trackback.databinding.FragmentAllTransactionsBinding
 import com.google.android.material.button.MaterialButton
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
+import android.widget.ArrayAdapter
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class AllTransactions : Fragment() ,View.OnClickListener {
 
@@ -28,8 +34,9 @@ class AllTransactions : Fragment() ,View.OnClickListener {
 
     private val viewModel: TransactionViewModel by viewModels()
     lateinit var mPieChart:PieChart
-
     private var month =""
+    private var year=0
+    private var monthInt =1
     private var totalExpense = 0.0
     private var totalGoal = 5000.0f
     private var totalFood = 0.0f
@@ -68,6 +75,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         binding.transactionRecyclerView.visibility = View.VISIBLE
         binding.selectors.visibility = View.GONE
         binding.monthlyCard.visibility = View.GONE
+        binding.yearSpinner.visibility = View.GONE
        binding.title.text = "All Transactions"
         viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -75,18 +83,37 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         })
     }
 
-
     private fun showMonthlyTransactions() {
+        year=SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()).toInt()
+        val list = mutableListOf(2020)
+        list.clear()
+        for(i in year downTo 2020){
+            list += i
+        }
+        val yearAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,list)
+        binding.yearSpinner.setAdapter(yearAdapter)
         setMonth(binding.January,binding.January)
-        showMonthsTransaction(1,2021)
+        showMonthsTransaction()
         binding.transactionRecyclerView.visibility = View.VISIBLE
         binding.selectors.visibility = View.VISIBLE
         binding.monthlyCard.visibility = View.VISIBLE
+        binding.yearSpinner.visibility = View.VISIBLE
         binding.title.text = "Monthly Transactions"
+        binding.yearSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                year=binding.yearSpinner.selectedItem.toString().toInt()
+                showMonthsTransaction()
+            } // to close the onItemSelected
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                year=binding.yearSpinner.selectedItem.toString().toInt()
+                showMonthsTransaction()
+            }
+        }
+
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showMonthsTransaction(months:Int, year:Int){
+    private fun showMonthsTransaction(){
         mPieChart=binding.piechart
         mPieChart.clearChart()
         totalExpense = 0.0
@@ -97,7 +124,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalHealth = 0.0f
         totalOthers = 0.0f
         totalAcademics = 0.0f
-        viewModel.getMonthlyTransaction(months,year).observe(viewLifecycleOwner,{ transactionList ->
+        viewModel.getMonthlyTransaction(monthInt,year).observe(viewLifecycleOwner,{ transactionList ->
             binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
 
@@ -179,51 +206,63 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         when (v) {
             binding.January -> {
                 setMonth(v,binding.January)
-                showMonthsTransaction(1,2021)
+                monthInt=1
+                showMonthsTransaction()
             }
             binding.February -> {
                 setMonth(v,binding.February)
-                showMonthsTransaction(2,2021)
+                monthInt=2
+                showMonthsTransaction()
             }
             binding.March -> {
                 setMonth(v,binding.March)
-                showMonthsTransaction(3,2021)
+                monthInt=3
+                showMonthsTransaction()
             }
             binding.April -> {
                 setMonth(v,binding.April)
-                showMonthsTransaction(4,2021)
+                monthInt=4
+                showMonthsTransaction()
             }
             binding.May -> {
                 setMonth(v,binding.May)
-                showMonthsTransaction(5,2021)
+                monthInt=5
+                showMonthsTransaction()
             }
             binding.June -> {
                 setMonth(v,binding.June)
-                showMonthsTransaction(6,2021)
+                monthInt=6
+                showMonthsTransaction()
             }
             binding.July -> {
                 setMonth(v,binding.July)
-                showMonthsTransaction(7,2021)
+                monthInt=7
+                showMonthsTransaction()
             }
             binding.August -> {
                 setMonth(v,binding.August)
-                showMonthsTransaction(8,2021)
+                monthInt=8
+                showMonthsTransaction()
             }
             binding.September -> {
                 setMonth(v,binding.September)
-                showMonthsTransaction(9,2021)
+                monthInt=9
+                showMonthsTransaction()
             }
             binding.October -> {
                 setMonth(v,binding.October)
-                showMonthsTransaction(10,2021)
+                monthInt=10
+                showMonthsTransaction()
             }
             binding.November -> {
                 setMonth(v,binding.November)
-                showMonthsTransaction(11,2021)
+                monthInt=11
+                showMonthsTransaction()
             }
             binding.December -> {
                 setMonth(v,binding.December)
-                showMonthsTransaction(12,2021)
+                monthInt=12
+                showMonthsTransaction()
             }
         }
     }

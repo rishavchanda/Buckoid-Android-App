@@ -67,6 +67,16 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="16dp"
         />
+            <Spinner
+                android:id="@+id/yearSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/title"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toTopOf="@id/title"
+                />
 
             <HorizontalScrollView
                 android:id="@+id/selectors"
