@@ -183,6 +183,83 @@ class AllTransactions : Fragment() ,View.OnClickListener {
 
     private fun showYearlyTransactions() {
         binding.title.text = "Yearly Transactions"
+        year=SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()).toInt()
+        val list = mutableListOf(2020)
+        list.clear()
+        for(i in year downTo 2020){
+            list += i
+        }
+        val yearAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,list)
+        binding.yearSpinner.setAdapter(yearAdapter)
+        binding.transactionRecyclerView.visibility = View.VISIBLE
+        binding.selectors.visibility = View.GONE
+        binding.monthlyCard.visibility = View.VISIBLE
+        binding.yearSpinner.visibility = View.VISIBLE
+        showYearlyTransaction()
+        binding.yearSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                year=binding.yearSpinner.selectedItem.toString().toInt()
+                showYearlyTransaction()
+            } // to close the onItemSelected
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                year=binding.yearSpinner.selectedItem.toString().toInt()
+                showYearlyTransaction()
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun showYearlyTransaction(){
+        mPieChart=binding.piechart
+        mPieChart.clearChart()
+        totalExpense = 0.0
+        totalGoal = 5000.0f
+        totalFood = 0.0f
+        totalShopping = 0.0f
+        totalTransport=0.0f
+        totalHealth = 0.0f
+        totalOthers = 0.0f
+        totalAcademics = 0.0f
+        viewModel.getYearlyTransaction(year).observe(viewLifecycleOwner,{ transactionList ->
+            binding.transactionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.transactionRecyclerView.adapter = TransactionAdapter(requireContext(),transactionList.reversed())
+
+            for(i in transactionList)
+            {
+                totalExpense += i.amount
+                when (i.category) {
+                    "Food" -> {
+                        totalFood+=(i.amount.toFloat())
+                    }
+                    "Shopping" -> {
+                        totalShopping+=(i.amount.toFloat())
+                    }
+                    "Transport" -> {
+                        totalTransport+=(i.amount.toFloat())
+                    }
+
+                    "Health" -> {
+                        totalHealth+=(i.amount.toFloat())
+                    }
+                    "Other" -> {
+                        totalOthers+=(i.amount.toFloat())
+                    }
+                    "Education" -> {
+                        totalAcademics+=(i.amount.toFloat())
+                    }
+                }
+            }
+            binding.expense.text = "₹${totalExpense.toInt()}"
+            binding.budget.text = "₹${totalGoal.toInt()}"
+            binding.date.text = "Year: ${year}"
+            if (totalExpense>totalGoal){
+                binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
+                binding.expense.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }else{
+                binding.indicator.setImageResource(R.drawable.ic_positive_amount)
+            }
+            showPiChart()
+        })
     }
 
 
