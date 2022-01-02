@@ -40,4 +40,10 @@
 
     <style name="SelectorTheme" parent="@style/Theme.MaterialComponents"/>
 
+
+    <style name="splashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/splashBackground</item>
+    </style>
+
 </resources>

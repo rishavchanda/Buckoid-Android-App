@@ -11,6 +11,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#0000FFFF</color>
+    <color name="splashBackground">#232C3D</color>
 
     //Pi chart Colors
     <color name="green">#64FF6C</color>
