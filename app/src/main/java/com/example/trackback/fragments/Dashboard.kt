@@ -1,13 +1,12 @@
 package com.example.trackback.fragments
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,6 +21,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.eazegraph.lib.models.PieModel
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
+import com.google.android.material.navigation.NavigationView
 
 
 class Dashboard : Fragment() {
@@ -36,6 +39,8 @@ class Dashboard : Fragment() {
     private var totalHealth = 0.0f
     private var totalOthers = 0.0f
     private var totalAcademics = 0.0f
+    lateinit var drawerLayout:DrawerLayout
+    lateinit var navigationView:NavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +49,11 @@ class Dashboard : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        drawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+        navigationView = requireActivity().findViewById(R.id.navigationView)
         bottomNav.visibility = View.VISIBLE
+        navigationDrawer()
         getData()
-
-       // setSearch()
         val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","",0.0,"",0,0,0,""),false)
         binding.addNew.setOnClickListener{Navigation.findNavController(binding.root).navigate(arg)}
         return binding.root
@@ -69,6 +75,8 @@ class Dashboard : Fragment() {
         })
     }
 
+
+    //calling data from room database using livedata view model
     @SuppressLint("SetTextI18n")
     private fun getData() {
         var format =  SimpleDateFormat("MM")
@@ -146,6 +154,7 @@ class Dashboard : Fragment() {
 
     }
 
+    //To show PiChart to main card to users
     private fun showPiChart() {
         val mPieChart = binding.piechart
 
@@ -163,6 +172,34 @@ class Dashboard : Fragment() {
         mPieChart.startAnimation()
 
     }
+
+
+    //navigationDrawer
+    private fun navigationDrawer() {
+        navigationView.bringToFront()
+        binding.drawerMenu.setOnClickListener(View.OnClickListener {
+            if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        })
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                        drawerLayout.closeDrawer(GravityCompat.START)
+                    }else {
+                        requireActivity().finish()
+                    }
+                }
+            }
+            )
+
+    }
+
 
 
 }

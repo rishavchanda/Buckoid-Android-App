@@ -2,11 +2,15 @@ package com.example.trackback
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.trackback.databinding.ActivityMainBinding
 import com.example.trackback.databinding.FragmentDashboardBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

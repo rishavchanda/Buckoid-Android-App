@@ -102,6 +102,11 @@
                 android:layout_marginTop="8dp"
                 android:text="January 12 2021"
                 android:textSize="12sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:background="@drawable/round"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/money"
                 app:layout_constraintTop_toBottomOf="@+id/money" />

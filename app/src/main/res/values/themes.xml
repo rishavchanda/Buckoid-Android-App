@@ -46,4 +46,9 @@
         <item name="android:statusBarColor">@color/splashBackground</item>
     </style>
 
+    <style name="navigationTheme">
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorControlHighlight">@color/textPrimary</item>
+    </style>
+
 </resources>
