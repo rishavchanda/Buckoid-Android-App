@@ -30,7 +30,7 @@ import java.lang.Exception
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var binding: ActivityMainBinding
     lateinit var mNightModeSwitch: SwitchCompat
-    lateinit var nightMode:SharedPreferences
+    lateinit var userDetails:SharedPreferences
     var isNight:Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun nightMode(){
         // Configure night-mode switch
-        nightMode = this.getSharedPreferences("NightMode",MODE_PRIVATE)
-        isNight = nightMode.getBoolean("nightMode",true)
+        userDetails = this.getSharedPreferences("UserDetails",MODE_PRIVATE)
+        isNight = userDetails.getBoolean("nightMode",true)
         val actionLayout:View = binding.navigationView.getMenu().findItem(R.id.dark_mode).getActionView()
         mNightModeSwitch = actionLayout.findViewById(R.id.night_switch_compat)
         if (isNight) {
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //restartActivityInvalidateBackstack(this)
     }
     private fun saveSettingsBoolean(mode: String, isNight: Boolean) {
-        val editor: SharedPreferences.Editor = nightMode.edit()
+        val editor: SharedPreferences.Editor = userDetails.edit()
         editor.putBoolean(mode, isNight)
         editor.apply()
     }

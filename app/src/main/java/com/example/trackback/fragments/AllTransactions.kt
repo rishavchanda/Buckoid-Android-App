@@ -1,6 +1,7 @@
 package com.example.trackback.fragments
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.google.android.material.button.MaterialButton
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,14 +43,16 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     private var totalHealth = 0.0f
     private var totalOthers = 0.0f
     private var totalAcademics = 0.0f
+    lateinit var userDetails:SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentAllTransactionsBinding.inflate(inflater, container, false)
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
         bottomNav.visibility = View.VISIBLE
+        userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         setListener()
         when(binding.toggleSelector.checkedButtonId) {
             R.id.all -> showAllTransactions()
@@ -93,6 +97,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     }
 
     private fun showMonthlyTransactions() {
+        binding.text.text = "Monthly Budget"
         year=SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()).toInt()
         val list = mutableListOf(2020)
         list.clear()
@@ -127,7 +132,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         mPieChart=binding.piechart
         mPieChart.clearChart()
         totalExpense = 0.0
-        totalGoal = 5000.0f
+        totalGoal = userDetails.getString("MonthlyBudget","")?.toFloat()!!
         totalFood = 0.0f
         totalShopping = 0.0f
         totalTransport=0.0f
@@ -216,6 +221,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
 
     private fun showYearlyTransactions() {
         binding.title.text = "Yearly Transactions"
+        binding.text.text = "Yearly Budget"
         year=SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()).toInt()
         val list = mutableListOf(2020)
         list.clear()
@@ -247,7 +253,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         mPieChart=binding.piechart
         mPieChart.clearChart()
         totalExpense = 0.0
-        totalGoal = 5000.0f
+        totalGoal = userDetails.getString("MonthlyBudget","")?.toFloat()?.times(12)!!
         totalFood = 0.0f
         totalShopping = 0.0f
         totalTransport=0.0f

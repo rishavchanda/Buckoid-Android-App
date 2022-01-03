@@ -262,8 +262,9 @@
                         android:layout_marginStart="18dp"
                         android:layout_marginTop="4dp"
                         android:text="₹5000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         android:textColor="@color/textPrimary"
-                        android:textSize="22sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text" />
 

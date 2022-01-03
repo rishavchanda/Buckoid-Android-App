@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/baloo</item>
+        <item>@font/baloo_bhaina</item>
         <item>@font/poppins</item>
         <item>@font/poppins_medium</item>
         <item>@font/poppins_semibold</item>

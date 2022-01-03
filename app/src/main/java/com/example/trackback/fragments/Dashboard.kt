@@ -1,12 +1,14 @@
 package com.example.trackback.fragments
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -42,6 +44,7 @@ class Dashboard : Fragment() {
     private var totalAcademics = 0.0f
     lateinit var drawerLayout:DrawerLayout
     lateinit var navigationView:NavigationView
+    lateinit var userDetails: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,9 +74,12 @@ class Dashboard : Fragment() {
         format =  SimpleDateFormat("MMMM")
         binding.date.text = "${format.format(Calendar.getInstance().getTime())} ${currentYear}"
 
+        userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        val name = userDetails.getString("Name", "")?.split(" ")
+        binding.name.text = "Hi ${name?.get(0)} !!"
 
         totalExpense = 0.0
-        totalGoal = 5000.0f
+        totalGoal = userDetails.getString("MonthlyBudget","0")?.toFloat()!!
         totalFood = 0.0f
         totalShopping = 0.0f
         totalTransport=0.0f

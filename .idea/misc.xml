@@ -16,7 +16,9 @@
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/splash_screen.xml" value="0.16560509554140126" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_full_screen.xml" value="0.15364583333333334" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_main2.xml" value="0.13518518518518519" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_user_details.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/dialog_delete.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/drawer_nav_header.xml" value="0.15046296296296297" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/dropdown_item.xml" value="0.15046296296296297" />
@@ -28,6 +30,7 @@
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_transaction_details.xml" value="0.14666666666666667" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_transactions.xml" value="0.13657407407407407" />
+        <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_user_details.xml" value="0.16666666666666666" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/monthly_transaction_item.xml" value="0.1118659420289855" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/night_mode_action_layout_switch.xml" value="0.15046296296296297" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/transaction_item.xml" value="0.3333333333333333" />
