@@ -207,7 +207,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         mPieChart.addPieSlice(PieModel("Academics", totalAcademics, ContextCompat.getColor(requireContext(), R.color.green)))
 
         if (totalGoal>totalExpense){
-            mPieChart.addPieSlice(PieModel("Empty",totalGoal-(totalExpense.toFloat()) , ContextCompat.getColor(requireContext(), R.color.background)))
+            mPieChart.addPieSlice(PieModel("Empty",totalGoal-(totalExpense.toFloat()) , ContextCompat.getColor(requireContext(), R.color.background_deep)))
         }
 
         mPieChart.startAnimation()
@@ -403,7 +403,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         month = button.text.toString()
         button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple_200))
         button.setStrokeColorResource(R.color.purple_200)
-        button.setTextColor(ContextCompat.getColor(requireContext(), R.color.textPrimary))
+        button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
 
         when (v) {
             binding.January -> {

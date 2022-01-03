@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="42dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,24 +18,13 @@
 
         <ImageView
             android:id="@+id/drawer_menu"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:backgroundTint="#0000ffff"
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_baseline_menu_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/search"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:backgroundTint="#0000ffff"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_baseline_search_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -173,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:text="Recent Transactions"
                 android:textSize="18sp"
+                android:textColor="@color/textPrimary"
                 app:layout_constraintTop_toBottomOf="@+id/main_card"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"

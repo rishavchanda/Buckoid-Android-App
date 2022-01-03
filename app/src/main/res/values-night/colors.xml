@@ -6,6 +6,7 @@
     <color name="button">#525F78</color>
     <color name="bottomNav">#293346</color>
     <color name="background">#232C3D</color>
+    <color name="background_deep">#232C3D</color>
     <color name="textSecondary">#BDBDBD</color>
     <color name="textPrimary">#F2F2F2</color>
     <color name="black">#FF000000</color>

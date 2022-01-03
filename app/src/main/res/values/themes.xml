@@ -48,7 +48,7 @@
 
     <style name="navigationTheme">
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorControlHighlight">@color/textPrimary</item>
+        <item name="colorControlHighlight">@color/textSecondary</item>
     </style>
 
 </resources>

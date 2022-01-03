@@ -60,22 +60,6 @@ class Dashboard : Fragment() {
         return binding.root
     }
 
-    private fun setSearch() {
-        val search = binding.search as SearchView
-        search.queryHint = "Search here.."
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                //TransactionFiltering(newText)
-                return true
-            }
-
-        })
-    }
-
 
     //calling data from room database using livedata view model
     @SuppressLint("SetTextI18n")
@@ -167,7 +151,7 @@ class Dashboard : Fragment() {
         mPieChart.addPieSlice(PieModel("Academics", totalAcademics, ContextCompat.getColor(requireContext(), R.color.green)))
 
         if (totalGoal>totalExpense){
-            mPieChart.addPieSlice(PieModel("Left",totalGoal-(totalExpense.toFloat()) , ContextCompat.getColor(requireContext(), R.color.background)))
+            mPieChart.addPieSlice(PieModel("Left",totalGoal-(totalExpense.toFloat()) , ContextCompat.getColor(requireContext(), R.color.background_deep)))
         }
 
         mPieChart.startAnimation()
