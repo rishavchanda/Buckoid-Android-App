@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:title="Settings">
         <menu>
-            <group android:checkableBehavior="none">
                 <item
-                    android:id="@+id/nav_settings"
-                    android:icon="@drawable/ic_baseline_settings_24"
-                    android:title="Settings" />
+                    android:id="@+id/dark_mode"
+                    android:icon="@drawable/ic_baseline_mode_night_24"
+                    app:actionLayout="@layout/night_mode_action_layout_switch"
+                    android:title="Dark Mode" />
 
-            </group>
         </menu>
     </item>
 
