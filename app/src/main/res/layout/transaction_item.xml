@@ -64,7 +64,7 @@
                 android:layout_marginStart="16dp"
                 android:text="Pizza"
                 android:textColor="@color/textPrimary"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/category"
                 app:layout_constraintStart_toEndOf="@+id/card_image"
                 app:layout_constraintTop_toTopOf="parent"
