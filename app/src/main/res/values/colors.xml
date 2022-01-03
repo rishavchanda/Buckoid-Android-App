@@ -5,22 +5,28 @@
     <color name="button">#F5F5F5</color>
     <color name="cardBackground">#FFFFFF</color>
     <color name="bottomNav">#FFFFFF</color>
-    <color name="background">#F8F8F8</color>
+    <color name="background">#F6F6F7</color>
     <color name="background_deep">#EFEFEF</color>
-    <color name="textSecondary">#515050</color>
-    <color name="textPrimary">#232323</color>
+    <color name="textSecondary">#575A6C</color>
+    <color name="textPrimary">#44475B</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#0000FFFF</color>
     <color name="splashBackground">#232C3D</color>
 
     //Pi chart Colors
-    <color name="green">#6FCF97</color>
-    <color name="red">#F71976</color>
-    <color name="lightBrown">#7A30FF</color>
-    <color name="violet">#FC6E41</color>
-    <color name="yellow">#FFE55D</color>
-    <color name="lightBlue">#00D5F2</color>
+    <color name="green">#00D09C</color>
+    <color name="green_light">#E6FBF6</color>
+    <color name="red">#FF585D</color>
+    <color name="red_light">#FFEEEF</color>
+    <color name="lightBrown">#5367FF</color>
+    <color name="lightBrown_light">#EEF0FF</color>
+    <color name="violet">#893168</color>
+    <color name="violet_light">#FFDEF3</color>
+    <color name="yellow">#FFB61B</color>
+    <color name="yellow_light">#FFF9EC</color>
+    <color name="lightBlue">#1DA1F2</color>
+    <color name="lightBlue_light">#E8F6FE</color>
 
 
 

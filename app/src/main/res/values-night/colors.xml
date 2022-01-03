@@ -15,11 +15,17 @@
     <color name="splashBackground">#232C3D</color>
 
     //Pi chart colors
-    <color name="green">#64FF6C</color>
-    <color name="red">#F71976</color>
-    <color name="lightBrown">#6612FC</color>
-    <color name="violet">#FF5722</color>
-    <color name="yellow">#FED70E</color>
-    <color name="lightBlue">#00D5F2</color>
+    <color name="green">#00D09C</color>
+    <color name="green_light">#E6FBF6</color>
+    <color name="red">#FF585D</color>
+    <color name="red_light">#FFEEEF</color>
+    <color name="lightBrown">#5367FF</color>
+    <color name="lightBrown_light">#EEF0FF</color>
+    <color name="violet">#893168</color>
+    <color name="violet_light">#FFDEF3</color>
+    <color name="yellow">#FFB61B</color>
+    <color name="yellow_light">#FFF9EC</color>
+    <color name="lightBlue">#1DA1F2</color>
+    <color name="lightBlue_light">#E8F6FE</color>
 
 </resources>

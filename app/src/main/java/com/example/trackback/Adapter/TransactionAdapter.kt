@@ -39,31 +39,37 @@ class TransactionAdapter(val context: Context,val fragment:String, private val t
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_fastfood_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.yellow))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.yellow))
+                holder.binding.cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.yellow_light))
             }
             "Shopping" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_shopping_cart_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBlue))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.lightBlue))
+                holder.binding.cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.lightBlue_light))
             }
             "Transport" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_directions_transit_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.violet))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.violet))
+                holder.binding.cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.violet_light))
             }
             "Health" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_favorite_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.red))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.red))
+                holder.binding.cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.red_light))
             }
             "Other" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_category_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBrown))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.lightBrown))
+                holder.binding.cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.lightBrown_light))
             }
             "Education" -> {
                 holder.binding.cardIcon.setImageResource(R.drawable.ic_baseline_auto_stories_24)
                 holder.binding.cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.green))
                 holder.binding.category.setTextColor(ContextCompat.getColor(context, R.color.green))
+                holder.binding.cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.green_light))
             }
 
         }
