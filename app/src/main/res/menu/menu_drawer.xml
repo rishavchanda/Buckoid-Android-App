@@ -2,33 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="Settings">
+    <item android:title="@string/settings">
         <menu>
                 <item
                     android:id="@+id/dark_mode"
                     android:icon="@drawable/ic_baseline_mode_night_24"
                     app:actionLayout="@layout/night_mode_action_layout_switch"
-                    android:title="Dark Mode" />
+                    android:title="@string/dark_mode" />
 
         </menu>
     </item>
 
-    <item android:title="Share">
+    <item android:title="@string/share">
         <menu>
             <group android:checkableBehavior="none">
 
                 <item
                     android:id="@+id/nav_share"
                     android:icon="@drawable/ic_baseline_share_24"
-                    android:title="Share" />
+                    android:title="@string/share" />
                 <item
                     android:id="@+id/nav_aboutUs"
                     android:icon="@drawable/ic_baseline_info_24"
-                    android:title="About Us" />
+                    android:title="@string/about_us" />
                 <item
                     android:id="@+id/nav_RateUs"
                     android:icon="@drawable/ic_baseline_star_rate_24"
-                    android:title="Rate Us" />
+                    android:title="@string/rate_us" />
 
             </group>
         </menu>

@@ -25,7 +25,8 @@
             android:src="@drawable/ic_baseline_menu_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/drawericon" />
 
         <TextView
             android:id="@+id/name"
@@ -71,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
-                        android:text="Monthly Budget"
+                        android:text="@string/monthly_budget"
                         android:textColor="@color/textSecondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="18dp"
                         android:layout_marginTop="4dp"
-                        android:text="₹5000"
+                        android:text=""
                         android:textColor="@color/textPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -94,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:text="Your Expenses"
+                        android:text="@string/your_expenses"
                         android:textColor="@color/textSecondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget" />
@@ -103,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="18dp"
-                        android:text="₹4000"
+                        android:text=""
                         android:textColor="@color/textPrimary"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -118,14 +119,14 @@
                         app:layout_constraintStart_toEndOf="@id/text2"
                         app:layout_constraintTop_toTopOf="@id/text2"
                         app:layout_constraintBottom_toBottomOf="@id/text2"
-                        />
+                        android:contentDescription="@string/icon" />
 
                     <TextView
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="January 2021"
+                        android:text=""
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="12dp"
                         android:paddingStart="12dp"
@@ -156,7 +157,7 @@
                 android:id="@+id/noTransactionsDoneText"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:text="Add Your Transaction for this Month"
+                android:text="@string/add_your_transaction_for_this_month"
                 android:textColor="@color/textSecondary"
                 android:textSize="16sp"
                 android:layout_margin="16dp"
@@ -172,7 +173,7 @@
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recent Transactions"
+                android:text="@string/recent_transactions"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/textPrimary"
@@ -205,6 +206,8 @@
         android:foregroundGravity="center"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/add_transaction"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

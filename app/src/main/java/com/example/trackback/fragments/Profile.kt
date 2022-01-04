@@ -16,7 +16,6 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.navigation.Navigation
 import com.example.trackback.BuildConfig
 import com.example.trackback.MainActivity
 import com.example.trackback.R
@@ -49,6 +48,7 @@ class Profile : Fragment() {
 
         binding.name.text = name
         binding.monthlyBudget.text = "₹$monthlyBudget"
+        binding.title.text = "Welcome $name"
 
         binding.edit.setOnClickListener {
             openEditDialog(name,monthlyBudget)
@@ -88,6 +88,14 @@ class Profile : Fragment() {
                     )
                 )
             }
+        }
+
+        binding.aboutUs.setOnClickListener {
+            Toast.makeText(
+                requireActivity(),
+                "Working on this wait for update",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         requireActivity()
@@ -156,7 +164,7 @@ class Profile : Fragment() {
         update?.setOnClickListener {
             val name = nameEditor?.text.toString()
             val monthly_budget = moneyEditor?.text.toString()
-            if(name.equals("") || monthly_budget.equals("")) {
+            if(name == "" || monthly_budget == "") {
                 Toast.makeText(requireActivity(), "Name and Budget Cant be empty...", Toast.LENGTH_SHORT).show()
             }else{
                 val editor: SharedPreferences.Editor = userDetails.edit()

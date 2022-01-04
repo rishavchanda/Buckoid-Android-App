@@ -1,30 +1,21 @@
 package com.example.trackback
 
-import android.app.TaskStackBuilder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Switch
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.trackback.databinding.ActivityMainBinding
-import com.example.trackback.databinding.FragmentDashboardBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import android.content.SharedPreferences
 import android.content.Intent
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.net.Uri
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import kotlin.properties.Delegates
-import com.example.trackback.fragments.Dashboard
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
@@ -125,7 +116,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 )
             }
         }else if(id == R.id.nav_aboutUs){
-
+            Toast.makeText(
+                this,
+                "Working on this wait for update",
+                Toast.LENGTH_SHORT
+            ).show()
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true

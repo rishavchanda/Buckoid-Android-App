@@ -14,6 +14,7 @@
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/logo.xml" value="0.16560509554140126" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/round.xml" value="0.15462962962962962" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/splash_screen.xml" value="0.16560509554140126" />
+        <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout-v28/activity_user_details.xml" value="0.15353260869565216" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_full_screen.xml" value="0.15364583333333334" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/activity_main2.xml" value="0.13518518518518519" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/dialog_delete.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/drawer_nav_header.xml" value="0.15046296296296297" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/dropdown_item.xml" value="0.15046296296296297" />
+        <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_about_us.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_add_expense.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_add_transaction.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/layout/fragment_all_transactions.xml" value="0.16666666666666666" />

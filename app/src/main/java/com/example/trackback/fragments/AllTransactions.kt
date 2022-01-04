@@ -82,6 +82,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun showAllTransactions() {
         binding.transactionRecyclerView.visibility = View.VISIBLE
         binding.selectors.visibility = View.GONE
@@ -105,6 +106,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         })
     }
 
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     private fun showMonthlyTransactions() {
         binding.text.text = "Monthly Budget"
         year=SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime()).toInt()
@@ -228,6 +230,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     }
 
 
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     private fun showYearlyTransactions() {
         binding.title.text = "Yearly Transactions"
         binding.text.text = "Yearly Budget"

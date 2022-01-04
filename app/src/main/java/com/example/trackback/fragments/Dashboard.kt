@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -25,8 +24,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
-import com.example.trackback.MainActivity
 import com.google.android.material.navigation.NavigationView
 
 
@@ -65,7 +62,7 @@ class Dashboard : Fragment() {
 
 
     //calling data from room database using livedata view model
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     private fun getData() {
         var format =  SimpleDateFormat("MM")
         val currentMonth = format.format(Calendar.getInstance().getTime())
@@ -168,13 +165,13 @@ class Dashboard : Fragment() {
     //navigationDrawer
     private fun navigationDrawer() {
         navigationView.bringToFront()
-        binding.drawerMenu.setOnClickListener(View.OnClickListener {
+        binding.drawerMenu.setOnClickListener{
             if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
             } else {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
-        })
+        }
 
         requireActivity()
             .onBackPressedDispatcher

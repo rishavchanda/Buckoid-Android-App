@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Transaction Details"
+            android:text="@string/transaction_details"
             android:textSize="20sp" />
 
         <ImageView
@@ -52,7 +52,7 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/title"
         android:textSize="16sp"
         android:textColor="@color/textSecondary"
         android:layout_marginStart="16dp"
@@ -64,7 +64,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Burger"
+        android:text=""
         android:textSize="18sp"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="8dp"
@@ -76,7 +76,7 @@
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount"
+        android:text="@string/amount"
         android:textSize="16sp"
         android:textColor="@color/textSecondary"
         android:layout_marginStart="16dp"
@@ -88,7 +88,7 @@
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="₹500"
+        android:text=""
         android:textSize="18sp"
         android:textColor="@color/green"
         android:layout_marginTop="8dp"
@@ -100,7 +100,7 @@
         android:id="@+id/text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category"
+        android:text="@string/category"
         android:textSize="16sp"
         android:textColor="@color/textSecondary"
         android:layout_marginStart="16dp"
@@ -112,7 +112,7 @@
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Burger"
+        android:text=""
         android:textSize="18sp"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="8dp"
@@ -124,7 +124,7 @@
         android:id="@+id/text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:text="@string/date"
         android:textSize="16sp"
         android:textColor="@color/textSecondary"
         android:layout_marginStart="16dp"
@@ -136,7 +136,7 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="24 January 2021"
+        android:text=""
         android:textSize="18sp"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="8dp"
@@ -148,7 +148,7 @@
         android:id="@+id/text5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Note"
+        android:text="@string/note"
         android:textSize="16sp"
         android:textColor="@color/textSecondary"
         android:layout_marginStart="16dp"
@@ -160,7 +160,6 @@
         android:id="@+id/note"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="hgfds dgfuifh dsuf h sudfh skfhsu hus hukshyksuhus hsu "
         android:textSize="18sp"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="8dp"
@@ -178,8 +177,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="16dp"
         android:src="@drawable/ic_baseline_edit_24"
-
-        />
+        android:contentDescription="@string/edit" />
 
 
 

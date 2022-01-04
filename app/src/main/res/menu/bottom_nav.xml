@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/dashboard"
-        android:title="Dashboard"
+        android:title="@string/dashboard"
         android:icon="@drawable/ic_baseline_dashboard_24"
         />
 
     <item
         android:id="@+id/transactions"
-        android:title="Transactions"
+        android:title="@string/transactions"
         android:icon="@drawable/ic_baseline_assessment_24"
         />
 
     <item
         android:id="@+id/profile"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/ic_baseline_person_24"
         />
 </menu>

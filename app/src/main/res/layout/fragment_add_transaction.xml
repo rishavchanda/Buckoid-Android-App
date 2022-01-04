@@ -25,7 +25,7 @@
             android:id="@+id/titleAddTransacttion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="New Transaction"
+            android:text="@string/new_transaction"
             android:gravity="center"
             android:textSize="20sp"
             />
@@ -39,7 +39,8 @@
             android:src="@drawable/ic_baseline_arrow_back_ios_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back" />
 
 
 
@@ -53,7 +54,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="16dp"
-        android:text="Category"
+        android:text="@string/category"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/topBar"
@@ -81,7 +82,8 @@
             app:iconSize="32dp"
             android:textSize="10sp"
             app:iconPadding="12dp"
-            android:text="Food" />
+            android:text="@string/food"
+            tools:ignore="SmallSp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/shopping"
@@ -93,7 +95,8 @@
             app:iconSize="32dp"
             android:textSize="10sp"
             app:iconPadding="12dp"
-            android:text="Shopping" />
+            android:text="@string/shopping"
+            tools:ignore="SmallSp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/transport"
@@ -105,7 +108,8 @@
             app:iconSize="32dp"
             android:textSize="10sp"
             app:iconPadding="12dp"
-            android:text="Transport" />
+            android:text="@string/transport"
+            tools:ignore="SmallSp" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -118,7 +122,8 @@
             app:iconSize="32dp"
             android:textSize="10sp"
             app:iconPadding="12dp"
-            android:text="Health" />
+            android:text="@string/health"
+            tools:ignore="SmallSp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/others"
@@ -130,7 +135,8 @@
             app:iconSize="32dp"
             android:textSize="10sp"
             app:iconPadding="12dp"
-            android:text="Other" />
+            android:text="@string/other"
+            tools:ignore="SmallSp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/academics"
@@ -142,7 +148,8 @@
             app:iconSize="32dp"
             android:textSize="10sp"
             app:iconPadding="12dp"
-            android:text="Education" />
+            android:text="@string/education"
+            tools:ignore="SmallSp" />
 
     </GridLayout>
 
@@ -153,7 +160,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="16dp"
-        android:text="Details"
+        android:text="@string/details"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/selector1"
@@ -163,7 +170,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
+        android:hint="@string/title"
         app:startIconDrawable="@drawable/ic_baseline_edit_24"
         android:layout_margin="16dp"
         app:layout_constraintTop_toBottomOf="@id/text2"
@@ -183,7 +190,7 @@
         android:id="@+id/money"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Amount"
+        android:hint="@string/amount"
         app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -205,7 +212,7 @@
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date"
+        android:hint="@string/date"
         app:startIconDrawable="@drawable/ic_baseline_calendar_month_24"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -228,7 +235,7 @@
         android:id="@+id/note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Note"
+        android:hint="@string/note"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="4dp"
@@ -257,7 +264,7 @@
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/note"
-        android:text="Add Transaction"
+        android:text="@string/add_transaction"
         android:textSize="16sp"
         android:textStyle="bold"
         />

@@ -24,7 +24,7 @@
             android:id="@+id/all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All"
+            android:text="@string/all"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
@@ -32,7 +32,7 @@
             android:id="@+id/monthly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monthly"
+            android:text="@string/monthly"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
@@ -40,7 +40,7 @@
             android:id="@+id/yearly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yearly"
+            android:text="@string/yearly"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
@@ -61,7 +61,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Transactions"
+        android:text="@string/all_transactions"
                 android:textStyle="bold"
                 android:textColor="@color/textPrimary"
         android:textSize="16sp"
@@ -88,7 +88,7 @@
                 android:scrollbars="none">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="16dp"
@@ -105,7 +105,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="January" />
+                        android:text="@string/january"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/February"
                         android:layout_width="wrap_content"
@@ -114,7 +115,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="February" />
+                        android:text="@string/february"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/March"
                         android:layout_width="wrap_content"
@@ -123,7 +125,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="March" />
+                        android:text="@string/march"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/April"
                         android:layout_width="wrap_content"
@@ -132,7 +135,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="April" />
+                        android:text="@string/april"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/May"
                         android:layout_width="wrap_content"
@@ -141,7 +145,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="May" />
+                        android:text="@string/may"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/June"
                         android:layout_width="wrap_content"
@@ -150,7 +155,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="June" />
+                        android:text="@string/june"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/July"
                         android:layout_width="wrap_content"
@@ -159,7 +165,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="July" />
+                        android:text="@string/july"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/August"
                         android:layout_width="wrap_content"
@@ -168,7 +175,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="August" />
+                        android:text="@string/august"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/September"
                         android:layout_width="wrap_content"
@@ -177,7 +185,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="September" />
+                        android:text="@string/september"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/October"
                         android:layout_width="wrap_content"
@@ -186,7 +195,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="October" />
+                        android:text="@string/october"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/November"
                         android:layout_width="wrap_content"
@@ -195,7 +205,8 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="November" />
+                        android:text="@string/november"
+                        tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/December"
                         android:layout_width="wrap_content"
@@ -204,7 +215,8 @@
                         android:layout_marginEnd="16dp"
                         android:textSize="10sp"
                         android:gravity="center"
-                        android:text="December" />
+                        android:text="@string/december"
+                        tools:ignore="SmallSp" />
 
 
                 </LinearLayout>
@@ -215,7 +227,7 @@
                 android:id="@+id/noTransactionsDoneText"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:text="No Transactions were Done"
+                android:text=""
                 android:textColor="@color/textSecondary"
                 android:textSize="16sp"
                 android:layout_margin="16dp"
@@ -250,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
-                        android:text="Monthly Budget"
+                        android:text="@string/monthly_budget"
                         android:textColor="@color/textSecondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -261,7 +273,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="18dp"
                         android:layout_marginTop="4dp"
-                        android:text="₹5000"
+                        android:text=""
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/textPrimary"
@@ -274,7 +286,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:text="Your Expenses"
+                        android:text="@string/your_expenses"
                         android:textColor="@color/textSecondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget" />
@@ -284,7 +296,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="18dp"
-                        android:text="₹4000"
+                        android:text=""
                         android:textColor="@color/textPrimary"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -299,7 +311,8 @@
                         android:src="@drawable/ic_positive_amount"
                         app:layout_constraintBottom_toBottomOf="@id/text2"
                         app:layout_constraintStart_toEndOf="@id/text2"
-                        app:layout_constraintTop_toTopOf="@id/text2" />
+                        app:layout_constraintTop_toTopOf="@id/text2"
+                        android:contentDescription="@string/icon" />
 
                     <TextView
                         android:id="@+id/date"
@@ -312,7 +325,7 @@
                         android:paddingTop="4dp"
                         android:paddingEnd="12dp"
                         android:paddingBottom="4dp"
-                        android:text="January 2021"
+                        android:text=""
                         android:textColor="@color/textSecondary"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -336,7 +349,7 @@
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Transactions"
+                android:text="@string/your_transactions"
                 android:textColor="@color/textPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
