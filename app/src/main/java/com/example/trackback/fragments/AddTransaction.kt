@@ -13,11 +13,16 @@ import com.example.trackback.databinding.FragmentAddTransactionBinding
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.SharedPreferences
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +30,7 @@ import java.util.*
 class AddTransaction : Fragment(), View.OnClickListener {
    val data by navArgs<AddTransactionArgs>()
    private lateinit var binding: FragmentAddTransactionBinding
+    lateinit var userDetails: SharedPreferences
    private var category = ""
     var day=0
     var month=0
@@ -41,6 +47,10 @@ class AddTransaction : Fragment(), View.OnClickListener {
         bottomNav.visibility = View.GONE
         setListner(binding)
         datePicker(binding)
+        userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        if(!userDetails.getBoolean("ShowedOnboardingAddTransaction",false)){
+            showOnBoarding()
+        }
         if(data.from){
             setDatas()
             binding.addTransaction.setText("Save Transaction")
@@ -265,6 +275,29 @@ class AddTransaction : Fragment(), View.OnClickListener {
         button.setIconTintResource(R.color.textSecondary)
         button.setStrokeColorResource(R.color.textSecondary)
         button.setTextColor(ContextCompat.getColor(requireContext(), R.color.textSecondary))
+    }
+
+    fun showOnBoarding(){
+        MaterialTapTargetPrompt.Builder(requireActivity())
+            .setTarget(binding.selector1)
+            .setPromptFocal(RectanglePromptFocal())
+            .setPromptBackground(RectanglePromptBackground())
+            .setPrimaryText("Select Any Category of Transaction")
+            .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
+            .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
+            .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
+            .setSecondaryText("Nice Select the category you spend on...")
+            .setBackButtonDismissEnabled(true)
+            .setPromptStateChangeListener{prompt, state ->
+                if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                    showOnBoarding()
+                }else if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED){
+                    val editor: SharedPreferences.Editor = userDetails.edit()
+                    editor.putBoolean("ShowedOnboardingAddTransaction", true)
+                    editor.apply()
+                }
+            }
+            .show()
     }
 
 

@@ -25,6 +25,9 @@ import java.util.*
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 
 
 class Dashboard : Fragment() {
@@ -75,6 +78,10 @@ class Dashboard : Fragment() {
         val name = userDetails.getString("Name", "")?.split(" ")
         binding.name.text = "Hi ${name?.get(0)} !!"
 
+        if(!userDetails.getBoolean("ShowedOnboardingDashboard",false)){
+            showOnBoarding()
+        }
+
         totalExpense = 0.0
         totalGoal = userDetails.getString("MonthlyBudget","0")?.toFloat()!!
         totalFood = 0.0f
@@ -89,7 +96,10 @@ class Dashboard : Fragment() {
                 binding.noTransactionsDoneText.visibility = View.VISIBLE
                 binding.transactionRecyclerView.visibility = View.GONE
                 binding.text1.visibility = View.GONE
-            }else {
+            }else if(transactionList.size == 1 && !userDetails.getBoolean("ShowedOnboardingTransactionCard",false)){
+                    //showOnBoardingTransactionCard()
+            }
+            else {
                 binding.text1.visibility = View.VISIBLE
                 binding.noTransactionsDoneText.visibility = View.GONE
                 binding.transactionRecyclerView.visibility = View.VISIBLE
@@ -188,6 +198,69 @@ class Dashboard : Fragment() {
 
     }
 
+    fun showOnBoarding(){
+        MaterialTapTargetPrompt.Builder(requireActivity())
+        .setTarget(binding.mainCard)
+        .setPromptFocal(RectanglePromptFocal())
+        .setPromptBackground(RectanglePromptBackground())
+        .setPrimaryText("Your Monthly Details")
+        .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
+        .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
+        .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
+        .setSecondaryText("Your Transactions visual representation and data on Monthly Basis will be shown here!!")
+        .setBackButtonDismissEnabled(true)
+        .setPromptStateChangeListener{prompt, state ->
+            if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                showButtonPrompt()
+            }
+        }
+        .show()
+
+    }
+
+    private fun showButtonPrompt() {
+        MaterialTapTargetPrompt.Builder(requireActivity())
+            .setTarget(binding.addNew)
+            .setPrimaryText("Hey Click Me!!")
+            .setFocalRadius(100.0f)
+            .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
+            .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
+            .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
+            .setSecondaryText("Good to go Add your first Transaction, Click on this Add Button")
+            .setBackButtonDismissEnabled(true)
+            .setPromptStateChangeListener{prompt, state ->
+                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
+                    val editor: SharedPreferences.Editor = userDetails.edit()
+                    editor.putBoolean("ShowedOnboardingDashboard", true)
+                    editor.apply()
+                }else if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                    showButtonPrompt()
+                }
+            }
+            .show()
+    }
+
+    fun showOnBoardingTransactionCard(){
+        MaterialTapTargetPrompt.Builder(requireActivity())
+            .setTarget(binding.addNew)
+            .setPrimaryText("Hey Click Me!!")
+            .setFocalRadius(100.0f)
+            .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
+            .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
+            .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
+            .setSecondaryText("Good to go Add your first Transaction, Click on this Add Button")
+            .setBackButtonDismissEnabled(true)
+            .setPromptStateChangeListener{prompt, state ->
+                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
+                    val editor: SharedPreferences.Editor = userDetails.edit()
+                    editor.putBoolean("ShowedOnboardingTransactionCard", true)
+                    editor.apply()
+                }else if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                    showButtonPrompt()
+                }
+            }
+            .show()
+    }
 
 
 }

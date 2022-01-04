@@ -75,5 +75,6 @@ dependencies {
     //play
     implementation("com.google.android.play:core-ktx:1.8.1")
 
+    implementation 'uk.co.samuelwall:material-tap-target-prompt:3.3.2'
 
 }
