@@ -13,8 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.navigation.Navigation
 import com.example.trackback.BuildConfig
 import com.example.trackback.MainActivity
 import com.example.trackback.R
@@ -87,6 +89,15 @@ class Profile : Fragment() {
                 )
             }
         }
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+            )
 
     }
 

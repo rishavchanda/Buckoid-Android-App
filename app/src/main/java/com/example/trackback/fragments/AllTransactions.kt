@@ -19,6 +19,7 @@ import com.google.android.material.button.MaterialButton
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import android.widget.ArrayAdapter
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
@@ -69,6 +70,14 @@ class AllTransactions : Fragment() ,View.OnClickListener {
             }
 
         }
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+            )
         return binding.root
     }
 

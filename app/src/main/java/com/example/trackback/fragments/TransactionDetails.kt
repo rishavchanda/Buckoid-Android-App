@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -47,6 +49,20 @@ class TransactionDetails : Fragment() {
                 Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_dashboard2)
             }
         }
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if(transaction.fragment == "Dashboard"){
+                        Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_dashboard2)
+                    }else if(transaction.fragment == "AllTransactions"){
+                        Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_transactions)
+                    }else{
+                        Navigation.findNavController(binding.root).navigate(R.id.action_transactionDetails_to_dashboard2)
+                    }
+                }
+            }
+            )
 
         binding.edit.setOnClickListener {
             val argument = TransactionDetailsDirections.actionTransactionDetailsToAddTransaction(transaction.data,true)
