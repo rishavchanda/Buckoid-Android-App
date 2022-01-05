@@ -1,8 +1,8 @@
-package com.example.trackback.Dao
+package com.rishav.buckoid.Dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.trackback.Model.Transaction
+import com.rishav.buckoid.Model.Transaction
 
 @Dao
 interface TransactionDao {

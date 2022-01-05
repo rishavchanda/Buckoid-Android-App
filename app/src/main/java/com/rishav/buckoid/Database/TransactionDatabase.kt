@@ -1,11 +1,11 @@
-package com.example.trackback.Database
+package com.rishav.buckoid.Database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.trackback.Dao.TransactionDao
-import com.example.trackback.Model.Transaction
+import com.rishav.buckoid.Dao.TransactionDao
+import com.rishav.buckoid.Model.Transaction
 
 @Database(entities = [Transaction::class], version = 1, exportSchema = false)
 abstract class TransactionDatabase : RoomDatabase() {
@@ -14,16 +14,17 @@ abstract class TransactionDatabase : RoomDatabase() {
 
     companion object
     {
-        private var INSTANCE:TransactionDatabase?=null
-        fun getDatabaseInstance(context: Context): TransactionDatabase{
+        private var INSTANCE: TransactionDatabase?=null
+        fun getDatabaseInstance(context: Context): TransactionDatabase {
             val tempInstance= INSTANCE
             if (tempInstance!=null){
                 return tempInstance
             }
             synchronized(this)
             {
-                val roomDatabaseInstance = Room.databaseBuilder(context,TransactionDatabase::class.java,"Transaction").allowMainThreadQueries().build()
-                INSTANCE=roomDatabaseInstance
+                val roomDatabaseInstance = Room.databaseBuilder(context,
+                    TransactionDatabase::class.java,"Transaction").allowMainThreadQueries().build()
+                INSTANCE =roomDatabaseInstance
                 return roomDatabaseInstance
             }
         }

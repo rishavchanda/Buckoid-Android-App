@@ -1,4 +1,4 @@
-package com.example.trackback.Model
+package com.rishav.buckoid.Model
 
 import android.os.Parcelable
 import androidx.room.Entity

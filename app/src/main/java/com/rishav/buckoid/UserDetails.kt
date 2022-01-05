@@ -1,4 +1,4 @@
-package com.example.trackback
+package com.rishav.buckoid
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.trackback.databinding.ActivityUserDetailsBinding
+import com.rishav.buckoid.databinding.ActivityUserDetailsBinding
 
 class UserDetails : AppCompatActivity() {
     lateinit var binding:ActivityUserDetailsBinding
@@ -34,7 +34,7 @@ class UserDetails : AppCompatActivity() {
     }
 
     private fun goToNextScreen() {
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

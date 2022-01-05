@@ -1,4 +1,4 @@
-package com.example.trackback.Adapter
+package com.rishav.buckoid.Adapter
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,15 +7,13 @@ import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.trackback.MainActivity
-import com.example.trackback.Model.Transaction
-import com.example.trackback.R
-import com.example.trackback.databinding.TransactionItemBinding
-import com.example.trackback.fragments.*
+import com.rishav.buckoid.Model.Transaction
+import com.rishav.buckoid.R
+import com.rishav.buckoid.databinding.TransactionItemBinding
+import com.rishav.buckoid.fragments.*
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
 import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal

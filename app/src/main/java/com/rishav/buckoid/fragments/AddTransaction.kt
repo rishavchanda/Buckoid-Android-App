@@ -1,4 +1,4 @@
-package com.example.trackback.fragments
+package com.rishav.buckoid.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.trackback.Model.Transaction
-import com.example.trackback.R
-import com.example.trackback.ViewModel.TransactionViewModel
-import com.example.trackback.databinding.FragmentAddTransactionBinding
+import com.rishav.buckoid.Model.Transaction
+import com.rishav.buckoid.R
+import com.rishav.buckoid.ViewModel.TransactionViewModel
+import com.rishav.buckoid.databinding.FragmentAddTransactionBinding
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener

@@ -1,11 +1,11 @@
-package com.example.trackback.ViewModel
+package com.rishav.buckoid.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.trackback.Database.TransactionDatabase
-import com.example.trackback.Model.Transaction
-import com.example.trackback.Repository.TransactionRepository
+import com.rishav.buckoid.Database.TransactionDatabase
+import com.rishav.buckoid.Model.Transaction
+import com.rishav.buckoid.Repository.TransactionRepository
 
 
 class TransactionViewModel(application: Application): AndroidViewModel(application) {
@@ -14,7 +14,7 @@ class TransactionViewModel(application: Application): AndroidViewModel(applicati
 
     init{
         val dao = TransactionDatabase.getDatabaseInstance(application).myTransactionDao()
-        repository=TransactionRepository(dao)
+        repository= TransactionRepository(dao)
     }
 
     fun addTransaction(transaction: Transaction){

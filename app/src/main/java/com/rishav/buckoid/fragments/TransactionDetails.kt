@@ -1,4 +1,4 @@
-package com.example.trackback.fragments
+package com.rishav.buckoid.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,9 +11,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.example.trackback.R
-import com.example.trackback.ViewModel.TransactionViewModel
-import com.example.trackback.databinding.FragmentTransactionDetailsBinding
+import com.rishav.buckoid.R
+import com.rishav.buckoid.ViewModel.TransactionViewModel
+import com.rishav.buckoid.databinding.FragmentTransactionDetailsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 

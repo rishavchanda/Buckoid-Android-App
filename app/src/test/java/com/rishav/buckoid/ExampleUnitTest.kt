@@ -1,4 +1,4 @@
-package com.example.trackback
+package com.rishav.buckoid
 
 import org.junit.Test
 

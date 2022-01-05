@@ -1,4 +1,4 @@
-package com.example.trackback.fragments
+package com.rishav.buckoid.fragments
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
@@ -11,10 +11,10 @@ import android.widget.AdapterView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.trackback.Adapter.TransactionAdapter
-import com.example.trackback.R
-import com.example.trackback.ViewModel.TransactionViewModel
-import com.example.trackback.databinding.FragmentAllTransactionsBinding
+import com.rishav.buckoid.Adapter.TransactionAdapter
+import com.rishav.buckoid.R
+import com.rishav.buckoid.ViewModel.TransactionViewModel
+import com.rishav.buckoid.databinding.FragmentAllTransactionsBinding
 import com.google.android.material.button.MaterialButton
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
@@ -23,7 +23,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
-import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
 import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 import java.text.SimpleDateFormat
 import java.util.*

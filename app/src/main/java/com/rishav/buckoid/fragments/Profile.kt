@@ -1,4 +1,4 @@
-package com.example.trackback.fragments
+package com.rishav.buckoid.fragments
 
 import android.annotation.SuppressLint
 import android.app.TaskStackBuilder
@@ -16,10 +16,9 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.trackback.BuildConfig
-import com.example.trackback.MainActivity
-import com.example.trackback.R
-import com.example.trackback.databinding.FragmentProfileBinding
+import com.rishav.buckoid.MainActivity
+import com.rishav.buckoid.R
+import com.rishav.buckoid.databinding.FragmentProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
 import java.lang.Exception
@@ -63,7 +62,7 @@ class Profile : Fragment() {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "@string/app_name")
                 intent.putExtra(
                     Intent.EXTRA_TEXT,
-                    "https://play.google.com/store/apps/details?id="+ BuildConfig.APPLICATION_ID
+                    "https://play.google.com/store/apps/details?id="
                 )
                 startActivity(Intent.createChooser(intent, "Share With"))
             } catch (e: Exception) {
@@ -80,14 +79,14 @@ class Profile : Fragment() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=${BuildConfig.APPLICATION_ID}")
+                        Uri.parse("market://details?id=")
                     )
                 )
             } catch (e: ActivityNotFoundException) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
+                        Uri.parse("https://play.google.com/store/apps/details?id=")
                     )
                 )
             }
@@ -139,7 +138,7 @@ class Profile : Fragment() {
     }
     protected fun restartActivityInvalidateBackstack(activity: MainActivity) {
         val intent = Intent()
-        intent.setClass(activity,MainActivity::class.java)
+        intent.setClass(activity, MainActivity::class.java)
         val stackBuilder: TaskStackBuilder = TaskStackBuilder.create(activity)
         stackBuilder.addNextIntentWithParentStack(intent)
         stackBuilder.startActivities(Bundle())

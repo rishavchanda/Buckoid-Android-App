@@ -1,8 +1,8 @@
-package com.example.trackback.Repository
+package com.rishav.buckoid.Repository
 
 import androidx.lifecycle.LiveData
-import com.example.trackback.Dao.TransactionDao
-import com.example.trackback.Model.Transaction
+import com.rishav.buckoid.Dao.TransactionDao
+import com.rishav.buckoid.Model.Transaction
 
 class TransactionRepository(val dao: TransactionDao) {
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboard"
-        android:name="com.example.trackback.fragments.Dashboard"
+        android:name="com.rishav.buckoid.fragments.Dashboard"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -22,14 +22,14 @@
     </fragment>
     <fragment
         android:id="@+id/transactionDetails"
-        android:name="com.example.trackback.fragments.TransactionDetails"
+        android:name="com.rishav.buckoid.fragments.TransactionDetails"
         android:label="fragment_transaction_details"
         tools:layout="@layout/fragment_transaction_details" >
 
 
         <argument
             android:name="data"
-            app:argType="com.example.trackback.Model.Transaction" />
+            app:argType="com.rishav.buckoid.Model.Transaction" />
         <action
             android:id="@+id/action_transactionDetails_to_dashboard2"
             app:destination="@id/dashboard" />
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTransaction"
-        android:name="com.example.trackback.fragments.AddTransaction"
+        android:name="com.rishav.buckoid.fragments.AddTransaction"
         android:label="fragment_add_transaction"
         tools:layout="@layout/fragment_add_transaction" >
         <action
@@ -53,7 +53,7 @@
             app:destination="@id/dashboard" />
         <argument
             android:name="data"
-            app:argType="com.example.trackback.Model.Transaction" />
+            app:argType="com.rishav.buckoid.Model.Transaction" />
         <argument
             android:name="from"
             app:argType="boolean" />
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactions"
-        android:name="com.example.trackback.fragments.AllTransactions"
+        android:name="com.rishav.buckoid.fragments.AllTransactions"
         android:label="fragment_all_transactions"
         tools:layout="@layout/fragment_all_transactions" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.trackback.fragments.Profile"
+        android:name="com.rishav.buckoid.fragments.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
