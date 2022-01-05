@@ -114,12 +114,10 @@ class TransactionAdapter(val context: Context, val activity:Activity,val fragmen
             .setSecondaryText("Good Job !! Click to see details of your transaction..")
             .setBackButtonDismissEnabled(true)
             .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
+                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
                     val editor: SharedPreferences.Editor = userDetails.edit()
                     editor.putBoolean("ShowedOnboardingTransactionCard", true)
                     editor.apply()
-                }else if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                    showOnBoardingTransactionCard(holder)
                 }
             }
             .show()
