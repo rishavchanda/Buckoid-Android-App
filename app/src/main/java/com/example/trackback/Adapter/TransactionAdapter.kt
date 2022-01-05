@@ -1,22 +1,30 @@
 package com.example.trackback.Adapter
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.trackback.MainActivity
 import com.example.trackback.Model.Transaction
 import com.example.trackback.R
 import com.example.trackback.databinding.TransactionItemBinding
 import com.example.trackback.fragments.*
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 
-class TransactionAdapter(val context: Context,val fragment:String, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>() {
+class TransactionAdapter(val context: Context, val activity:Activity,val fragment:String, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>(){
 
     class transactionViewHolder(val binding:TransactionItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-
+    lateinit var userDetails: SharedPreferences
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -85,9 +93,37 @@ class TransactionAdapter(val context: Context,val fragment:String, private val t
 
         }
 
+        userDetails = context.getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        if(transList.size == 1 && !userDetails.getBoolean("ShowedOnboardingTransactionCard",false)){
+            showOnBoardingTransactionCard(holder)
+        }
+
     }
 
     override fun getItemCount() = transList.size
+
+    fun showOnBoardingTransactionCard(holder: transactionViewHolder){
+        MaterialTapTargetPrompt.Builder(activity)
+            .setTarget(holder.binding.root)
+            .setPrimaryText("Hey Click Me!!")
+            .setPromptFocal(RectanglePromptFocal())
+            .setPromptBackground(RectanglePromptBackground())
+            .setBackgroundColour(ContextCompat.getColor(context, R.color.button))
+            .setPrimaryTextColour(ContextCompat.getColor(context, R.color.textPrimary))
+            .setSecondaryTextColour(ContextCompat.getColor(context, R.color.textSecondary))
+            .setSecondaryText("Good Job !! Click to see details of your transaction..")
+            .setBackButtonDismissEnabled(true)
+            .setPromptStateChangeListener{prompt, state ->
+                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
+                    val editor: SharedPreferences.Editor = userDetails.edit()
+                    editor.putBoolean("ShowedOnboardingTransactionCard", true)
+                    editor.apply()
+                }else if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                    showOnBoardingTransactionCard(holder)
+                }
+            }
+            .show()
+    }
 
 }
 

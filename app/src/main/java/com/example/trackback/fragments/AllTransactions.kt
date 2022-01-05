@@ -107,7 +107,8 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                 binding.transactionRecyclerView.layoutManager =
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter =
-                    TransactionAdapter(requireContext(), "AllTransactions", transactionList)
+                    TransactionAdapter(requireContext(),
+                        requireActivity(), "AllTransactions", transactionList)
             }
         })
     }
@@ -173,6 +174,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                         LinearLayoutManager(requireContext())
                     binding.transactionRecyclerView.adapter = TransactionAdapter(
                         requireContext(),
+                        requireActivity(),
                         "AllTransactions",
                         transactionList.reversed()
                     )
@@ -294,6 +296,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter = TransactionAdapter(
                     requireContext(),
+                    requireActivity(),
                     "AllTransactions",
                     transactionList.reversed()
                 )
@@ -645,26 +648,6 @@ class AllTransactions : Fragment() ,View.OnClickListener {
             .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
             .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
             .setSecondaryText("Choose any month to see the transactions...")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                    showYearsOnBoarding()
-                }else if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED){
-                    showYearlyOnBoarding()
-                }
-            }
-            .show()
-    }
-
-    fun showYearlyOnBoarding(){
-        MaterialTapTargetPrompt.Builder(requireActivity())
-            .setTarget(binding.yearly)
-            .setPromptFocal(RectanglePromptFocal())
-            .setPrimaryText("Yearly Transactions")
-            .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
-            .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
-            .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
-            .setSecondaryText("Tap to see Yearly Transactions record..")
             .setBackButtonDismissEnabled(true)
             .setPromptStateChangeListener{prompt, state ->
                 if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){

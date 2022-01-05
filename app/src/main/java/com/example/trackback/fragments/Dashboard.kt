@@ -96,8 +96,6 @@ class Dashboard : Fragment() {
                 binding.noTransactionsDoneText.visibility = View.VISIBLE
                 binding.transactionRecyclerView.visibility = View.GONE
                 binding.text1.visibility = View.GONE
-            }else if(transactionList.size == 1 && !userDetails.getBoolean("ShowedOnboardingTransactionCard",false)){
-                    //showOnBoardingTransactionCard()
             }
             else {
                 binding.text1.visibility = View.VISIBLE
@@ -107,7 +105,7 @@ class Dashboard : Fragment() {
                 binding.transactionRecyclerView.layoutManager =
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter =
-                    TransactionAdapter(requireContext(), "Dashboard", transactionList.reversed())
+                    TransactionAdapter(requireContext(),requireActivity(), "Dashboard", transactionList.reversed())
 
                 for (i in transactionList) {
                     totalExpense += i.amount
@@ -226,7 +224,7 @@ class Dashboard : Fragment() {
             .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
             .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
             .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
-            .setSecondaryText("Good to go Add your first Transaction, Click on this Add Button")
+            .setSecondaryText("Good to go... Add your first Transaction by Clicking on this Add Button")
             .setBackButtonDismissEnabled(true)
             .setPromptStateChangeListener{prompt, state ->
                 if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
@@ -240,27 +238,7 @@ class Dashboard : Fragment() {
             .show()
     }
 
-    fun showOnBoardingTransactionCard(){
-        MaterialTapTargetPrompt.Builder(requireActivity())
-            .setTarget(binding.addNew)
-            .setPrimaryText("Hey Click Me!!")
-            .setFocalRadius(100.0f)
-            .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
-            .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
-            .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
-            .setSecondaryText("Good to go Add your first Transaction, Click on this Add Button")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
-                    val editor: SharedPreferences.Editor = userDetails.edit()
-                    editor.putBoolean("ShowedOnboardingTransactionCard", true)
-                    editor.apply()
-                }else if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                    showButtonPrompt()
-                }
-            }
-            .show()
-    }
+
 
 
 }
