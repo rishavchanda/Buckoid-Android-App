@@ -42,13 +42,16 @@ class UserDetails : AppCompatActivity() {
     private fun saveUserData() {
         val name = binding.editName.text.toString()
         val monthly_budget = binding.editMoney.text.toString()
-        if(name.equals("") || monthly_budget.equals("")) {
+        val yearly_budget = binding.editYearMoney
+        yearly_budget.setText(monthly_budget.toInt()*12)
+        if(name.equals("") || monthly_budget.equals("") || yearly_budget.text.toString().equals("")) {
             Toast.makeText(this, "Enter all details to continue...", Toast.LENGTH_SHORT).show()
         }else{
             val editor: SharedPreferences.Editor = userDetails.edit()
             editor.putBoolean("isFirstTime", false)
             editor.putString("Name", name)
             editor.putString("MonthlyBudget", monthly_budget)
+            editor.putString("YearlyBudget", yearly_budget.text.toString())
             editor.apply()
             goToNextScreen()
         }

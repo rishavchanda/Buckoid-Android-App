@@ -150,7 +150,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         mPieChart=binding.piechart
         mPieChart.clearChart()
         totalExpense = 0.0
-        totalGoal = userDetails.getString("MonthlyBudget","")?.toFloat()!!
+        totalGoal = userDetails.getString("MonthlyBudget","0")?.toFloat()!!
         totalFood = 0.0f
         totalShopping = 0.0f
         totalTransport=0.0f
@@ -273,7 +273,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         mPieChart=binding.piechart
         mPieChart.clearChart()
         totalExpense = 0.0
-        totalGoal = userDetails.getString("MonthlyBudget","")?.toFloat()?.times(12)!!
+        totalGoal = userDetails.getString("YearlyBudget","0")?.toFloat()!!
         totalFood = 0.0f
         totalShopping = 0.0f
         totalTransport=0.0f

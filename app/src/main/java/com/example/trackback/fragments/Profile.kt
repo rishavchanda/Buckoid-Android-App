@@ -45,13 +45,16 @@ class Profile : Fragment() {
         nightMode()
         val name = userDetails.getString("Name", "")
         val monthlyBudget = userDetails.getString("MonthlyBudget","0")
+        val yearlyBudget = userDetails.getString("YearlyBudget","0")
+
 
         binding.name.text = name
         binding.monthlyBudget.text = "₹$monthlyBudget"
+        binding.yearlyBudget.text = "₹$yearlyBudget"
         binding.title.text = "Welcome $name"
 
         binding.edit.setOnClickListener {
-            openEditDialog(name,monthlyBudget)
+            openEditDialog(name,monthlyBudget,yearlyBudget)
         }
         binding.share.setOnClickListener{
             try {
@@ -148,7 +151,7 @@ class Profile : Fragment() {
         restartActivityInvalidateBackstack(requireActivity() as MainActivity)
     }
 
-    private fun openEditDialog(name: String?, monthlyBudget: String?) {
+    private fun openEditDialog(name: String?, monthlyBudget: String?,yearlyBudget: String?) {
         val bottomDialog: BottomSheetDialog =
             BottomSheetDialog(requireContext(), R.style.bottom_dialog)
         bottomDialog.setContentView(R.layout.update_user_details_dialog)
@@ -157,19 +160,23 @@ class Profile : Fragment() {
         val cancel = bottomDialog.findViewById<Button>(R.id.cancel)
         val nameEditor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_name)
         val moneyEditor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_money)
+        val year_money_Editor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_year_money)
 
         nameEditor?.setText(name)
         moneyEditor?.setText(monthlyBudget)
+        year_money_Editor?.setText(yearlyBudget)
 
         update?.setOnClickListener {
             val name = nameEditor?.text.toString()
             val monthly_budget = moneyEditor?.text.toString()
-            if(name == "" || monthly_budget == "") {
+            val yearly_budget = year_money_Editor?.text.toString()
+            if(name == "" || monthly_budget == "" || yearly_budget == "") {
                 Toast.makeText(requireActivity(), "Name and Budget Cant be empty...", Toast.LENGTH_SHORT).show()
             }else{
                 val editor: SharedPreferences.Editor = userDetails.edit()
                 editor.putString("Name", name)
                 editor.putString("MonthlyBudget", monthly_budget)
+                editor.putString("YearlyBudget", yearly_budget)
                 editor.apply()
                 setData()
                 bottomDialog.dismiss()

@@ -69,7 +69,6 @@
                 android:textColor="@color/textSecondary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text2"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="8dp"
@@ -85,6 +84,33 @@
                 android:textColor="@color/green"
                 app:layout_constraintStart_toEndOf="@+id/text3"
                 app:layout_constraintTop_toTopOf="@+id/text3"
+                />
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/yearly_budget_"
+                android:textColor="@color/textSecondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                />
+            <TextView
+                android:id="@+id/yearly_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/green"
+                app:layout_constraintStart_toEndOf="@+id/text4"
+                app:layout_constraintTop_toTopOf="@+id/text4"
                 />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton

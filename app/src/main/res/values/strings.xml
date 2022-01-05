@@ -65,4 +65,6 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="share">Share</string>
     <string name="rate_us">Rate Us</string>
+    <string name="yearly_budget">Yearly Budget</string>
+    <string name="yearly_budget_">Yearly Budget :</string>
 </resources>
