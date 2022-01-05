@@ -21,6 +21,7 @@ import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
+import com.rishav.buckoid.BuildConfig
 import java.lang.Exception
 
 class Profile : Fragment() {
@@ -62,7 +63,7 @@ class Profile : Fragment() {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "@string/app_name")
                 intent.putExtra(
                     Intent.EXTRA_TEXT,
-                    "https://play.google.com/store/apps/details?id="
+                    "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
                 )
                 startActivity(Intent.createChooser(intent, "Share With"))
             } catch (e: Exception) {
@@ -86,7 +87,7 @@ class Profile : Fragment() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=")
+                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
                     )
                 )
             }
