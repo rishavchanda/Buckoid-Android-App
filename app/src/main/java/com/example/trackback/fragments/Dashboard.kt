@@ -202,9 +202,6 @@ class Dashboard : Fragment() {
         .setPromptFocal(RectanglePromptFocal())
         .setPromptBackground(RectanglePromptBackground())
         .setPrimaryText("Your Monthly Details")
-        .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
-        .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
-        .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
         .setSecondaryText("Your Transactions visual representation and data on Monthly Basis will be shown here!!")
         .setBackButtonDismissEnabled(true)
         .setPromptStateChangeListener{prompt, state ->
@@ -221,18 +218,13 @@ class Dashboard : Fragment() {
             .setTarget(binding.addNew)
             .setPrimaryText("Hey Click Me!!")
             .setFocalRadius(100.0f)
-            .setBackgroundColour(ContextCompat.getColor(requireContext(), R.color.button))
-            .setPrimaryTextColour(ContextCompat.getColor(requireContext(), R.color.textPrimary))
-            .setSecondaryTextColour(ContextCompat.getColor(requireContext(), R.color.textSecondary))
             .setSecondaryText("Good to go... Add your first Transaction by Clicking on this Add Button")
             .setBackButtonDismissEnabled(true)
             .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED ){
+                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
                     val editor: SharedPreferences.Editor = userDetails.edit()
                     editor.putBoolean("ShowedOnboardingDashboard", true)
                     editor.apply()
-                }else if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                    showButtonPrompt()
                 }
             }
             .show()
