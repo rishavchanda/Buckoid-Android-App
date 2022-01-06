@@ -187,6 +187,46 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/password_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            android:layout_marginTop="1dp"
+            app:cardBackgroundColor="@color/cardBackground">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_baseline_fingerprint_24"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fingerprint_protection"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/textPrimary"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/password_switch_compact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
             android:id="@+id/share"
             android:layout_width="match_parent"
             android:layout_height="60dp"

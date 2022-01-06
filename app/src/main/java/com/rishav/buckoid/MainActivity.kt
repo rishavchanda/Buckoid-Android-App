@@ -1,5 +1,7 @@
 package com.rishav.buckoid
 
+import android.app.KeyguardManager
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,11 +12,14 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.rishav.buckoid.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import android.content.SharedPreferences
-import android.content.Intent
-import android.content.ActivityNotFoundException
+import android.content.pm.PackageManager
+import android.hardware.biometrics.BiometricPrompt
 import android.net.Uri
+import android.os.Build
+import android.os.CancellationSignal
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -24,27 +29,51 @@ import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding:ActivityMainBinding
     lateinit var mNightModeSwitch: SwitchCompat
     lateinit var userDetails:SharedPreferences
     private var appUpdate: AppUpdateManager? = null
     var isNight:Boolean = false
+
+    //finger print
+    var isFingerPrintEnabled:Boolean = false
+    private var cancellationSignal:CancellationSignal?=null
+    private val authenticationCallback:BiometricPrompt.AuthenticationCallback
+    get() =
+        @RequiresApi(Build.VERSION_CODES.P)
+        object : BiometricPrompt.AuthenticationCallback(){
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
+                super.onAuthenticationError(errorCode, errString)
+                finish()
+            }
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
+                super.onAuthenticationSucceeded(result)
+            }
+        }
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_TrackBack)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        nightMode()
-        inAppUpdater()
-        binding.navigationView.setNavigationItemSelectedListener(this)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
-        binding.bottomNavigation.setupWithNavController(navController)
+        userDetails = this.getSharedPreferences("UserDetails",MODE_PRIVATE)
+        isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
+        if (isFingerPrintEnabled) {
+            fingerPrintSensor()
+        }
+            setTheme(R.style.Theme_TrackBack)
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            nightMode()
+            inAppUpdater()
+            binding.navigationView.setNavigationItemSelectedListener(this)
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+            binding.bottomNavigation.setupWithNavController(navController)
+
     }
+
 
     fun nightMode(){
         // Configure night-mode switch
-        userDetails = this.getSharedPreferences("UserDetails",MODE_PRIVATE)
         isNight = userDetails.getBoolean("nightMode",true)
         val actionLayout:View = binding.navigationView.getMenu().findItem(R.id.dark_mode).getActionView()
         mNightModeSwitch = actionLayout.findViewById(R.id.night_switch_compat)
@@ -150,6 +179,54 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
         }
+    }
+
+
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun fingerPrintSensor() {
+        checkBiometricSupport()
+        val biometricPrompt = BiometricPrompt.Builder(this)
+            .setDeviceCredentialAllowed(true)
+            .setTitle("Authentication Required")
+            .setDescription("Please enter your PIN / password to continue")
+            .build()
+
+        biometricPrompt.authenticate(getCancellationSignal(),mainExecutor,authenticationCallback)
+
+
+    }
+
+    private fun getCancellationSignal(): CancellationSignal{
+        cancellationSignal = CancellationSignal()
+        cancellationSignal?.setOnCancelListener {
+            notifyUser("Authentication was cancelled by the user")
+
+        }
+        return cancellationSignal as CancellationSignal
+    }
+
+    private fun checkBiometricSupport(): Boolean {
+        val keyguardManager : KeyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+
+        if (!keyguardManager.isKeyguardSecure){
+            notifyUser("Finger print not enabled in settings")
+            return false
+        }
+
+        if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.USE_BIOMETRIC)!= PackageManager.PERMISSION_GRANTED){
+            notifyUser("Fingerprint authentication permission is not enabled")
+            return false
+        }
+
+        return if (packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)){
+            true
+        }else true
+
+    }
+
+    private fun notifyUser(message: String) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
 

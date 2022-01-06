@@ -67,4 +67,5 @@
     <string name="rate_us">Rate Us</string>
     <string name="yearly_budget">Yearly Budget</string>
     <string name="yearly_budget_">Yearly Budget :</string>
+    <string name="fingerprint_protection">Fingerprint Lock</string>
 </resources>

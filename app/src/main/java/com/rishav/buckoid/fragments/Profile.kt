@@ -1,12 +1,18 @@
 package com.rishav.buckoid.fragments
 
 import android.annotation.SuppressLint
+import android.app.KeyguardManager
 import android.app.TaskStackBuilder
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.hardware.biometrics.BiometricPrompt
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.CancellationSignal
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +20,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getMainExecutor
+import androidx.core.content.ContextCompat.getSystemService
 import com.rishav.buckoid.MainActivity
 import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentProfileBinding
@@ -29,6 +39,38 @@ class Profile : Fragment() {
     lateinit var binding:FragmentProfileBinding
     lateinit var userDetails: SharedPreferences
     var isNight:Boolean = false
+
+    //finger print
+    var isFingerPrintEnabled:Boolean = false
+    var fingerprintChecked:Boolean = false
+    private var cancellationSignal:CancellationSignal?=null
+    private val authenticationCallback:BiometricPrompt.AuthenticationCallback
+        get() =
+            @RequiresApi(Build.VERSION_CODES.P)
+            object : BiometricPrompt.AuthenticationCallback(){
+                @RequiresApi(Build.VERSION_CODES.Q)
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
+                    super.onAuthenticationError(errorCode, errString)
+                    notifyUser("Authentication error: $errString")
+                    fingerPrintLockEnable()
+                }
+
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
+                    super.onAuthenticationSucceeded(result)
+                    if (fingerprintChecked) {
+                        isFingerPrintEnabled = true
+                        val editor: SharedPreferences.Editor = userDetails.edit()
+                        editor.putBoolean("fingerprint_enabled", true)
+                        editor.apply()
+                    } else {
+                        isFingerPrintEnabled = false
+                        val editor: SharedPreferences.Editor = userDetails.edit()
+                        editor.putBoolean("fingerprint_enabled", false)
+                        editor.apply()
+                    }
+                }
+            }
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +78,7 @@ class Profile : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentProfileBinding.inflate(inflater, container, false)
         setData()
+        fingerPrintLockEnable()
         return binding.root
     }
 
@@ -101,6 +144,7 @@ class Profile : Fragment() {
             ).show()
         }
 
+
         requireActivity()
             .onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -109,6 +153,21 @@ class Profile : Fragment() {
                 }
             }
             )
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun fingerPrintLockEnable() {
+        isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
+        if (isFingerPrintEnabled) {
+            binding.passwordSwitchCompact.setChecked(true)
+        }else{
+            binding.passwordSwitchCompact.setChecked(false)
+        }
+        binding.passwordSwitchCompact.setOnCheckedChangeListener { buttonView, isChecked ->
+            fingerprintChecked = isChecked
+            fingerPrintSensor()
+        }
 
     }
 
@@ -189,6 +248,53 @@ class Profile : Fragment() {
 
         bottomDialog.show()
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun fingerPrintSensor() {
+        checkBiometricSupport()
+        val biometricPrompt = BiometricPrompt.Builder(requireActivity())
+            .setDeviceCredentialAllowed(true)
+            .setTitle("Authentication Required")
+            .setDescription("Please enter your PIN / password to continue")
+            .build()
+
+        biometricPrompt.authenticate(getCancellationSignal(),
+            getMainExecutor(requireContext()),authenticationCallback)
+
+
+    }
+
+    private fun getCancellationSignal(): CancellationSignal {
+        cancellationSignal = CancellationSignal()
+        cancellationSignal?.setOnCancelListener {
+            notifyUser("Authentication was cancelled by the user")
+
+        }
+        return cancellationSignal as CancellationSignal
+    }
+
+    private fun checkBiometricSupport(): Boolean {
+        val keyguardManager : KeyguardManager = activity?.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+
+        if (!keyguardManager.isKeyguardSecure){
+            notifyUser("Finger print not enabled in settings")
+            return false
+        }
+
+        if (ActivityCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.USE_BIOMETRIC)!= PackageManager.PERMISSION_GRANTED){
+            notifyUser("Fingerprint authentication permission is not enabled")
+            return false
+        }
+
+        return if (activity?.packageManager?.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) == true){
+            true
+        }else true
+
+    }
+
+    private fun notifyUser(message: String) {
+        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
     }
 
 
