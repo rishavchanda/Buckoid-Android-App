@@ -1,31 +1,50 @@
 package com.rishav.buckoid
 
+import android.app.Activity
 import android.app.KeyguardManager
 import android.content.*
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
-import androidx.core.view.GravityCompat
-import androidx.navigation.fragment.NavHostFragment
-import com.rishav.buckoid.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationView
 import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricPrompt
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.CancellationSignal
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.Scope
+import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
-import java.lang.Exception
+import com.google.api.client.extensions.android.http.AndroidHttp
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
+import com.google.api.client.json.gson.GsonFactory
+import com.google.api.services.drive.Drive
+import com.google.api.services.drive.DriveScopes
+import com.rishav.buckoid.databinding.ActivityMainBinding
+import java.util.*
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.common.api.ApiException
+
+
+
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +53,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var userDetails:SharedPreferences
     private var appUpdate: AppUpdateManager? = null
     var isNight:Boolean = false
+    val RC_SIGN_IN = 100
+    lateinit var client:GoogleSignInClient
 
     //finger print
     var isFingerPrintEnabled:Boolean = false
@@ -70,7 +91,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             binding.bottomNavigation.setupWithNavController(navController)
 
     }
-
 
     fun nightMode(){
         // Configure night-mode switch

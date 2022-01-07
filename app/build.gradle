@@ -35,6 +35,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
 }
 
 dependencies {
@@ -77,4 +80,10 @@ dependencies {
 
     implementation 'uk.co.samuelwall:material-tap-target-prompt:3.3.2'
 
+    //google driver api
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation ('com.google.api-client:google-api-client-android:1.26.0')
+    implementation ('com.google.apis:google-api-services-drive:v3-rev136-1.25.0')
+    implementation 'com.google.http-client:google-http-client-gson:1.39.2'
 }
