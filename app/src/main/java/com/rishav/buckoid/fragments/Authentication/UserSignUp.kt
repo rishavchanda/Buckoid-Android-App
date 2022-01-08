@@ -23,6 +23,7 @@ import com.google.api.client.http.FileContent
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.drive.Drive
 import com.google.api.services.drive.DriveScopes
+import com.rishav.buckoid.Database.TransactionDatabase
 import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentUserSignUpBinding
 import java.util.*
@@ -36,7 +37,11 @@ class UserSignUp : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding=  FragmentUserSignUpBinding.inflate(inflater, container, false)
-        //setUpSignUp()
+
+        setUpSignUp()
+        binding.googleSignUp.setOnClickListener{
+            signIn()
+        }
         return binding.root
     }
 
@@ -106,7 +111,7 @@ class UserSignUp : Fragment() {
                     .build()
 
                 Thread(Runnable {
-                    // upload(googleDriveDevices)
+                     upload(googleDriveDevices)
                 }).start()
             }
             .addOnFailureListener{
@@ -116,13 +121,14 @@ class UserSignUp : Fragment() {
     }
 
     private fun upload(googleDriveDevices:Drive){
-        /*val storageFile:com.google.api.services.drive.model.File ?= null
+        val storageFile:com.google.api.services.drive.model.File ?= null
         storageFile?.setParents(Collections.singletonList("appDataFolder"))
         storageFile?.setName("Transaction")
 
-        val db = getDatabasePath("Transaction").getAbsolutePath()
+        //val db = getDatabasePath("Transaction.db").getAbsolutePath()
+        val path = "/data/data/com.rishav.buckoid/databases/Transaction"
 
-        val filePath:java.io.File = java.io.File(db);
+        val filePath:java.io.File = java.io.File(path);
         val mediaContent: FileContent = FileContent("",filePath);
         try {
             val file: com.google.api.services.drive.model.File? = googleDriveDevices.files().create(storageFile,mediaContent).execute();
@@ -133,7 +139,7 @@ class UserSignUp : Fragment() {
         }
         catch (e:Exception) {
             Log.w("@@@","error:"+e.message.toString())
-        }*/
+        }
     }
 
 
