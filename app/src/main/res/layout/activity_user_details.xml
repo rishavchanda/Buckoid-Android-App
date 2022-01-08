@@ -7,124 +7,14 @@
     android:background="@color/background"
     tools:context=".UserDetails">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/welcome_to_ntrack_back"
-            android:textColor="@color/textPrimary"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginTop="22dp"
-            android:text="@string/add_few_details_before_you_continue"
-            android:textColor="@color/textSecondary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text1" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/title"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/your_name"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:layout_constraintTop_toBottomOf="@id/text2"
-            app:startIconDrawable="@drawable/ic_baseline_edit_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_name"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:inputType="textPersonName" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/money"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/monthly_budget"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_money"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:inputType="phone" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/yearBudget"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/yearly_budget"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:layout_constraintTop_toBottomOf="@id/money"
-            app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_year_money"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:inputType="phone" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/next"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        />
-
-
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/signup_user_navigation"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

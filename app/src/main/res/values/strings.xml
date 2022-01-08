@@ -68,4 +68,10 @@
     <string name="yearly_budget">Yearly Budget</string>
     <string name="yearly_budget_">Yearly Budget :</string>
     <string name="fingerprint_protection">Fingerprint Lock</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signup_with_google">SignUp With Google</string>
+    <string name="we_require_your_google_account_with_google_drive_permission_to_keep_backup_of_all_your_data">We require your Google Account with Google Drive permission to keep Backup of all your data.</string>
+    <string name="expense_tracking">Expense Tracking.</string>
+    <string name="simple">Simple</string>
 </resources>

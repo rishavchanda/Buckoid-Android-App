@@ -12,6 +12,7 @@
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_auto_stories_24.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_fingerprint_24.xml" value="0.11851851851851852" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_mode_night_24.xml" value="0.11851851851851852" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_google_icon.xml" value="0.13703703703703704" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_negative_transaction.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_positive_amount.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/logo.xml" value="0.1" />
@@ -25,6 +26,8 @@
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_transaction_details.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_user_details.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/night_mode_action_layout_switch.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/transaction_item.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/menu/menu_drawer.xml" value="0.1" />
