@@ -1,5 +1,6 @@
 package com.rishav.buckoid.fragments.Authentication
 
+import android.R.attr
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -19,18 +20,29 @@ import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import com.google.api.client.http.FileContent
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.drive.Drive
 import com.google.api.services.drive.DriveScopes
-import com.rishav.buckoid.Database.TransactionDatabase
-import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentUserSignUpBinding
 import java.util.*
+import com.google.api.services.drive.model.FileList
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
+import android.R.attr.data
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import com.rishav.buckoid.R
+
 
 class UserSignUp : Fragment() {
     lateinit var binding:FragmentUserSignUpBinding
     lateinit var client: GoogleSignInClient
+    private val dbPath = "/data/data/com.rishav.buckoid/databases/Transaction"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,27 +60,10 @@ class UserSignUp : Fragment() {
     private fun setUpSignUp() {
         val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
         if (account!=null){
-            Log.w("@@@@@@@",account?.displayName.toString())
-            val credential =
-                GoogleAccountCredential.usingOAuth2(requireActivity(), Collections.singleton(Scopes.DRIVE_FILE))
-            credential.selectedAccount = account.getAccount()
-            val googleDriveService = Drive.Builder(
-                AndroidHttp.newCompatibleTransport(),
-                GsonFactory(),
-                credential)
-                .setApplicationName(getString(R.string.app_name))
-                .build()
-            Thread(Runnable {
-                upload(googleDriveService)
-            }).start()
-
+           goToNextPage()
         }
         googleCall()
-        //setData()
     }
-
-
-
     fun googleCall(){
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -85,15 +80,45 @@ class UserSignUp : Fragment() {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
-                handleSignInIntent(it.data)
+                goToNextPage()
             }
         }
 
+    private fun goToNextPage() {
+        findNavController(requireActivity(),R.id.fragmentContainerView2)
+            .navigate(R.id.goToUserDetails,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.userSignUp,
+                        true).build()
+            )
+    }
+
+/*
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
         } catch (e: ApiException) {
         }
+    }
+
+    private fun handle(){
+        val googleSignInAccount = GoogleSignIn.getLastSignedInAccount(requireActivity())
+        val credential =
+            GoogleAccountCredential.usingOAuth2(requireContext(), Collections.singleton(Scopes.DRIVE_FILE))
+        credential.selectedAccount = googleSignInAccount!!.account
+        val googleDriveService = Drive.Builder(
+            AndroidHttp.newCompatibleTransport(),
+            GsonFactory(),
+            credential
+        )
+            .setApplicationName(getString(com.rishav.buckoid.R.string.app_name))
+            .build()
+        Thread {
+            Download(googleDriveService)
+        }.start()
+
+
     }
 
     private fun handleSignInIntent(data: Intent?) {
@@ -111,7 +136,7 @@ class UserSignUp : Fragment() {
                     .build()
 
                 Thread(Runnable {
-                     upload(googleDriveDevices)
+                     Download(googleDriveDevices)
                 }).start()
             }
             .addOnFailureListener{
@@ -121,26 +146,51 @@ class UserSignUp : Fragment() {
     }
 
     private fun upload(googleDriveDevices:Drive){
-        val storageFile:com.google.api.services.drive.model.File ?= null
+        var storageFile:com.google.api.services.drive.model.File? = null
         storageFile?.setParents(Collections.singletonList("appDataFolder"))
-        storageFile?.setName("Transaction")
+        storageFile?.setName("Buckoid_Backup_Transaction")
 
-        //val db = getDatabasePath("Transaction.db").getAbsolutePath()
-        val path = "/data/data/com.rishav.buckoid/databases/Transaction"
-
-        val filePath:java.io.File = java.io.File(path);
-        val mediaContent: FileContent = FileContent("",filePath);
+        val filePath:java.io.File = java.io.File(dbPath)
+        val mediaContent:FileContent = FileContent("",filePath)
         try {
             val file: com.google.api.services.drive.model.File? = googleDriveDevices.files().create(storageFile,mediaContent).execute();
             if (file != null) {
-
                 Log.w("@@@","Filename: %s File ID: %s ${file.getName()}, ${file.getId()}")
             }
+        }
+        catch(e: UserRecoverableAuthIOException){
+            Log.w("@@@","errorAuthIO:"+e.message.toString())
         }
         catch (e:Exception) {
             Log.w("@@@","error:"+e.message.toString())
         }
     }
 
+    private fun Download(googleDriveService:Drive) {
+        try {
+            val dir = File("/data/data/com.rishav.buckoid/databases")
+            if (dir.isDirectory) {
+                val children = dir.list()
+                for (i in children.indices) {
+                    File(dir, children[i]).delete()
+                }
+            }
+            val files: FileList = googleDriveService.files().list()
+                .setSpaces("appDataFolder")
+                .setFields("nextPageToken, files(id, name, createdTime)")
+                .setPageSize(10)
+                .execute()
+            if (files.files.size == 0) Log.e("@@@", "No DB file exists in Drive")
+            for (file in files.files) {
+                Log.e("@@@", "Found file: ${file.name}, ${file.id}, ${file.createdTime}")
+                if (file.name.equals("Buckoid_Backup_Transaction")) {
+                    val outputStream: OutputStream = FileOutputStream(dbPath)
+                    googleDriveService.files().get(file.id).executeMediaAndDownloadTo(outputStream)
+                }
+            }
+        } catch (e: IOException) {
+            Log.w("@@@","error:"+e.message.toString())
+        }
+    }*/
 
 }

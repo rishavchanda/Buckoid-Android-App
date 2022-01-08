@@ -24,7 +24,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
+import com.rishav.buckoid.Model.Profile
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
 import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
@@ -45,6 +47,7 @@ class Dashboard : Fragment() {
     lateinit var drawerLayout:DrawerLayout
     lateinit var navigationView:NavigationView
     lateinit var userDetails: SharedPreferences
+    lateinit var profileModel: Profile
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,8 +78,10 @@ class Dashboard : Fragment() {
         binding.date.text = "${format.format(Calendar.getInstance().getTime())} ${currentYear}"
 
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
-        val name = userDetails.getString("Name", "")?.split(" ")
-        binding.name.text = "Hi ${name?.get(0)} !!"
+        profileModel = Profile(requireContext())
+        val name=profileModel.name.split(" ")
+        binding.name.text = "Hi ${name[0]} !!"
+        Glide.with(requireActivity()).load(profileModel.profilePic).into(binding.profilePic)
 
         if(!userDetails.getBoolean("ShowedOnboardingDashboard",false)){
             showOnBoarding()

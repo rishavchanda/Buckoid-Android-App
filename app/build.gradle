@@ -86,4 +86,7 @@ dependencies {
     implementation ('com.google.api-client:google-api-client-android:1.26.0')
     implementation ('com.google.apis:google-api-services-drive:v3-rev136-1.25.0')
     implementation 'com.google.http-client:google-http-client-gson:1.39.2'
+
+    //image uri
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }
