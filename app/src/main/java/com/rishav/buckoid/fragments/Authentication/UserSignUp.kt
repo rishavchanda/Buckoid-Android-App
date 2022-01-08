@@ -33,6 +33,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
 import android.R.attr.data
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
@@ -48,6 +49,7 @@ class UserSignUp : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.background))
         binding=  FragmentUserSignUpBinding.inflate(inflater, container, false)
 
         setUpSignUp()

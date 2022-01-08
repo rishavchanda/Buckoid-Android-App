@@ -71,4 +71,5 @@
     <string name="we_require_your_google_account_with_google_drive_permission_to_keep_backup_of_all_your_data">We require your Google Account with Google Drive permission to keep Backup of all your data.</string>
     <string name="expense_tracking">Expense Tracking.</string>
     <string name="simple">Simple</string>
+    <string name="backup_data">Backup Data</string>
 </resources>

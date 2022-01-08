@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.rishav.buckoid.MainActivity
 import com.rishav.buckoid.R
@@ -24,6 +25,7 @@ class UserDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View{
         // Inflate the layout for this fragment
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.background))
         binding=  FragmentUserDetailsBinding.inflate(inflater, container, false)
         setData()
         return binding.root

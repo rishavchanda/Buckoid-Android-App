@@ -52,6 +52,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.background))
         binding = FragmentAllTransactionsBinding.inflate(inflater, container, false)
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
         bottomNav.visibility = View.VISIBLE

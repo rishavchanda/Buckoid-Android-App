@@ -54,6 +54,7 @@ class Dashboard : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.background))
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
         drawerLayout = requireActivity().findViewById(R.id.drawer_layout)

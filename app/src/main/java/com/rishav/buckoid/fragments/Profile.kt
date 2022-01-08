@@ -24,6 +24,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.core.content.ContextCompat.getSystemService
 import com.bumptech.glide.Glide
@@ -78,7 +79,8 @@ class Profile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this fragmet
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.cardBackground))
         binding =  FragmentProfileBinding.inflate(inflater, container, false)
         setData()
         fingerPrintLockEnable()
@@ -91,14 +93,13 @@ class Profile : Fragment() {
         nightMode()
         profileModel = Profile(requireContext())
         val name=profileModel.name
-        binding.name.text = "Hi ${name.split(" ")[0]} !!"
+        binding.profileName.text = name
+        binding.mailId.text = profileModel.email
         Glide.with(requireActivity()).load(profileModel.profilePic).into(binding.profilePic)
 
         val monthlyBudget = userDetails.getString("MonthlyBudget","0")
         val yearlyBudget = userDetails.getString("YearlyBudget","0")
 
-
-        binding.name.text = name
         binding.monthlyBudget.text = "₹$monthlyBudget"
         binding.yearlyBudget.text = "₹$yearlyBudget"
 
