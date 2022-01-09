@@ -33,6 +33,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
 import android.R.attr.data
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
@@ -83,8 +84,14 @@ class UserSignUp : Fragment() {
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 goToNextPage()
+            }else{
+                notifyUser("Check Your Network Connection and Try again")
             }
         }
+
+    private fun notifyUser(message: String) {
+        Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+    }
 
     private fun goToNextPage() {
         findNavController(requireActivity(),R.id.fragmentContainerView2)
