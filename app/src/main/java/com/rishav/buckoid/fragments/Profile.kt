@@ -27,7 +27,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rishav.buckoid.MainActivity
 import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentProfileBinding
@@ -82,6 +84,8 @@ class Profile : Fragment() {
         // Inflate the layout for this fragmet
         getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.cardBackground))
         binding =  FragmentProfileBinding.inflate(inflater, container, false)
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        bottomNav.visibility = View.VISIBLE
         setData()
         fingerPrintLockEnable()
         return binding.root
@@ -149,6 +153,10 @@ class Profile : Fragment() {
                 "Working on this wait for update",
                 Toast.LENGTH_SHORT
             ).show()
+        }
+
+        binding.backup.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.openBackupDrive)
         }
 
 
