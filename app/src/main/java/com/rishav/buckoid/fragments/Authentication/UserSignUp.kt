@@ -44,7 +44,6 @@ import com.rishav.buckoid.R
 class UserSignUp : Fragment() {
     lateinit var binding:FragmentUserSignUpBinding
     lateinit var client: GoogleSignInClient
-    private val dbPath = "/data/data/com.rishav.buckoid/databases/Transaction"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

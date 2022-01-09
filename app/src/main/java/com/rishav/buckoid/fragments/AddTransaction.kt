@@ -30,7 +30,7 @@ import java.util.*
 class AddTransaction : Fragment(), View.OnClickListener {
    val data by navArgs<AddTransactionArgs>()
    private lateinit var binding: FragmentAddTransactionBinding
-    lateinit var userDetails: SharedPreferences
+   lateinit var userDetails: SharedPreferences
    private var category = ""
     var day=0
     var month=0
@@ -117,6 +117,7 @@ class AddTransaction : Fragment(), View.OnClickListener {
            if ( data.from){
                val transaction = Transaction(
                    data.data.id,
+                   type = "Expense",
                    title = title,
                    amount = amount.toDouble(),
                    note = note,
@@ -135,6 +136,7 @@ class AddTransaction : Fragment(), View.OnClickListener {
            }else {
                val transaction = Transaction(
                    null,
+                   type = "Expense",
                    title = title,
                    amount = amount.toDouble(),
                    note = note,

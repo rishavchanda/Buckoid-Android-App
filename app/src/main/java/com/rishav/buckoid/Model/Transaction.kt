@@ -12,6 +12,7 @@ class Transaction (
     @PrimaryKey(autoGenerate = true)
     var id:Int? = null,
 
+    var type: String,
     var category: String,
     var title: String,
     var amount: Double,

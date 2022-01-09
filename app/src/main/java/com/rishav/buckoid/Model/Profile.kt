@@ -9,6 +9,7 @@ class Profile(context:Context){
     val name = getData()?.displayName.toString()
     val profilePic = getData()?.photoUrl
     val email = getData()?.email
+    val account = getData()
 
     fun getData(): GoogleSignInAccount? {
         val acct = GoogleSignIn.getLastSignedInAccount(mContext)

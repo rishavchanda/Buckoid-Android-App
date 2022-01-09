@@ -73,4 +73,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drive_backup">Drive Backup</string>
+    <string name="last_backup">Last Backup</string>
+    <string name="back_up_your_data_to_google_drive_you_can_restore_them_when_you_reinstall_buckoid_app_and_signin_with_google_account">Back up your data to Google Drive. You can restore them when you reinstall Buckoid App and signin with Google Account.</string>
+    <string name="we_strongly_recommend_that_you_take_backup_regularly_from_the_app_as_backup_to_google_drive_is_not_automatic_doing_so_would_keep_your_data_safe_even_if_your_device_is_lost_damaged">We strongly recommend that you take backup regularly from the app (as backup to Google Drive is not automatic). Doing so would keep your data safe even if your device is lost/damaged.</string>
+    <string name="google_drive_setting">Google Drive Setting</string>
+    <string name="transaction_details_backed_up_in_google_drive_are_not_protected_by_buckoid_end_to_end_encryption">Transaction details backed up in Google Drive are not protected by Buckoid end-to-end encryption.</string>
+    <string name="google_account">Google Account</string>
 </resources>
