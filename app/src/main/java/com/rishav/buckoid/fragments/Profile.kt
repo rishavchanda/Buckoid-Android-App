@@ -165,16 +165,22 @@ class Profile : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun fingerPrintLockEnable() {
-        isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
-        if (isFingerPrintEnabled) {
-            binding.passwordSwitchCompact.setChecked(true)
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            binding.passwordToggle.visibility = View.VISIBLE
+            isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
+            if (isFingerPrintEnabled) {
+                binding.passwordSwitchCompact.setChecked(true)
+            } else {
+                binding.passwordSwitchCompact.setChecked(false)
+            }
+            binding.passwordSwitchCompact.setOnCheckedChangeListener { buttonView, isChecked ->
+                fingerprintChecked = isChecked
+                fingerPrintSensor()
+            }
         }else{
-            binding.passwordSwitchCompact.setChecked(false)
+            binding.passwordToggle.visibility = View.GONE
         }
-        binding.passwordSwitchCompact.setOnCheckedChangeListener { buttonView, isChecked ->
-            fingerprintChecked = isChecked
-            fingerPrintSensor()
-        }
+
 
     }
 
