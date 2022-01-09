@@ -91,35 +91,9 @@ class TransactionAdapter(val context: Context, val activity:Activity,val fragmen
 
         }
 
-        userDetails = context.getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
-        if(transList.size == 1 && !userDetails.getBoolean("ShowedOnboardingTransactionCard",false)){
-            showOnBoardingTransactionCard(holder)
-        }
-
     }
 
     override fun getItemCount() = transList.size
-
-    fun showOnBoardingTransactionCard(holder: transactionViewHolder){
-        MaterialTapTargetPrompt.Builder(activity)
-            .setTarget(holder.binding.root)
-            .setPrimaryText("Hey Click Me!!")
-            .setPromptFocal(RectanglePromptFocal())
-            .setPromptBackground(RectanglePromptBackground())
-            .setBackgroundColour(ContextCompat.getColor(context, R.color.button))
-            .setPrimaryTextColour(ContextCompat.getColor(context, R.color.textPrimary))
-            .setSecondaryTextColour(ContextCompat.getColor(context, R.color.textSecondary))
-            .setSecondaryText("Good Job !! Click to see details of your transaction..")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                    val editor: SharedPreferences.Editor = userDetails.edit()
-                    editor.putBoolean("ShowedOnboardingTransactionCard", true)
-                    editor.apply()
-                }
-            }
-            .show()
-    }
 
 }
 

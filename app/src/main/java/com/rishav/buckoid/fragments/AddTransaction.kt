@@ -49,9 +49,6 @@ class AddTransaction : Fragment(), View.OnClickListener {
         setListner(binding)
         datePicker(binding)
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
-        if(!userDetails.getBoolean("ShowedOnboardingAddTransaction",false)){
-            showOnBoarding()
-        }
         if(data.from){
             setDatas()
             binding.addTransaction.setText("Save Transaction")
@@ -276,25 +273,7 @@ class AddTransaction : Fragment(), View.OnClickListener {
         button.setIconTintResource(R.color.textSecondary)
         button.setStrokeColorResource(R.color.textSecondary)
         button.setTextColor(ContextCompat.getColor(requireContext(), R.color.textSecondary))
-    }
-
-    fun showOnBoarding(){
-        MaterialTapTargetPrompt.Builder(requireActivity())
-            .setTarget(binding.selector1)
-            .setPromptFocal(RectanglePromptFocal())
-            .setPromptBackground(RectanglePromptBackground())
-            .setPrimaryText("Select Any Category of Transaction")
-            .setSecondaryText("Nice Select the category you spend on...")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED){
-                    val editor: SharedPreferences.Editor = userDetails.edit()
-                    editor.putBoolean("ShowedOnboardingAddTransaction", true)
-                    editor.apply()
-                }
-            }
-            .show()
-    }
+   }
 
 
 }

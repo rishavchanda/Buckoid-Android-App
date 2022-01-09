@@ -58,9 +58,6 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         bottomNav.visibility = View.VISIBLE
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         setListener()
-        if(!userDetails.getBoolean("ShowedOnboardingAllTransactions",false)){
-            showOnBoarding()
-        }
         when(binding.toggleSelector.checkedButtonId) {
             R.id.all -> showAllTransactions()
             R.id.monthly -> showMonthlyTransactions()
@@ -597,55 +594,6 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         button.setIconTintResource(R.color.textSecondary)
         button.setStrokeColorResource(R.color.textSecondary)
         button.setTextColor(ContextCompat.getColor(requireContext(), R.color.textSecondary))
-    }
-
-
-    fun showOnBoarding(){
-        MaterialTapTargetPrompt.Builder(requireActivity())
-            .setTarget(binding.monthly)
-            .setPromptFocal(RectanglePromptFocal())
-            .setPrimaryText("Monthly Transactions")
-            .setSecondaryText("Tap to see Monthly Transaction records...")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                    showOnBoarding()
-                }else if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED){
-                   showYearsOnBoarding()
-                }
-            }
-            .show()
-    }
-
-    fun showYearsOnBoarding(){
-        MaterialTapTargetPrompt.Builder(requireActivity())
-            .setTarget(binding.yearSpinner)
-            .setPromptFocal(RectanglePromptFocal())
-            .setPrimaryText("Choose Year")
-            .setSecondaryText("Choose any year to see the transactions..")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED){
-                    showMonthsOnBoarding()
-                }
-            }
-            .show()
-    }
-    fun showMonthsOnBoarding(){
-        MaterialTapTargetPrompt.Builder(requireActivity())
-            .setTarget(binding.January)
-            .setPromptFocal(RectanglePromptFocal())
-            .setPrimaryText("Select Month")
-            .setSecondaryText("Choose any month to see the transactions...")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener{prompt, state ->
-                if(state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED){
-                    val editor: SharedPreferences.Editor = userDetails.edit()
-                    editor.putBoolean("ShowedOnboardingAllTransactions", true)
-                    editor.apply()
-                }
-            }
-            .show()
     }
 
 

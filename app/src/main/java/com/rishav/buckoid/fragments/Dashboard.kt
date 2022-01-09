@@ -204,23 +204,6 @@ class Dashboard : Fragment() {
 
     fun showOnBoarding(){
         MaterialTapTargetPrompt.Builder(requireActivity())
-        .setTarget(binding.mainCard)
-        .setPromptFocal(RectanglePromptFocal())
-        .setPromptBackground(RectanglePromptBackground())
-        .setPrimaryText("Your Monthly Details")
-        .setSecondaryText("Your Transactions visual representation and data on Monthly Basis will be shown here!!")
-        .setBackButtonDismissEnabled(true)
-        .setPromptStateChangeListener{prompt, state ->
-            if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
-                showButtonPrompt()
-            }
-        }
-        .show()
-
-    }
-
-    private fun showButtonPrompt() {
-        MaterialTapTargetPrompt.Builder(requireActivity())
             .setTarget(binding.addNew)
             .setPrimaryText("Hey Click Me!!")
             .setFocalRadius(100.0f)
@@ -234,8 +217,8 @@ class Dashboard : Fragment() {
                 }
             }
             .show()
-    }
 
+    }
 
 
 
