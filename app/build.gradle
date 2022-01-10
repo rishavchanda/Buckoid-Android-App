@@ -13,8 +13,8 @@ android {
         applicationId "com.rishav.buckoid"
         minSdk 21
         targetSdk 31
-        versionCode 3
-        versionName "1.3"
+        versionCode 4
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +38,9 @@ android {
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
+    lintOptions {
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -47,6 +50,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'

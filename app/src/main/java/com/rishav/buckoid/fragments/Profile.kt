@@ -156,6 +156,7 @@ class Profile : Fragment() {
         }
 
         binding.backup.setOnClickListener {
+            //Toast.makeText(requireActivity(),"Coming Soon wait for an Update.", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(binding.root).navigate(R.id.openBackupDrive)
         }
 

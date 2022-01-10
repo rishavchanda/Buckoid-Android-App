@@ -28,9 +28,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.rishav.buckoid.Model.Profile
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
-import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
-import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
-
 
 class Dashboard : Fragment() {
 

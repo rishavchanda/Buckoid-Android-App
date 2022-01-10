@@ -20,15 +20,12 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
-import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
-import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class AddTransaction : Fragment(), View.OnClickListener {
-   val data by navArgs<AddTransactionArgs>()
+   val transactions by navArgs<AddTransactionArgs>()
    private lateinit var binding: FragmentAddTransactionBinding
    lateinit var userDetails: SharedPreferences
    private var category = ""
@@ -49,12 +46,12 @@ class AddTransaction : Fragment(), View.OnClickListener {
         setListner(binding)
         datePicker(binding)
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
-        if(data.from){
+        if(transactions.from){
             setDatas()
             binding.addTransaction.setText("Save Transaction")
             binding.titleAddTransacttion.setText("Edit Transaction")
             binding.back.setOnClickListener {
-                val arg = AddTransactionDirections.actionAddTransactionToTransactionDetails(data.data,"AddTransaction")
+                val arg = AddTransactionDirections.actionAddTransactionToTransactionDetails(transactions.data,"AddTransaction")
                 Navigation.findNavController(binding.root)
                     .navigate(arg)
             }
@@ -78,11 +75,11 @@ class AddTransaction : Fragment(), View.OnClickListener {
 
 
     private fun setDatas(){
-        binding.editTitle.setText(data.data.title)
-        binding.editDate.setText(data.data.date)
-        binding.editMoney.setText(data.data.amount.toString())
-        binding.editNote.setText(data.data.note)
-        category=data.data.category
+        binding.editTitle.setText(transactions.data.title)
+        binding.editDate.setText(transactions.data.date)
+        binding.editMoney.setText(transactions.data.amount.toString())
+        binding.editNote.setText(transactions.data.note)
+        category=transactions.data.category
         when (category) {
             "Food" -> {
                 setCategory(binding.food, binding.food)
@@ -114,9 +111,9 @@ class AddTransaction : Fragment(), View.OnClickListener {
            Toast.makeText(context, "Enter all required details", Toast.LENGTH_SHORT).show()
        }else {
 
-           if ( data.from){
+           if ( transactions.from){
                val transaction = Transaction(
-                   data.data.id,
+                   transactions.data.id,
                    type = "Expense",
                    title = title,
                    amount = amount.toDouble(),
@@ -152,7 +149,6 @@ class AddTransaction : Fragment(), View.OnClickListener {
                Navigation.findNavController(binding.root)
                    .navigate(R.id.action_addTransaction_to_dashboard2)
            }
-
        }
 
 

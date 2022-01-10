@@ -81,7 +81,7 @@ class TransactionDetails : Fragment() {
         val cancel=bottomDialog.findViewById<Button>(R.id.cancel)
 
         delete?.setOnClickListener{
-            viewModel.deleteTransaction(transaction.data.id!!)
+            viewModel.deleteTransaction(transaction.data!!.id!!)
             bottomDialog.dismiss()
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_transactionDetails_to_dashboard2)
