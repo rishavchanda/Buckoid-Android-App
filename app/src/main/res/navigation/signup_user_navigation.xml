@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup_user_navigation"
+    app:startDestination="@id/userSignUp">
+
+    <fragment
+        android:id="@+id/userSignUp"
+        android:name="com.rishav.buckoid.fragments.Authentication.UserSignUp"
+        android:label="fragment_user_sign_up"
+        tools:layout="@layout/fragment_user_sign_up" >
+        <action
+            android:id="@+id/goToUserDetails"
+            app:destination="@id/userDetails2"
+            app:popUpTo="@id/userDetails2"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/userDetails2"
+        android:name="com.rishav.buckoid.fragments.Authentication.UserDetails"
+        android:label="fragment_user_details"
+        tools:layout="@layout/fragment_user_details" />
+</navigation>

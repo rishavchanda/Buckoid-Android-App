@@ -14,6 +14,9 @@ import com.rishav.buckoid.Model.Transaction
 import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.TransactionItemBinding
 import com.rishav.buckoid.fragments.*
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 
 class TransactionAdapter(val context: Context, val activity:Activity,val fragment:String, private val transList: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.transactionViewHolder>(){
 
@@ -88,7 +91,6 @@ class TransactionAdapter(val context: Context, val activity:Activity,val fragmen
 
         }
 
-        userDetails = context.getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
     }
 
     override fun getItemCount() = transList.size

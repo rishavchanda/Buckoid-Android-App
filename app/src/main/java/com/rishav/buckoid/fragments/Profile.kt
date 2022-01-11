@@ -24,14 +24,17 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getMainExecutor
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rishav.buckoid.MainActivity
 import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
-import com.rishav.buckoid.BuildConfig
+import com.rishav.buckoid.Model.Profile
 import java.lang.Exception
 
 class Profile : Fragment() {
@@ -39,6 +42,7 @@ class Profile : Fragment() {
     lateinit var binding:FragmentProfileBinding
     lateinit var userDetails: SharedPreferences
     var isNight:Boolean = false
+    lateinit var profileModel: Profile
 
     //finger print
     var isFingerPrintEnabled:Boolean = false
@@ -75,8 +79,11 @@ class Profile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this fragmet
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.cardBackground))
         binding =  FragmentProfileBinding.inflate(inflater, container, false)
+        val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        bottomNav.visibility = View.VISIBLE
         setData()
         fingerPrintLockEnable()
         return binding.root
@@ -86,18 +93,20 @@ class Profile : Fragment() {
     private fun setData() {
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         nightMode()
-        val name = userDetails.getString("Name", "")
+        profileModel = Profile(requireContext())
+        val name=profileModel.name
+        binding.profileName.text = name
+        binding.mailId.text = profileModel.email
+        Glide.with(requireActivity()).load(profileModel.profilePic).into(binding.profilePic)
+
         val monthlyBudget = userDetails.getString("MonthlyBudget","0")
         val yearlyBudget = userDetails.getString("YearlyBudget","0")
 
-
-        binding.name.text = name
         binding.monthlyBudget.text = "₹$monthlyBudget"
         binding.yearlyBudget.text = "₹$yearlyBudget"
-        binding.title.text = "Welcome $name"
 
         binding.edit.setOnClickListener {
-            openEditDialog(name,monthlyBudget,yearlyBudget)
+            openEditDialog(monthlyBudget,yearlyBudget)
         }
         binding.share.setOnClickListener{
             try {
@@ -106,7 +115,7 @@ class Profile : Fragment() {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "@string/app_name")
                 intent.putExtra(
                     Intent.EXTRA_TEXT,
-                    "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
+                    "https://play.google.com/store/apps/details?id=com.rishav.buckoid"
                 )
                 startActivity(Intent.createChooser(intent, "Share With"))
             } catch (e: Exception) {
@@ -123,14 +132,14 @@ class Profile : Fragment() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=")
+                        Uri.parse("market://details?id=com.rishav.buckoid")
                     )
                 )
             } catch (e: ActivityNotFoundException) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
+                        Uri.parse("https://play.google.com/store/apps/details?id=com.rishav.buckoid")
                     )
                 )
             }
@@ -142,6 +151,11 @@ class Profile : Fragment() {
                 "Working on this wait for update",
                 Toast.LENGTH_SHORT
             ).show()
+        }
+
+        binding.backup.setOnClickListener {
+            //Toast.makeText(requireActivity(),"Coming Soon wait for an Update.", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(binding.root).navigate(R.id.openBackupDrive)
         }
 
 
@@ -158,16 +172,22 @@ class Profile : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun fingerPrintLockEnable() {
-        isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
-        if (isFingerPrintEnabled) {
-            binding.passwordSwitchCompact.setChecked(true)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            binding.passwordToggle.visibility = View.VISIBLE
+            isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
+            if (isFingerPrintEnabled) {
+                binding.passwordSwitchCompact.setChecked(true)
+            } else {
+                binding.passwordSwitchCompact.setChecked(false)
+            }
+            binding.passwordSwitchCompact.setOnCheckedChangeListener { buttonView, isChecked ->
+                fingerprintChecked = isChecked
+                fingerPrintSensor()
+            }
         }else{
-            binding.passwordSwitchCompact.setChecked(false)
+            binding.passwordToggle.visibility = View.GONE
         }
-        binding.passwordSwitchCompact.setOnCheckedChangeListener { buttonView, isChecked ->
-            fingerprintChecked = isChecked
-            fingerPrintSensor()
-        }
+
 
     }
 
@@ -210,30 +230,26 @@ class Profile : Fragment() {
         restartActivityInvalidateBackstack(requireActivity() as MainActivity)
     }
 
-    private fun openEditDialog(name: String?, monthlyBudget: String?,yearlyBudget: String?) {
+    private fun openEditDialog(monthlyBudget: String?,yearlyBudget: String?) {
         val bottomDialog: BottomSheetDialog =
             BottomSheetDialog(requireContext(), R.style.bottom_dialog)
         bottomDialog.setContentView(R.layout.update_user_details_dialog)
 
         val update = bottomDialog.findViewById<Button>(R.id.update)
         val cancel = bottomDialog.findViewById<Button>(R.id.cancel)
-        val nameEditor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_name)
         val moneyEditor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_money)
         val year_money_Editor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_year_money)
 
-        nameEditor?.setText(name)
         moneyEditor?.setText(monthlyBudget)
         year_money_Editor?.setText(yearlyBudget)
 
         update?.setOnClickListener {
-            val name = nameEditor?.text.toString()
             val monthly_budget = moneyEditor?.text.toString()
             val yearly_budget = year_money_Editor?.text.toString()
-            if(name == "" || monthly_budget == "" || yearly_budget == "") {
+            if(monthly_budget == "" || yearly_budget == "") {
                 Toast.makeText(requireActivity(), "Name and Budget Cant be empty...", Toast.LENGTH_SHORT).show()
             }else{
                 val editor: SharedPreferences.Editor = userDetails.edit()
-                editor.putString("Name", name)
                 editor.putString("MonthlyBudget", monthly_budget)
                 editor.putString("YearlyBudget", yearly_budget)
                 editor.apply()

@@ -25,11 +25,6 @@
         android:name="com.rishav.buckoid.fragments.TransactionDetails"
         android:label="fragment_transaction_details"
         tools:layout="@layout/fragment_transaction_details" >
-
-
-        <argument
-            android:name="data"
-            app:argType="com.rishav.buckoid.Model.Transaction" />
         <action
             android:id="@+id/action_transactionDetails_to_dashboard2"
             app:destination="@id/dashboard" />
@@ -39,6 +34,11 @@
         <action
             android:id="@+id/action_transactionDetails_to_transactions"
             app:destination="@id/transactions" />
+
+        <argument
+            android:name="data"
+            app:argType="com.rishav.buckoid.Model.Transaction"
+            />
         <argument
             android:name="fragment"
             app:argType="string" />
@@ -51,15 +51,16 @@
         <action
             android:id="@+id/action_addTransaction_to_dashboard2"
             app:destination="@id/dashboard" />
-        <argument
-            android:name="data"
-            app:argType="com.rishav.buckoid.Model.Transaction" />
-        <argument
-            android:name="from"
-            app:argType="boolean" />
         <action
             android:id="@+id/action_addTransaction_to_transactionDetails"
             app:destination="@id/transactionDetails" />
+        <argument
+            android:name="data"
+            app:argType="com.rishav.buckoid.Model.Transaction"
+            />
+        <argument
+            android:name="from"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/transactions"
@@ -74,5 +75,18 @@
         android:id="@+id/profile"
         android:name="com.rishav.buckoid.fragments.Profile"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/openBackupDrive"
+            app:destination="@id/backupDrive" />
+    </fragment>
+    <fragment
+        android:id="@+id/backupDrive"
+        android:name="com.rishav.buckoid.fragments.BackupDrive"
+        android:label="fragment_backup_drive"
+        tools:layout="@layout/fragment_backup_drive" >
+        <action
+            android:id="@+id/action_backupDrive_to_profile"
+            app:destination="@id/profile"/>
+    </fragment>
 </navigation>

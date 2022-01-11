@@ -10,10 +10,15 @@
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_assessment_24.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_auto_stories_24.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_backup_24.xml" value="0.13703703703703704" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.13703703703703704" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_fingerprint_24.xml" value="0.11851851851851852" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_mode_night_24.xml" value="0.11851851851851852" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.1537037037037037" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_google_icon.xml" value="0.13703703703703704" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_negative_transaction.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_positive_amount.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/ic_round_add_to_drive_24.xml" value="0.1537037037037037" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/logo.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/round.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/drawable/splash_screen.xml" value="0.1" />
@@ -22,11 +27,15 @@
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/drawer_nav_header.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_add_transaction.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_all_transactions.xml" value="0.1" />
-        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_backup_drive.xml" value="0.16927083333333334" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_dashboard.xml" value="0.12" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_transaction_details.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_user_details.xml" value="0.22" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/night_mode_action_layout_switch.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/transaction_item.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/update_user_details_dialog.xml" value="0.16927083333333334" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/menu/menu_drawer.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/bottom_dialog.xml" value="0.15462962962962962" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/button_selector_background.xml" value="0.15462962962962962" />

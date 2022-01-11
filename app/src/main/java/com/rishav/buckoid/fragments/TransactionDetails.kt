@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -28,6 +29,7 @@ class TransactionDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.background)
         binding = FragmentTransactionDetailsBinding.inflate(inflater, container, false)
 
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
@@ -79,7 +81,7 @@ class TransactionDetails : Fragment() {
         val cancel=bottomDialog.findViewById<Button>(R.id.cancel)
 
         delete?.setOnClickListener{
-            viewModel.deleteTransaction(transaction.data.id!!)
+            viewModel.deleteTransaction(transaction.data!!.id!!)
             bottomDialog.dismiss()
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_transactionDetails_to_dashboard2)

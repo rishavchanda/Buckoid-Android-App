@@ -16,7 +16,6 @@
     <string name="add_transaction">Add Transaction</string>
     <string name="back">Back</string>
     <string name="details">Details</string>
-    <string name="welcome_to_ntrack_back">Welcome to \nBuckoid</string>
     <string name="add_few_details_before_you_continue">Add Few details before You Continue…</string>
     <string name="your_name">Your Name</string>
     <string name="next">NEXT</string>
@@ -49,7 +48,6 @@
     <string name="recent_transactions">Recent Transactions</string>
     <string name="drawericon">drawerIcon</string>
     <string name="name">Name :</string>
-    <string name="monthly_budget_">Monthly Budget :</string>
     <string name="edit">edit</string>
     <string name="settings">Settings</string>
     <string name="darkmode">DarkMode</string>
@@ -66,6 +64,19 @@
     <string name="share">Share</string>
     <string name="rate_us">Rate Us</string>
     <string name="yearly_budget">Yearly Budget</string>
-    <string name="yearly_budget_">Yearly Budget :</string>
     <string name="fingerprint_protection">Fingerprint Lock</string>
+    <string name="signup_with_google">SignUp With Google</string>
+    <string name="we_require_your_google_account_with_google_drive_permission_to_keep_backup_of_all_your_data">We require your Google Account with Google Drive permission to keep Backup of all your data.</string>
+    <string name="expense_tracking">Expense Tracking.</string>
+    <string name="simple">Simple</string>
+    <string name="backup_data">Backup Data</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drive_backup">Drive Backup</string>
+    <string name="last_backup">Last Backup</string>
+    <string name="back_up_your_data_to_google_drive_you_can_restore_them_when_you_reinstall_buckoid_app_and_signin_with_google_account">Back up your data to Google Drive. You can restore them when you reinstall Buckoid App and signin with Google Account.</string>
+    <string name="we_strongly_recommend_that_you_take_backup_regularly_from_the_app_as_backup_to_google_drive_is_not_automatic_doing_so_would_keep_your_data_safe_even_if_your_device_is_lost_damaged">We strongly recommend that you take backup regularly from the app (as backup to Google Drive is not automatic). Doing so would keep your data safe even if your device is lost/damaged.</string>
+    <string name="google_drive_setting">Google Drive Setting</string>
+    <string name="transaction_details_backed_up_in_google_drive_are_not_protected_by_buckoid_end_to_end_encryption">Transaction details backed up in Google Drive are not protected by Buckoid end-to-end encryption.</string>
+    <string name="google_account">Google Account</string>
 </resources>

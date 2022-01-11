@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    tools:context=".fragments.BackupDrive">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/topBar"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:background="@color/cardBackground"
+      >
+    <TextView
+        android:id="@+id/titleAddTransacttion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/drive_backup"
+        android:textColor="@color/textPrimary"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:backgroundTint="#0000ffff"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back"
+        app:tint="@color/textPrimary" />
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/backup_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="22dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_baseline_backup_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_backup"
+                    android:textSize="16sp"
+                    android:layout_marginStart="22dp"
+                    app:layout_constraintStart_toEndOf="@+id/icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/icon"
+                    app:layout_constraintTop_toTopOf="@+id/icon"
+                    android:textColor="@color/textPrimary"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/text1"
+                    app:layout_constraintStart_toStartOf="@+id/text1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/googleDataDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/textSecondary"
+                        android:text="Google Drive : "
+                        />
+                    <TextView
+                        android:id="@+id/googleDataSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/textSecondary"
+                        android:text="Size :"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/textSecondary"
+                        android:text="@string/back_up_your_data_to_google_drive_you_can_restore_them_when_you_reinstall_buckoid_app_and_signin_with_google_account"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/textSecondary"
+                        android:textStyle="italic"
+                        android:text="@string/we_strongly_recommend_that_you_take_backup_regularly_from_the_app_as_backup_to_google_drive_is_not_automatic_doing_so_would_keep_your_data_safe_even_if_your_device_is_lost_damaged"
+                        />
+
+                    <Button
+                        android:id="@+id/backup_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="62dp"
+                        android:text="Back Up"
+                        android:layout_marginTop="12dp"
+                        />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/cardBackground"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/backup_layout"
+                />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/drive_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/icon2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="22dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_round_add_to_drive_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/google_drive_setting"
+                    android:textSize="16sp"
+                    android:layout_marginStart="22dp"
+                    app:layout_constraintStart_toEndOf="@+id/icon2"
+                    app:layout_constraintBottom_toBottomOf="@+id/icon2"
+                    app:layout_constraintTop_toTopOf="@+id/icon2"
+                    android:textColor="@color/textPrimary"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/text2"
+                    app:layout_constraintStart_toStartOf="@+id/text2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/textSecondary"
+                        android:text="@string/transaction_details_backed_up_in_google_drive_are_not_protected_by_buckoid_end_to_end_encryption"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12dp"
+                        android:textColor="@color/textPrimary"
+                        android:text="@string/google_account"
+                        />
+                    <TextView
+                        android:id="@+id/google_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary"
+                        />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

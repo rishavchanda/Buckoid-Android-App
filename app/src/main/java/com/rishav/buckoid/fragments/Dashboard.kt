@@ -24,7 +24,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
+import com.rishav.buckoid.Model.Profile
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+
 class Dashboard : Fragment() {
 
     lateinit var binding:FragmentDashboardBinding
@@ -40,12 +44,14 @@ class Dashboard : Fragment() {
     lateinit var drawerLayout:DrawerLayout
     lateinit var navigationView:NavigationView
     lateinit var userDetails: SharedPreferences
+    lateinit var profileModel: Profile
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.background))
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
         drawerLayout = requireActivity().findViewById(R.id.drawer_layout)
@@ -53,7 +59,7 @@ class Dashboard : Fragment() {
         bottomNav.visibility = View.VISIBLE
         navigationDrawer()
         getData()
-        val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","",0.0,"",0,0,0,""),false)
+        val arg = DashboardDirections.actionDashboard2ToAddTransaction(Transaction(null,"","","",0.0,"",0,0,0,""),false)
         binding.addNew.setOnClickListener{Navigation.findNavController(binding.root).navigate(arg)}
         return binding.root
     }
@@ -70,8 +76,14 @@ class Dashboard : Fragment() {
         binding.date.text = "${format.format(Calendar.getInstance().getTime())} ${currentYear}"
 
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
-        val name = userDetails.getString("Name", "")?.split(" ")
-        binding.name.text = "Hi ${name?.get(0)} !!"
+        profileModel = Profile(requireContext())
+        val name=profileModel.name.split(" ")
+        binding.name.text = "Hi ${name[0]} !!"
+        Glide.with(requireActivity()).load(profileModel.profilePic).into(binding.profilePic)
+
+        if(!userDetails.getBoolean("ShowedOnboardingDashboard",false)){
+            showOnBoarding()
+        }
 
         totalExpense = 0.0
         totalGoal = userDetails.getString("MonthlyBudget","0")?.toFloat()!!
@@ -186,6 +198,26 @@ class Dashboard : Fragment() {
             )
 
     }
+
+    fun showOnBoarding(){
+        MaterialTapTargetPrompt.Builder(requireActivity())
+            .setTarget(binding.addNew)
+            .setPrimaryText("Hey Click Me!!")
+            .setFocalRadius(100.0f)
+            .setSecondaryText("Good to go... Add your first Transaction by Clicking on this Add Button")
+            .setBackButtonDismissEnabled(true)
+            .setPromptStateChangeListener{prompt, state ->
+                if(state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                    val editor: SharedPreferences.Editor = userDetails.edit()
+                    editor.putBoolean("ShowedOnboardingDashboard", true)
+                    editor.apply()
+                }
+            }
+            .show()
+
+    }
+
+
 
 }
 

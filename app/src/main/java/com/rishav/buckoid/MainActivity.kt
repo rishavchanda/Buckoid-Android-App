@@ -2,30 +2,32 @@ package com.rishav.buckoid
 
 import android.app.KeyguardManager
 import android.content.*
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
-import androidx.core.view.GravityCompat
-import androidx.navigation.fragment.NavHostFragment
-import com.rishav.buckoid.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationView
 import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricPrompt
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.CancellationSignal
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
-import java.lang.Exception
+import com.rishav.buckoid.databinding.ActivityMainBinding
+import java.util.*
+
+import android.content.Intent
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -53,10 +55,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userDetails = this.getSharedPreferences("UserDetails",MODE_PRIVATE)
-        isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
-        if (isFingerPrintEnabled) {
-            fingerPrintSensor()
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            userDetails = this.getSharedPreferences("UserDetails", MODE_PRIVATE)
+            isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled", false)
+            if (isFingerPrintEnabled) {
+                fingerPrintSensor()
+            }
         }
             setTheme(R.style.Theme_TrackBack)
             binding = ActivityMainBinding.inflate(layoutInflater)
@@ -70,7 +74,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             binding.bottomNavigation.setupWithNavController(navController)
 
     }
-
 
     fun nightMode(){
         // Configure night-mode switch
@@ -228,6 +231,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun notifyUser(message: String) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
+
 
 
 }
