@@ -26,7 +26,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getMainExecutor
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,7 +34,6 @@ import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
-import com.rishav.buckoid.BuildConfig
 import com.rishav.buckoid.Model.Profile
 import java.lang.Exception
 
@@ -117,7 +115,7 @@ class Profile : Fragment() {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "@string/app_name")
                 intent.putExtra(
                     Intent.EXTRA_TEXT,
-                    "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
+                    "https://play.google.com/store/apps/details?id=com.rishav.buckoid"
                 )
                 startActivity(Intent.createChooser(intent, "Share With"))
             } catch (e: Exception) {
@@ -134,14 +132,14 @@ class Profile : Fragment() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=")
+                        Uri.parse("market://details?id=com.rishav.buckoid")
                     )
                 )
             } catch (e: ActivityNotFoundException) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
+                        Uri.parse("https://play.google.com/store/apps/details?id=com.rishav.buckoid")
                     )
                 )
             }
@@ -174,7 +172,7 @@ class Profile : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun fingerPrintLockEnable() {
-        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             binding.passwordToggle.visibility = View.VISIBLE
             isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled",false)
             if (isFingerPrintEnabled) {

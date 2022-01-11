@@ -29,7 +29,7 @@ class TransactionDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        getActivity()?.getWindow()?.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.background))
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.background)
         binding = FragmentTransactionDetailsBinding.inflate(inflater, container, false)
 
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
