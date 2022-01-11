@@ -85,15 +85,16 @@ class Dashboard : Fragment() {
             showOnBoarding()
         }
 
-        totalExpense = 0.0
-        totalGoal = userDetails.getString("MonthlyBudget","0")?.toFloat()!!
-        totalFood = 0.0f
-        totalShopping = 0.0f
-        totalTransport=0.0f
-        totalHealth = 0.0f
-        totalOthers = 0.0f
-        totalAcademics = 0.0f
         viewModel.getMonthlyTransaction(currentMonth.toInt(),currentYear.toInt()).observe(viewLifecycleOwner,{ transactionList ->
+            totalExpense = 0.0
+            totalGoal = userDetails.getString("MonthlyBudget","0")?.toFloat()!!
+            totalFood = 0.0f
+            totalShopping = 0.0f
+            totalTransport=0.0f
+            totalHealth = 0.0f
+            totalOthers = 0.0f
+            totalAcademics = 0.0f
+            showPiChart()
             if(transactionList.isEmpty()){
                 binding.noTransactionsDoneText.text = "Add Your First Transaction of ${format.format(Calendar.getInstance().getTime())} $currentYear \n Click On + to add Transactions"
                 binding.noTransactionsDoneText.visibility = View.VISIBLE
@@ -108,7 +109,7 @@ class Dashboard : Fragment() {
                 binding.transactionRecyclerView.layoutManager =
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter =
-                    TransactionAdapter(requireContext(),requireActivity(), "Dashboard", transactionList.reversed())
+                    TransactionAdapter(requireContext(),viewModel,requireActivity(),"Dashboard", transactionList.reversed())
 
                 for (i in transactionList) {
                     totalExpense += i.amount
@@ -146,6 +147,12 @@ class Dashboard : Fragment() {
                     )
                 } else {
                     binding.indicator.setImageResource(R.drawable.ic_positive_amount)
+                    binding.expense.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.textPrimary
+                        )
+                    )
                 }
                 showPiChart()
 
@@ -156,6 +163,7 @@ class Dashboard : Fragment() {
     //To show PiChart to main card to users
     private fun showPiChart() {
         val mPieChart = binding.piechart
+        mPieChart.clearChart()
 
         mPieChart.addPieSlice(PieModel("Food", totalFood, ContextCompat.getColor(requireContext(), R.color.yellow)))
         mPieChart.addPieSlice(PieModel("Shopping", totalShopping, ContextCompat.getColor(requireContext(), R.color.lightBlue)))

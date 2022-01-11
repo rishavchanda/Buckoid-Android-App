@@ -93,4 +93,8 @@ dependencies {
 
     //image uri
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    //lotti animation
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

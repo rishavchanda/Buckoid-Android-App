@@ -51,9 +51,7 @@ class AddTransaction : Fragment(), View.OnClickListener {
             binding.addTransaction.setText("Save Transaction")
             binding.titleAddTransacttion.setText("Edit Transaction")
             binding.back.setOnClickListener {
-                val arg = AddTransactionDirections.actionAddTransactionToTransactionDetails(transactions.data,"AddTransaction")
-                Navigation.findNavController(binding.root)
-                    .navigate(arg)
+                binding.back.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_addTransaction_to_dashboard2) }
             }
         }else{
             binding.back.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_addTransaction_to_dashboard2) }
@@ -127,9 +125,9 @@ class AddTransaction : Fragment(), View.OnClickListener {
                )
                viewModel.updateTransaction(transaction)
                Toast.makeText(context, "Transaction Updated Successfully", Toast.LENGTH_SHORT).show()
-               val arg = AddTransactionDirections.actionAddTransactionToTransactionDetails(transaction,"AddTransaction")
+               binding.back.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_addTransaction_to_dashboard2) }
                Navigation.findNavController(binding.root)
-                   .navigate(arg)
+                   .navigate(R.id.action_addTransaction_to_dashboard2)
            }else {
                val transaction = Transaction(
                    null,

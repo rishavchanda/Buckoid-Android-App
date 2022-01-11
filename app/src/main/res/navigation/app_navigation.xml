@@ -11,37 +11,10 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/goToTransactionDetails"
-            app:destination="@id/transactionDetails"
-           />
-        <action
             android:id="@+id/action_dashboard2_to_addTransaction"
             app:destination="@id/addTransaction"
              />
 
-    </fragment>
-    <fragment
-        android:id="@+id/transactionDetails"
-        android:name="com.rishav.buckoid.fragments.TransactionDetails"
-        android:label="fragment_transaction_details"
-        tools:layout="@layout/fragment_transaction_details" >
-        <action
-            android:id="@+id/action_transactionDetails_to_dashboard2"
-            app:destination="@id/dashboard" />
-        <action
-            android:id="@+id/action_transactionDetails_to_addTransaction"
-            app:destination="@id/addTransaction" />
-        <action
-            android:id="@+id/action_transactionDetails_to_transactions"
-            app:destination="@id/transactions" />
-
-        <argument
-            android:name="data"
-            app:argType="com.rishav.buckoid.Model.Transaction"
-            />
-        <argument
-            android:name="fragment"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addTransaction"
@@ -51,9 +24,6 @@
         <action
             android:id="@+id/action_addTransaction_to_dashboard2"
             app:destination="@id/dashboard" />
-        <action
-            android:id="@+id/action_addTransaction_to_transactionDetails"
-            app:destination="@id/transactionDetails" />
         <argument
             android:name="data"
             app:argType="com.rishav.buckoid.Model.Transaction"
@@ -68,8 +38,8 @@
         android:label="fragment_all_transactions"
         tools:layout="@layout/fragment_all_transactions" >
         <action
-            android:id="@+id/allTransactionToTransactionDetails"
-            app:destination="@id/transactionDetails" />
+            android:id="@+id/action_transactions_to_addTransaction"
+            app:destination="@id/addTransaction" />
     </fragment>
     <fragment
         android:id="@+id/profile"

@@ -103,7 +103,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter =
                     TransactionAdapter(requireContext(),
-                        requireActivity(), "AllTransactions", transactionList)
+                        viewModel, requireActivity(),"AllTransactions", transactionList)
             }
         })
     }
@@ -169,6 +169,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                         LinearLayoutManager(requireContext())
                     binding.transactionRecyclerView.adapter = TransactionAdapter(
                         requireContext(),
+                        viewModel,
                         requireActivity(),
                         "AllTransactions",
                         transactionList.reversed()
@@ -291,6 +292,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter = TransactionAdapter(
                     requireContext(),
+                    viewModel,
                     requireActivity(),
                     "AllTransactions",
                     transactionList.reversed()

@@ -29,13 +29,16 @@
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_all_transactions.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_backup_drive.xml" value="0.16927083333333334" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_dashboard.xml" value="0.12" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_on_boarding_screen.xml" value="0.12" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
-        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_transaction_details.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_transaction_details.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_user_details.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.22" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/night_mode_action_layout_switch.xml" value="0.1" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/transaction_details_dialog.xml" value="0.15489130434782608" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/transaction_item.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/update_user_details_dialog.xml" value="0.16927083333333334" />
+        <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/layout/view_pager_onboarding_item.xml" value="0.16927083333333334" />
         <entry key="..\:/Personal/GDSC Android/Buckoid/app/src/main/res/menu/menu_drawer.xml" value="0.1" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/bottom_dialog.xml" value="0.15462962962962962" />
         <entry key="..\:/Personal/GDSC Android/TrackBack/app/src/main/res/drawable/button_selector_background.xml" value="0.15462962962962962" />
