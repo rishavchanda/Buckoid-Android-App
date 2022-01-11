@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -36,10 +37,17 @@ class UserDetails : Fragment() {
         val googleSignInAccount = GoogleSignIn.getLastSignedInAccount(requireActivity())
         val name=googleSignInAccount?.displayName.toString().split(" ")
         binding.text1.text = "Good to go \n${name[0]} !!"
+        currencyPicker()
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         binding.next.setOnClickListener {
             saveUserData()
         }
+    }
+
+    private fun currencyPicker() {
+        val currencyList:List<String> = listOf("₹ India Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi")
+        val currencyAdapter = ArrayAdapter(requireContext(),R.layout.currency_item,currencyList)
+        binding.currencyPicker.setAdapter(currencyAdapter)
     }
 
     private fun goToNextScreen() {
@@ -50,6 +58,7 @@ class UserDetails : Fragment() {
     private fun saveUserData() {
         val monthly_budget = binding.editMoney.text.toString()
         val yearly_budget = binding.editYearMoney
+        val currency = binding.currencyPicker.selectedItem.toString().split(" ")
         if(monthly_budget.equals("") || yearly_budget.text.toString().equals("")) {
             Toast.makeText(requireActivity(), "Enter all details to continue...", Toast.LENGTH_SHORT).show()
         }else{
@@ -57,6 +66,7 @@ class UserDetails : Fragment() {
             editor.putBoolean("isFirstTime", false)
             editor.putString("MonthlyBudget", monthly_budget)
             editor.putString("YearlyBudget", yearly_budget.text.toString())
+            editor.putString("currency", currency[0].trim())
             editor.apply()
             goToNextScreen()
         }
