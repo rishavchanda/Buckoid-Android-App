@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/signup_user_navigation"
-    app:startDestination="@id/userSignUp">
+    app:startDestination="@id/onBoardingScreen">
 
     <fragment
         android:id="@+id/userSignUp"
@@ -21,4 +21,13 @@
         android:name="com.rishav.buckoid.fragments.Authentication.UserDetails"
         android:label="fragment_user_details"
         tools:layout="@layout/fragment_user_details" />
+    <fragment
+        android:id="@+id/onBoardingScreen"
+        android:name="com.rishav.buckoid.fragments.Authentication.OnBoardingScreen"
+        android:label="fragment_on_boarding_screen"
+        tools:layout="@layout/fragment_on_boarding_screen" >
+        <action
+            android:id="@+id/action_onBoardingScreen_to_userSignUp"
+            app:destination="@id/userSignUp" />
+    </fragment>
 </navigation>

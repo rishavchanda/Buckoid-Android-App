@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:lottie_url="REPLACE_JSON_URL"
+        app:lottie_rawRes="@raw/monthly_chart"
         app:lottie_autoPlay="true"
+        android:layout_marginTop="12dp"
         app:lottie_loop="true"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -18,7 +20,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:layout_margin="16dp"
         android:textColor="@color/textPrimary"
@@ -26,9 +28,10 @@
         />
 
     <TextView
+        android:id="@+id/dec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textColor="@color/textPrimary"
         android:layout_margin="16dp"
         app:layout_constraintTop_toBottomOf="@id/title"

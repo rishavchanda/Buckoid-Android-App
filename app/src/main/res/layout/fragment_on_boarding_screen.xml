@@ -22,7 +22,7 @@
         />
 
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -30,12 +30,11 @@
         app:layout_constraintBottom_toTopOf="@id/next_btn"
         />
 
-
     <LinearLayout
         android:id="@+id/indicator_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/next_btn"
         app:layout_constraintTop_toTopOf="@id/next_btn"
@@ -45,12 +44,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/next_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        app:fabCustomSize="62dp"
         android:src="@drawable/ic_baseline_arrow_forward_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="22dp"
+        android:layout_margin="32dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
