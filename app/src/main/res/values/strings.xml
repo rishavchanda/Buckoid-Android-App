@@ -70,8 +70,6 @@
     <string name="expense_tracking">Expense Tracking.</string>
     <string name="simple">Simple</string>
     <string name="backup_data">Backup Data</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drive_backup">Drive Backup</string>
     <string name="last_backup">Last Backup</string>
     <string name="back_up_your_data_to_google_drive_you_can_restore_them_when_you_reinstall_buckoid_app_and_signin_with_google_account">Back up your data to Google Drive. You can restore them when you reinstall Buckoid App and signin with Google Account.</string>
@@ -79,4 +77,10 @@
     <string name="google_drive_setting">Google Drive Setting</string>
     <string name="transaction_details_backed_up_in_google_drive_are_not_protected_by_buckoid_end_to_end_encryption">Transaction details backed up in Google Drive are not protected by Buckoid end-to-end encryption.</string>
     <string name="google_account">Google Account</string>
+    <string name="onBoarding_title_1">Easy Expense Tracking</string>
+    <string name="onBoarding_title_2">Categorised Data Chart</string>
+    <string name="onBoarding_title_3">Filter Monthly / Yearly Expenses</string>
+    <string name="onBoarding_desc_1">Keep track of your personal expenses and compare them to your monthly income with the budget planner.</string>
+    <string name="onBoarding_desc_2">Allergic to numbers? See your spending statistics on colorful pie chart with different category.</string>
+    <string name="onBoarding_desc_3">Check how much you have spend previous month wise and save money accordingly.</string>
 </resources>

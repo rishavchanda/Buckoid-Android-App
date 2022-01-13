@@ -13,19 +13,19 @@ import com.rishav.buckoid.R
 class OnBoardingViewPagerAdapter(val context:Context): PagerAdapter() {
 
     val animations = intArrayOf(
-        R.raw.person_thinking,
+        R.raw.finance,
         R.raw.chart,
         R.raw.monthly_chart
     )
     val Title = intArrayOf(
-        R.string.app_name,
-        R.string.app_name,
-        R.string.app_name
+        R.string.onBoarding_title_1,
+        R.string.onBoarding_title_2,
+        R.string.onBoarding_title_3
     )
     val Desc = intArrayOf(
-        R.string.app_name,
-        R.string.app_name,
-        R.string.app_name
+        R.string.onBoarding_desc_1,
+        R.string.onBoarding_desc_2,
+        R.string.onBoarding_desc_3
     )
     override fun getCount(): Int {
         return Title.size
