@@ -45,6 +45,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     private var totalOthers = 0.0f
     private var totalAcademics = 0.0f
     lateinit var userDetails:SharedPreferences
+    lateinit var currency: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +56,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         val bottomNav: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
         bottomNav.visibility = View.VISIBLE
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        currency = userDetails.getString("currency","₹").toString()
         setListener()
         when(binding.toggleSelector.checkedButtonId) {
             R.id.all -> showAllTransactions()
@@ -199,8 +201,8 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                             }
                         }
                     }
-                    binding.expense.text = "₹${totalExpense.toInt()}"
-                    binding.budget.text = "₹${totalGoal.toInt()}"
+                    binding.expense.text = "$currency ${totalExpense.toInt()}"
+                    binding.budget.text = "$currency ${totalGoal.toInt()}"
                     binding.date.text = "${month} ${year}"
                     if (totalExpense > totalGoal) {
                         binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
@@ -322,8 +324,8 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                         }
                     }
                 }
-                binding.expense.text = "₹${totalExpense.toInt()}"
-                binding.budget.text = "₹${totalGoal.toInt()}"
+                binding.expense.text = "$currency ${totalExpense.toInt()}"
+                binding.budget.text = "$currency ${totalGoal.toInt()}"
                 binding.date.text = "Year: ${year}"
                 if (totalExpense > totalGoal) {
                     binding.indicator.setImageResource(R.drawable.ic_negative_transaction)

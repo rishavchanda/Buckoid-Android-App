@@ -45,6 +45,7 @@ class Dashboard : Fragment() {
     lateinit var navigationView:NavigationView
     lateinit var userDetails: SharedPreferences
     lateinit var profileModel: Profile
+    lateinit var currency:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,6 +77,7 @@ class Dashboard : Fragment() {
         binding.date.text = "${format.format(Calendar.getInstance().getTime())} ${currentYear}"
 
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        currency = userDetails.getString("currency","₹").toString()
         profileModel = Profile(requireContext())
         val name=profileModel.name.split(" ")
         binding.name.text = "Hi ${name[0]} !!"
@@ -135,8 +137,8 @@ class Dashboard : Fragment() {
                         }
                     }
                 }
-                binding.expense.text = "₹${totalExpense.toInt()}"
-                binding.budget.text = "₹${totalGoal.toInt()}"
+                binding.expense.text = "$currency ${totalExpense.toInt()}"
+                binding.budget.text = "$currency ${totalGoal.toInt()}"
                 if (totalExpense > totalGoal) {
                     binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
                     binding.expense.setTextColor(

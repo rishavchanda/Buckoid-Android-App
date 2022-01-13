@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
@@ -30,6 +31,7 @@ class TransactionAdapter(val context: Context, val viewModel: TransactionViewMod
     class transactionViewHolder(val binding:TransactionItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     lateinit var userDetails: SharedPreferences
+    lateinit var currency:String
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -41,8 +43,10 @@ class TransactionAdapter(val context: Context, val viewModel: TransactionViewMod
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: transactionViewHolder, position: Int) {
         val data = transList[position]
+        userDetails = activity.getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        currency = userDetails.getString("currency","₹").toString()
         holder.binding.title.text = data.title
-        holder.binding.money.text = "₹"+data.amount.toInt().toString()
+        holder.binding.money.text = currency+" "+data.amount.toInt().toString()
         holder.binding.date.text = data.date
         holder.binding.category.text = data.category
 
@@ -120,7 +124,7 @@ class TransactionAdapter(val context: Context, val viewModel: TransactionViewMod
         val edit=bottomDialog.findViewById<Button>(R.id.edit)
         val delete=bottomDialog.findViewById<Button>(R.id.delete)
 
-        amount?.text = "₹"+data.amount.toInt().toString()
+        amount?.text = currency+" "+data.amount.toInt().toString()
         title?.text = data.title
         date?.text = data.date
         note?.text = data.note

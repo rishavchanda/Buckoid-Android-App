@@ -43,6 +43,7 @@ class Profile : Fragment() {
     lateinit var userDetails: SharedPreferences
     var isNight:Boolean = false
     lateinit var profileModel: Profile
+    lateinit var currency:String
 
     //finger print
     var isFingerPrintEnabled:Boolean = false
@@ -92,6 +93,7 @@ class Profile : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setData() {
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
+        currency = userDetails.getString("currency","₹").toString()
         nightMode()
         profileModel = Profile(requireContext())
         val name=profileModel.name
@@ -102,8 +104,8 @@ class Profile : Fragment() {
         val monthlyBudget = userDetails.getString("MonthlyBudget","0")
         val yearlyBudget = userDetails.getString("YearlyBudget","0")
 
-        binding.monthlyBudget.text = "₹$monthlyBudget"
-        binding.yearlyBudget.text = "₹$yearlyBudget"
+        binding.monthlyBudget.text = "$currency $monthlyBudget"
+        binding.yearlyBudget.text = "$currency $yearlyBudget"
 
         binding.edit.setOnClickListener {
             openEditDialog(monthlyBudget,yearlyBudget)
