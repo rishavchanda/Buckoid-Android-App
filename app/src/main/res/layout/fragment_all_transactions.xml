@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/all"
+            android:fontFamily="@font/roboto"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
@@ -33,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/monthly"
+            android:fontFamily="@font/roboto"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
@@ -41,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yearly"
+            android:fontFamily="@font/roboto"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
@@ -62,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/all_transactions"
+                android:fontFamily="@font/roboto"
                 android:textStyle="bold"
                 android:textColor="@color/textPrimary"
         android:textSize="16sp"
@@ -105,6 +109,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/january"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -115,6 +120,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/february"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -126,6 +132,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:text="@string/march"
+                        android:fontFamily="@font/roboto"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/April"
@@ -136,6 +143,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:text="@string/april"
+                        android:fontFamily="@font/roboto"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/May"
@@ -146,6 +154,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:text="@string/may"
+                        android:fontFamily="@font/roboto"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/June"
@@ -155,6 +164,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/june"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -166,6 +176,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:text="@string/july"
+                        android:fontFamily="@font/roboto"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/August"
@@ -175,6 +186,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/august"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -185,6 +197,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/september"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -195,6 +208,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/october"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -205,6 +219,7 @@
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/november"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -215,6 +230,7 @@
                         android:layout_marginEnd="16dp"
                         android:textSize="10sp"
                         android:gravity="center"
+                        android:fontFamily="@font/roboto"
                         android:text="@string/december"
                         tools:ignore="SmallSp" />
 
@@ -231,6 +247,7 @@
                 android:textColor="@color/textSecondary"
                 android:textSize="16sp"
                 android:layout_margin="16dp"
+                android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/selectors"
@@ -263,6 +280,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:text="@string/monthly_budget"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -275,6 +293,7 @@
                         android:layout_marginTop="4dp"
                         android:text=""
                         android:textSize="18sp"
+                        android:fontFamily="@font/roboto"
                         android:textStyle="bold"
                         android:textColor="@color/textPrimary"
                         app:layout_constraintStart_toStartOf="parent"
@@ -287,6 +306,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:text="@string/your_expenses"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget" />
@@ -297,6 +317,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="18dp"
                         android:text=""
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textPrimary"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -322,6 +343,7 @@
                         android:layout_marginBottom="12dp"
                         android:background="@drawable/round"
                         android:paddingStart="12dp"
+                        android:fontFamily="@font/roboto"
                         android:paddingTop="4dp"
                         android:paddingEnd="12dp"
                         android:paddingBottom="4dp"
@@ -350,6 +372,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/your_transactions"
+                android:fontFamily="@font/roboto"
                 android:textColor="@color/textPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"

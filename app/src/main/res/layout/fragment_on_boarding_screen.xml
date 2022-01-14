@@ -15,6 +15,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="Skip"
+        android:fontFamily="@font/roboto"
         android:textColor="@color/purple_200"
         android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"

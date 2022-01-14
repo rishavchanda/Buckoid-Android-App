@@ -40,6 +40,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:textStyle="bold"
+                android:fontFamily="@font/roboto"
                 android:textSize="18sp"
                 android:textColor="@color/textPrimary"
                 />
@@ -51,6 +52,7 @@
                 android:background="@drawable/round"
                 android:backgroundTint="@color/background"
                 android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto"
                 android:layout_marginBottom="22dp"
                 android:textColor="@color/lightBlue"
                 android:textSize="14sp"
@@ -97,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/monthly_budget"
+                    android:fontFamily="@font/roboto"
                     android:textColor="@color/textPrimary"
                     android:textAlignment="center"
                     android:textSize="14sp"
@@ -117,6 +120,7 @@
                     android:textColor="@color/green"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/roboto"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text3"
                     app:layout_constraintStart_toStartOf="@id/text3"
@@ -141,6 +145,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:text="@string/yearly_budget"
+                    android:fontFamily="@font/roboto"
                     android:textColor="@color/textPrimary"
                     android:textAlignment="center"
                     android:textSize="14sp"
@@ -155,6 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/roboto"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/green"
                     android:textSize="18sp"
@@ -184,6 +190,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:fontFamily="@font/roboto"
                 android:text="@string/settings"
                 android:textStyle="bold"
                 android:textColor="@color/textPrimary"
@@ -214,6 +221,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/darkmode"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:layout_gravity="center"
                         android:textColor="@color/textPrimary"/>
@@ -254,6 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/fingerprint_protection"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:layout_gravity="center"
                         android:textColor="@color/textPrimary"/>
@@ -295,6 +304,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/backup_data"
                         android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:layout_gravity="center"
                         android:textColor="@color/textPrimary"/>
 
@@ -326,6 +336,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/share_to_friends"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:layout_gravity="center"
                         android:textColor="@color/textPrimary"/>
@@ -359,6 +370,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/about_us"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:layout_gravity="center"
                         android:textColor="@color/textPrimary"/>
@@ -391,6 +403,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/rate_us_on_appstore"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:layout_gravity="center"
                         android:textColor="@color/textPrimary"/>

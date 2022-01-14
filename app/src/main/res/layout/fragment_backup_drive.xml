@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/drive_backup"
+        android:fontFamily="@font/roboto"
         android:textColor="@color/textPrimary"
         android:gravity="center"
         android:textSize="20sp"
@@ -77,6 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/last_backup"
+                    android:fontFamily="@font/roboto"
                     android:textSize="16sp"
                     android:layout_marginStart="22dp"
                     app:layout_constraintStart_toEndOf="@+id/icon"
@@ -99,6 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         android:text="Google Drive : "
                         />
@@ -107,6 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         android:text="Size :"
                         />
@@ -116,6 +120,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         android:text="@string/back_up_your_data_to_google_drive_you_can_restore_them_when_you_reinstall_buckoid_app_and_signin_with_google_account"
                         />
@@ -125,6 +130,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         android:textStyle="italic"
                         android:text="@string/we_strongly_recommend_that_you_take_backup_regularly_from_the_app_as_backup_to_google_drive_is_not_automatic_doing_so_would_keep_your_data_safe_even_if_your_device_is_lost_damaged"
@@ -135,6 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="62dp"
                         android:text="Back Up"
+                        android:fontFamily="@font/roboto"
                         android:layout_marginTop="12dp"
                         />
                 </LinearLayout>
@@ -169,6 +176,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/google_drive_setting"
                     android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:layout_marginStart="22dp"
                     app:layout_constraintStart_toEndOf="@+id/icon2"
                     app:layout_constraintBottom_toBottomOf="@+id/icon2"
@@ -188,6 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         android:text="@string/transaction_details_backed_up_in_google_drive_are_not_protected_by_buckoid_end_to_end_encryption"
                         />
@@ -196,6 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:layout_marginTop="12dp"
                         android:textColor="@color/textPrimary"
                         android:text="@string/google_account"
@@ -205,6 +215,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
+                        android:fontFamily="@font/roboto"
                         android:textColor="@color/textSecondary"
                         />
                 </LinearLayout>

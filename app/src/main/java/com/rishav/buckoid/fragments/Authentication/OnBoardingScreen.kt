@@ -32,7 +32,7 @@ class OnBoardingScreen : Fragment() {
         binding=  FragmentOnBoardingScreenBinding.inflate(inflater, container, false)
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
 
-        if(userDetails.getBoolean("onBoardingShown",false)){
+        if(!userDetails.getBoolean("onBoardingShown",false)){
             Navigation.findNavController(requireActivity(), R.id.fragmentContainerView2)
                 .navigate(R.id.action_onBoardingScreen_to_userSignUp,
                     null,
