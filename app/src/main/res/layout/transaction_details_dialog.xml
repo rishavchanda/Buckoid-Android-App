@@ -105,7 +105,6 @@
                    android:layout_marginBottom="22dp"
                    android:textStyle="italic"
                    android:textColor="@color/textSecondary"
-                   android:background="@drawable/round"
                    android:textAlignment="center"
                    android:textSize="14sp"
                    app:layout_constraintBottom_toBottomOf="parent"

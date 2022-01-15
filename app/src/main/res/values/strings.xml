@@ -51,9 +51,9 @@
     <string name="edit">edit</string>
     <string name="settings">Settings</string>
     <string name="darkmode">DarkMode</string>
-    <string name="share_to_friends">Share to Friends</string>
+    <string name="share_to_friends">Share</string>
     <string name="about_us">About Us</string>
-    <string name="rate_us_on_appstore">Rate us On AppStore</string>
+    <string name="rate_us_on_appstore">Rate Us</string>
     <string name="transaction_details">Transaction Details</string>
     <string name="update_details">Update Details</string>
     <string name="update">Update</string>
