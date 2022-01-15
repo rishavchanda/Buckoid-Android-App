@@ -24,7 +24,7 @@ class UserDetails : AppCompatActivity() {
     private fun setData() {
         userDetails = this.getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         isFirstTime = userDetails.getBoolean("isFirstTime",true)
-        if (isFirstTime){
+        if (!isFirstTime){
             goToNextScreen()
             finish()
         }

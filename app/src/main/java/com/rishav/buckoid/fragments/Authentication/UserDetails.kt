@@ -45,7 +45,7 @@ class UserDetails : Fragment() {
     }
 
     private fun currencyPicker() {
-        val currencyList:List<String> = listOf("₹ India Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi")
+        val currencyList:List<String> = listOf("₹ Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi","৳ Bangladeshi taka")
         val currencyAdapter = ArrayAdapter(requireContext(),R.layout.currency_item,currencyList)
         binding.currencyPicker.setAdapter(currencyAdapter)
     }
@@ -58,7 +58,7 @@ class UserDetails : Fragment() {
     private fun saveUserData() {
         val monthly_budget = binding.editMoney.text.toString()
         val yearly_budget = binding.editYearMoney
-        val currency = binding.currencyPicker.selectedItem.toString().split(" ")
+        val currency = binding.currencyPicker.selectedItem.toString()
         if(monthly_budget.equals("") || yearly_budget.text.toString().equals("")) {
             Toast.makeText(requireActivity(), "Enter all details to continue...", Toast.LENGTH_SHORT).show()
         }else{
@@ -66,7 +66,8 @@ class UserDetails : Fragment() {
             editor.putBoolean("isFirstTime", false)
             editor.putString("MonthlyBudget", monthly_budget)
             editor.putString("YearlyBudget", yearly_budget.text.toString())
-            editor.putString("currency", currency[0].trim())
+            editor.putString("currency_name", currency.trim())
+            editor.putString("currency", currency.split(" ")[0].trim())
             editor.apply()
             goToNextScreen()
         }

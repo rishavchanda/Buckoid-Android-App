@@ -17,7 +17,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
@@ -44,6 +46,7 @@ class Profile : Fragment() {
     var isNight:Boolean = false
     lateinit var profileModel: Profile
     lateinit var currency:String
+    lateinit var currencyName:String
 
     //finger print
     var isFingerPrintEnabled:Boolean = false
@@ -94,6 +97,7 @@ class Profile : Fragment() {
     private fun setData() {
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         currency = userDetails.getString("currency","₹").toString()
+        currencyName = userDetails.getString("currency_name","₹ Rupee").toString()
         nightMode()
         profileModel = Profile(requireContext())
         val name=profileModel.name
@@ -241,19 +245,28 @@ class Profile : Fragment() {
         val cancel = bottomDialog.findViewById<Button>(R.id.cancel)
         val moneyEditor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_money)
         val year_money_Editor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_year_money)
+        val spinner = bottomDialog.findViewById<Spinner>(R.id.currencyPicker)
+        val currencyList= mutableListOf("₹ Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi","৳ Bangladeshi taka")
+        val currencyAdapter = ArrayAdapter(requireContext(),R.layout.currency_item,currencyList)
+        spinner?.setAdapter(currencyAdapter)
 
         moneyEditor?.setText(monthlyBudget)
         year_money_Editor?.setText(yearlyBudget)
+        currencyList.remove(currencyName)
+        currencyList.set(0,currencyName)
 
         update?.setOnClickListener {
             val monthly_budget = moneyEditor?.text.toString()
             val yearly_budget = year_money_Editor?.text.toString()
+            val currency = spinner?.selectedItem.toString()
             if(monthly_budget == "" || yearly_budget == "") {
                 Toast.makeText(requireActivity(), "Name and Budget Cant be empty...", Toast.LENGTH_SHORT).show()
             }else{
                 val editor: SharedPreferences.Editor = userDetails.edit()
                 editor.putString("MonthlyBudget", monthly_budget)
                 editor.putString("YearlyBudget", yearly_budget)
+                editor.putString("currency_name", currency.trim())
+                editor.putString("currency", currency.split(" ")[0].trim())
                 editor.apply()
                 setData()
                 bottomDialog.dismiss()
