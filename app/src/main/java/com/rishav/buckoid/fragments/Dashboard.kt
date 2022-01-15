@@ -28,6 +28,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.rishav.buckoid.Model.Profile
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import android.widget.Toast
+
+
+
 
 class Dashboard : Fragment() {
 
@@ -80,7 +84,18 @@ class Dashboard : Fragment() {
         currency = userDetails.getString("currency","₹").toString()
         profileModel = Profile(requireContext())
         val name=profileModel.name.split(" ")
-        binding.name.text = "Hi ${name[0]} !!"
+        val c = Calendar.getInstance()
+        val timeOfDay = c[Calendar.HOUR_OF_DAY]
+
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            binding.name.text = "Good Morning ${name[0]} !!"
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
+            binding.name.text = "Good Afternoon ${name[0]} !!"
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
+            binding.name.text = "Good Evening ${name[0]} !!"
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
+            binding.name.text = "Good Night ${name[0]} !!"
+        }
         Glide.with(requireActivity()).load(profileModel.profilePic).into(binding.profilePic)
 
         if(!userDetails.getBoolean("ShowedOnboardingDashboard",false)){
