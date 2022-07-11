@@ -3,25 +3,26 @@ package com.rishav.buckoid.fragments
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.button.MaterialButton
 import com.rishav.buckoid.Adapter.TransactionAdapter
 import com.rishav.buckoid.R
 import com.rishav.buckoid.ViewModel.TransactionViewModel
 import com.rishav.buckoid.databinding.FragmentAllTransactionsBinding
-import com.google.android.material.button.MaterialButton
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
-import android.widget.ArrayAdapter
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -119,9 +120,12 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         for(i in year downTo 2020){
             list += i
         }
+        var format =  SimpleDateFormat("MMMM");
         val yearAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,list)
         binding.yearSpinner.setAdapter(yearAdapter)
-        setMonth(binding.January,binding.January)
+        setCurrentMonth("${format.format(Calendar.getInstance().getTime())}");
+        format =  SimpleDateFormat("MM")
+        monthInt = format.format(Calendar.getInstance().getTime()).toInt()
         showMonthsTransaction()
         binding.transactionRecyclerView.visibility = View.VISIBLE
         binding.selectors.visibility = View.VISIBLE
@@ -141,6 +145,8 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         }
 
     }
+
+
 
     @SuppressLint("SetTextI18n")
     private fun showMonthsTransaction(){
@@ -337,6 +343,12 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                     )
                 } else {
                     binding.indicator.setImageResource(R.drawable.ic_positive_amount)
+                    binding.expense.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.green
+                        )
+                    )
                 }
                 showPiChart()
             }
@@ -422,6 +434,64 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                 monthInt=12
                 showMonthsTransaction()
             }
+        }
+    }
+
+    private fun setCurrentMonth(s: String) {
+        if(s == "January") {
+            setMonth(binding.January, binding.January)
+        }else if(s == "February") {
+            setMonth(binding.February, binding.February)
+        }else if(s == "March") {
+            setMonth(binding.March, binding.March)
+        }else if(s == "April") {
+            setMonth(binding.April, binding.April)
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(50, 0)
+            }, 200)
+        }else if(s == "May") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(1100, 0)
+            }, 200)
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(1000, 0)
+            }, 200)
+            setMonth(binding.May, binding.May)
+        }else if(s == "June") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(1100, 0)
+            }, 200)
+            setMonth(binding.June, binding.June)
+        }else if(s == "July") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(1100, 0)
+            }, 200)
+            setMonth(binding.July, binding.July)
+        }else if(s == "August") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(1100, 0)
+            }, 200)
+            setMonth(binding.August, binding.August)
+        }else if(s == "September") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(2200, 0)
+            }, 200)
+            setMonth(binding.September, binding.September)
+        }else if(s == "October") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(2200, 0)
+            }, 200)
+            setMonth(binding.October, binding.October)
+        }else if(s == "November") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(2200, 0)
+            }, 200)
+            setMonth(binding.November, binding.November)
+        }else if(s == "December") {
+            binding.selectors.postDelayed(Runnable { //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                binding.selectors.smoothScrollBy(2200, 0)
+            }, 200)
+            setMonth(binding.December, binding.December)
         }
     }
 

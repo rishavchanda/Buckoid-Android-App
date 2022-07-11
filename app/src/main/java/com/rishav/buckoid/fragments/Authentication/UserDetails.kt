@@ -45,7 +45,7 @@ class UserDetails : Fragment() {
     }
 
     private fun currencyPicker() {
-        val currencyList:List<String> = listOf("₹ Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi","৳ Bangladeshi taka")
+        val currencyList:List<String> = listOf("₹ Indian Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi","৳ Bangladeshi taka")
         val currencyAdapter = ArrayAdapter(requireContext(),R.layout.currency_item,currencyList)
         binding.currencyPicker.setAdapter(currencyAdapter)
     }

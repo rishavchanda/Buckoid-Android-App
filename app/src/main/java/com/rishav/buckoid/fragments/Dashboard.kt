@@ -167,7 +167,7 @@ class Dashboard : Fragment() {
                     binding.expense.setTextColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.textPrimary
+                            R.color.green
                         )
                     )
                 }

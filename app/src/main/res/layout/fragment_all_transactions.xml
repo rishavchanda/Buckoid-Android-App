@@ -318,7 +318,7 @@
                         android:layout_marginStart="18dp"
                         android:text=""
                         android:fontFamily="@font/roboto"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="@color/green"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -348,7 +348,7 @@
                         android:paddingEnd="12dp"
                         android:paddingBottom="4dp"
                         android:text=""
-                        android:textColor="@color/textSecondary"
+                        android:textColor="@color/purple_200"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -393,4 +393,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/download_pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_baseline_picture_as_pdf_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/add_transaction"
+        android:fontFamily="@font/roboto"
+        tools:ignore="HardcodedText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

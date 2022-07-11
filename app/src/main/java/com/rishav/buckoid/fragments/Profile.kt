@@ -246,7 +246,7 @@ class Profile : Fragment() {
         val moneyEditor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_money)
         val year_money_Editor = bottomDialog.findViewById<TextInputEditText>(R.id.edit_year_money)
         val spinner = bottomDialog.findViewById<Spinner>(R.id.currencyPicker)
-        val currencyList= mutableListOf("₹ Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi","৳ Bangladeshi taka")
+        val currencyList= mutableListOf(" ","₹ Indian Rupee","$ Dollar","£ United Kingdom Pound","$ Argentina Peso","ƒ Aruba Guilder","₼ Azerbaijan Manat","Br Belarus Ruble","лв Bulgaria Lev","R$ Brazil Real","៛ Cambodia Riel","¥ China Yuan Renminbi","৳ Bangladeshi taka")
         val currencyAdapter = ArrayAdapter(requireContext(),R.layout.currency_item,currencyList)
         spinner?.setAdapter(currencyAdapter)
 

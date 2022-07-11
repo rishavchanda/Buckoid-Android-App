@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        userDetails = this.getSharedPreferences("UserDetails", MODE_PRIVATE)
         if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-            userDetails = this.getSharedPreferences("UserDetails", MODE_PRIVATE)
             isFingerPrintEnabled = userDetails.getBoolean("fingerprint_enabled", false)
             if (isFingerPrintEnabled) {
                 fingerPrintSensor()

@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text=""
-                android:textColor="@color/textPrimary"
+                android:textColor="@color/purple_200"
                 android:textSize="12sp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
