@@ -47,6 +47,8 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     private var totalAcademics = 0.0f
     lateinit var userDetails:SharedPreferences
     lateinit var currency: String
+    var notCalled = true;
+    @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +61,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         userDetails = requireActivity().getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         currency = userDetails.getString("currency","₹").toString()
         setListener()
+
         when(binding.toggleSelector.checkedButtonId) {
             R.id.all -> showAllTransactions()
             R.id.monthly -> showMonthlyTransactions()
@@ -94,21 +97,23 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         binding.yearSpinner.visibility = View.GONE
         binding.text1.visibility = View.GONE
        binding.title.text = "All Transactions"
-        viewModel.getTransaction().observe(viewLifecycleOwner,{ transactionList ->
+        viewModel.getTransaction().observe(viewLifecycleOwner) { transactionList ->
             if (transactionList.isEmpty()) {
                 binding.noTransactionsDoneText.text = "No transaction done Yet"
                 binding.noTransactionsDoneText.visibility = View.VISIBLE
                 binding.transactionRecyclerView.visibility = View.GONE
-            }else {
+            } else {
                 binding.noTransactionsDoneText.visibility = View.GONE
                 binding.transactionRecyclerView.visibility = View.VISIBLE
                 binding.transactionRecyclerView.layoutManager =
                     LinearLayoutManager(requireContext())
                 binding.transactionRecyclerView.adapter =
-                    TransactionAdapter(requireContext(),
-                        viewModel, requireActivity(),"AllTransactions", transactionList)
+                    TransactionAdapter(
+                        requireContext(),
+                        viewModel, requireActivity(), "AllTransactions", transactionList
+                    )
             }
-        })
+        }
     }
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
@@ -120,10 +125,13 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         for(i in year downTo 2020){
             list += i
         }
-        var format =  SimpleDateFormat("MMMM");
         val yearAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,list)
         binding.yearSpinner.setAdapter(yearAdapter)
-        setCurrentMonth("${format.format(Calendar.getInstance().getTime())}");
+        var format =  SimpleDateFormat("MMMM");
+        if(notCalled) {
+            setCurrentMonth("${format.format(Calendar.getInstance().getTime())}")
+            notCalled=false
+        }
         format =  SimpleDateFormat("MM")
         monthInt = format.format(Calendar.getInstance().getTime()).toInt()
         showMonthsTransaction()
@@ -160,71 +168,71 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalHealth = 0.0f
         totalOthers = 0.0f
         totalAcademics = 0.0f
-        viewModel.getMonthlyTransaction(monthInt,year).observe(viewLifecycleOwner,
-            { transactionList ->
-                if (transactionList.isEmpty()) {
-                    binding.noTransactionsDoneText.text = "No transaction done on $month $year "
-                    binding.noTransactionsDoneText.visibility = View.VISIBLE
-                    binding.monthlyCard.visibility = View.GONE
-                    binding.transactionRecyclerView.visibility = View.GONE
-                    binding.text1.visibility = View.GONE
-                } else {
-                    binding.monthlyCard.visibility = View.VISIBLE
-                    binding.noTransactionsDoneText.visibility = View.GONE
-                    binding.transactionRecyclerView.visibility = View.VISIBLE
-                    binding.text1.visibility = View.VISIBLE
-                    binding.transactionRecyclerView.layoutManager =
-                        LinearLayoutManager(requireContext())
-                    binding.transactionRecyclerView.adapter = TransactionAdapter(
-                        requireContext(),
-                        viewModel,
-                        requireActivity(),
-                        "AllTransactions",
-                        transactionList.reversed()
-                    )
+        viewModel.getMonthlyTransaction(monthInt,year).observe(viewLifecycleOwner
+        ) { transactionList ->
+            if (transactionList.isEmpty()) {
+                binding.noTransactionsDoneText.text = "No transaction done on $month $year "
+                binding.noTransactionsDoneText.visibility = View.VISIBLE
+                binding.monthlyCard.visibility = View.GONE
+                binding.transactionRecyclerView.visibility = View.GONE
+                binding.text1.visibility = View.GONE
+            } else {
+                binding.monthlyCard.visibility = View.VISIBLE
+                binding.noTransactionsDoneText.visibility = View.GONE
+                binding.transactionRecyclerView.visibility = View.VISIBLE
+                binding.text1.visibility = View.VISIBLE
+                binding.transactionRecyclerView.layoutManager =
+                    LinearLayoutManager(requireContext())
+                binding.transactionRecyclerView.adapter = TransactionAdapter(
+                    requireContext(),
+                    viewModel,
+                    requireActivity(),
+                    "AllTransactions",
+                    transactionList.reversed()
+                )
 
-                    for (i in transactionList) {
-                        totalExpense += i.amount
-                        when (i.category) {
-                            "Food" -> {
-                                totalFood += (i.amount.toFloat())
-                            }
-                            "Shopping" -> {
-                                totalShopping += (i.amount.toFloat())
-                            }
-                            "Transport" -> {
-                                totalTransport += (i.amount.toFloat())
-                            }
+                for (i in transactionList) {
+                    totalExpense += i.amount
+                    when (i.category) {
+                        "Food" -> {
+                            totalFood += (i.amount.toFloat())
+                        }
+                        "Shopping" -> {
+                            totalShopping += (i.amount.toFloat())
+                        }
+                        "Transport" -> {
+                            totalTransport += (i.amount.toFloat())
+                        }
 
-                            "Health" -> {
-                                totalHealth += (i.amount.toFloat())
-                            }
-                            "Other" -> {
-                                totalOthers += (i.amount.toFloat())
-                            }
-                            "Education" -> {
-                                totalAcademics += (i.amount.toFloat())
-                            }
+                        "Health" -> {
+                            totalHealth += (i.amount.toFloat())
+                        }
+                        "Other" -> {
+                            totalOthers += (i.amount.toFloat())
+                        }
+                        "Education" -> {
+                            totalAcademics += (i.amount.toFloat())
                         }
                     }
-                    binding.expense.text = "$currency ${totalExpense.toInt()}"
-                    binding.budget.text = "$currency ${totalGoal.toInt()}"
-                    binding.date.text = "${month} ${year}"
-                    if (totalExpense > totalGoal) {
-                        binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
-                        binding.expense.setTextColor(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.red
-                            )
-                        )
-                    } else {
-                        binding.indicator.setImageResource(R.drawable.ic_positive_amount)
-                    }
-                    showPiChart()
                 }
+                binding.expense.text = "$currency ${totalExpense.toInt()}"
+                binding.budget.text = "$currency ${totalGoal.toInt()}"
+                binding.date.text = "${month} ${year}"
+                if (totalExpense > totalGoal) {
+                    binding.indicator.setImageResource(R.drawable.ic_negative_transaction)
+                    binding.expense.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.red
+                        )
+                    )
+                } else {
+                    binding.indicator.setImageResource(R.drawable.ic_positive_amount)
+                }
+                showPiChart()
+            }
 
-        })
+        }
     }
     private fun showPiChart() {
         mPieChart.addPieSlice(PieModel("Food", totalFood, ContextCompat.getColor(requireContext(), R.color.yellow)))
@@ -284,14 +292,14 @@ class AllTransactions : Fragment() ,View.OnClickListener {
         totalHealth = 0.0f
         totalOthers = 0.0f
         totalAcademics = 0.0f
-        viewModel.getYearlyTransaction(year).observe(viewLifecycleOwner,{ transactionList ->
-            if(transactionList.isEmpty()){
+        viewModel.getYearlyTransaction(year).observe(viewLifecycleOwner) { transactionList ->
+            if (transactionList.isEmpty()) {
                 binding.noTransactionsDoneText.text = "No transaction done on Year $year "
                 binding.noTransactionsDoneText.visibility = View.VISIBLE
                 binding.monthlyCard.visibility = View.GONE
                 binding.transactionRecyclerView.visibility = View.GONE
                 binding.text1.visibility = View.GONE
-            }else {
+            } else {
                 binding.monthlyCard.visibility = View.VISIBLE
                 binding.noTransactionsDoneText.visibility = View.GONE
                 binding.transactionRecyclerView.visibility = View.VISIBLE
@@ -352,7 +360,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
                 }
                 showPiChart()
             }
-        })
+        }
     }
 
 
@@ -438,6 +446,7 @@ class AllTransactions : Fragment() ,View.OnClickListener {
     }
 
     private fun setCurrentMonth(s: String) {
+
         if(s == "January") {
             setMonth(binding.January, binding.January)
         }else if(s == "February") {

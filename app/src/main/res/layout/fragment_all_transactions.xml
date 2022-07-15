@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/all"
+            android:textStyle="bold"
             android:fontFamily="@font/roboto"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
@@ -34,19 +35,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/monthly"
+            android:textStyle="bold"
             android:fontFamily="@font/roboto"
             android:backgroundTint="@drawable/button_selector_background"
             style="@style/selector_button_two"
             />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/yearly"
+            style="@style/selector_button_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/yearly"
-            android:fontFamily="@font/roboto"
+            android:textStyle="bold"
             android:backgroundTint="@drawable/button_selector_background"
-            style="@style/selector_button_two"
-            />
+            android:fontFamily="@font/roboto"
+            android:text="@string/yearly" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -103,15 +106,17 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/January"
+                        style="@style/selector_button"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        style="@style/selector_button"
                         android:layout_marginEnd="8dp"
-                        android:textSize="10sp"
-                        android:gravity="center"
                         android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:textStyle="bold"
                         android:text="@string/january"
+                        android:textSize="10sp"
                         tools:ignore="SmallSp" />
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/February"
                         android:layout_width="wrap_content"
@@ -119,6 +124,7 @@
                         style="@style/selector_button"
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/february"
@@ -130,6 +136,7 @@
                         style="@style/selector_button"
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:text="@string/march"
                         android:fontFamily="@font/roboto"
@@ -141,6 +148,7 @@
                         style="@style/selector_button"
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:text="@string/april"
                         android:fontFamily="@font/roboto"
@@ -154,6 +162,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:text="@string/may"
+                        android:textStyle="bold"
                         android:fontFamily="@font/roboto"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -166,6 +175,7 @@
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/june"
+                        android:textStyle="bold"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/July"
@@ -176,6 +186,7 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:text="@string/july"
+                        android:textStyle="bold"
                         android:fontFamily="@font/roboto"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
@@ -188,6 +199,7 @@
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/august"
+                        android:textStyle="bold"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/September"
@@ -199,6 +211,7 @@
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/september"
+                        android:textStyle="bold"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/October"
@@ -210,6 +223,7 @@
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/october"
+                        android:textStyle="bold"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/November"
@@ -221,6 +235,7 @@
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/november"
+                        android:textStyle="bold"
                         tools:ignore="SmallSp" />
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/December"
@@ -232,6 +247,7 @@
                         android:gravity="center"
                         android:fontFamily="@font/roboto"
                         android:text="@string/december"
+                        android:textStyle="bold"
                         tools:ignore="SmallSp" />
 
 

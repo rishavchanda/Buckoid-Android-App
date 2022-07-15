@@ -1,13 +1,23 @@
 package com.rishav.buckoid.fragments
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.Navigation
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.google.android.gms.common.Scopes
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.api.client.extensions.android.http.AndroidHttp
@@ -17,13 +27,16 @@ import com.google.api.client.http.FileContent
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.drive.Drive
 import com.google.api.services.drive.model.FileList
+import com.rishav.buckoid.Database.TransactionDatabase
 import com.rishav.buckoid.R
 import com.rishav.buckoid.databinding.FragmentBackupDriveBinding
 import com.rishav.buckoid.Model.Profile
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.OutputStream
+import com.rishav.buckoid.Model.Transaction
+import com.rishav.buckoid.ViewModel.TransactionViewModel
+import java.io.*
 import java.util.*
+import java.util.jar.Manifest
+import kotlin.collections.ArrayList
 
 class BackupDrive : Fragment() {
 
@@ -32,6 +45,10 @@ class BackupDrive : Fragment() {
     private val dbPath = "/data/data/com.rishav.buckoid/databases/Transaction"
     private val dbPathWal = "/data/data/com.rishav.buckoid/databases/Transaction-wal"
     private val dbPathShm = "/data/data/com.rishav.buckoid/databases/Transaction-shm"
+
+    private val STORAGE_PERMISSION_CODE = 100
+    private val viewModel: TransactionViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -161,5 +178,80 @@ class BackupDrive : Fragment() {
         }
     }
 
+
+
+
+    /*private fun requestPermission(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+
+            try{
+                val intent = Intent()
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                val uri = Uri.fromParts("package", requireActivity().packageName, null )
+                intent.setData(uri)
+                startActivityForResult(intent,STORAGE_PERMISSION_CODE)
+
+            } catch (Exception err){
+                val intent = Intent()
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                startActivityForResult(intent,STORAGE_PERMISSION_CODE)
+
+            }
+        }else{
+            ActivityCompat.requestPermissions(this.requireActivity(),Manifest.permission)
+        }
+    }*/
+
+   /* private fun exportCSV(){
+        val folder = File(Environment.getExternalStorageDirectory().path+"/"+"RoomDbBackup");
+
+        var isFolderCreated = false;
+        if(!folder.exists()){
+            isFolderCreated = folder.mkdir();
+        }
+
+        val csvFileName = "RoomDB_Backup.csv";
+        val filePathAndName: String = folder.toString()+"/"+csvFileName;
+
+        var recordList = LiveData<List<Transaction>>()
+        var db = Room.databaseBuilder(requireContext(),TransactionDatabase::class.java,"Transaction").allowMainThreadQueries().build()
+        var transactionDao = db.myTransactionDao()
+        var transactions = transactionDao.getTransaction()
+        recordList = transactions
+        try{
+                val fileWriter = FileWriter(filePathAndName)
+                for(i in recordList) {
+                    fileWriter.append("" + i.id)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.type)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.title)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.amount)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.note)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.date)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.day)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.month)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.year)
+                    fileWriter.append(",")
+                    fileWriter.append("" + i.category)
+                    fileWriter.append("\n")
+
+                }
+                fileWriter.flush();
+                fileWriter.close();
+                Toast.makeText(requireContext(),"backup exported to " + filePathAndName,Toast.LENGTH_SHORT).show()
+
+            }catch (e: Exception){
+                Toast.makeText(requireContext(),""+e.message,Toast.LENGTH_LONG).show()
+            }
+
+    }
+*/
 
 }
