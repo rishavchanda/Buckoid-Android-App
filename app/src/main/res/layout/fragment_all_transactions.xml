@@ -402,7 +402,7 @@
                 android:id="@+id/transactionRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginBottom="90dp"
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintTop_toBottomOf="@+id/text1" />

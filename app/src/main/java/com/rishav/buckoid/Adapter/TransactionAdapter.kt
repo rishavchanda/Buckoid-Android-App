@@ -46,7 +46,7 @@ class TransactionAdapter(val context: Context, val viewModel: TransactionViewMod
         userDetails = activity.getSharedPreferences("UserDetails", AppCompatActivity.MODE_PRIVATE)
         currency = userDetails.getString("currency","₹").toString()
         holder.binding.title.text = data.title
-        holder.binding.money.text = currency+" "+data.amount.toInt().toString()
+        holder.binding.money.text ="+ " +currency+data.amount.toInt().toString()
         holder.binding.date.text = data.date
         holder.binding.category.text = data.category
 
@@ -70,31 +70,31 @@ class TransactionAdapter(val context: Context, val viewModel: TransactionViewMod
             "Shopping" -> {
                 cardIcon.setImageResource(R.drawable.ic_baseline_shopping_cart_24)
                 cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBlue))
-                category1.setTextColor(ContextCompat.getColor(context, R.color.lightBlue))
+                //category1.setTextColor(ContextCompat.getColor(context, R.color.lightBlue))
                 cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.lightBlue_light))
             }
             "Transport" -> {
                 cardIcon.setImageResource(R.drawable.ic_baseline_directions_transit_24)
                 cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.violet))
-                category1.setTextColor(ContextCompat.getColor(context, R.color.violet))
+                //category1.setTextColor(ContextCompat.getColor(context, R.color.violet))
                 cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.violet_light))
             }
             "Health" -> {
                 cardIcon.setImageResource(R.drawable.ic_baseline_favorite_24)
                 cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.red))
-                category1.setTextColor(ContextCompat.getColor(context, R.color.red))
+                //category1.setTextColor(ContextCompat.getColor(context, R.color.red))
                 cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.red_light))
             }
             "Other" -> {
                 cardIcon.setImageResource(R.drawable.ic_baseline_category_24)
                 cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.lightBrown))
-                category1.setTextColor(ContextCompat.getColor(context, R.color.lightBrown))
+                //category1.setTextColor(ContextCompat.getColor(context, R.color.lightBrown))
                 cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.lightBrown_light))
             }
             "Education" -> {
                 cardIcon.setImageResource(R.drawable.ic_baseline_auto_stories_24)
                 cardIcon.setColorFilter(ContextCompat.getColor(context, R.color.green))
-                category1.setTextColor(ContextCompat.getColor(context, R.color.green))
+                //category1.setTextColor(ContextCompat.getColor(context, R.color.green))
                 cardImage.setCardBackgroundColor(ContextCompat.getColor(context, R.color.green_light))
             }
 

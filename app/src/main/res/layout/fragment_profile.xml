@@ -179,8 +179,6 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_card"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -192,6 +190,8 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/roboto"
                 android:text="@string/settings"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:textStyle="bold"
                 android:textColor="@color/textPrimary"
                 />
@@ -201,8 +201,8 @@
                 android:layout_height="60dp"
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/cardBackground">
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/transparent">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -235,6 +235,7 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/password_toggle"
@@ -243,12 +244,11 @@
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp"
                 android:layout_marginTop="1dp"
-                app:cardBackgroundColor="@color/cardBackground">
+                app:cardBackgroundColor="@color/transparent">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -276,6 +276,15 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/button"
+                    />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/backup"
@@ -284,7 +293,7 @@
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp"
                 android:layout_marginTop="1dp"
-                app:cardBackgroundColor="@color/cardBackground">
+                app:cardBackgroundColor="@color/transparent">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -309,6 +318,15 @@
                         android:textColor="@color/textPrimary"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/button"
+                    />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/share"
@@ -317,7 +335,7 @@
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp"
                 android:layout_marginTop="1dp"
-                app:cardBackgroundColor="@color/cardBackground">
+                app:cardBackgroundColor="@color/transparent">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -343,6 +361,15 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/button"
+                    />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/about_us"
@@ -351,7 +378,7 @@
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp"
                 android:layout_marginTop="1dp"
-                app:cardBackgroundColor="@color/cardBackground">
+                app:cardBackgroundColor="@color/transparent">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -376,6 +403,15 @@
                         android:textColor="@color/textPrimary"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/button"
+                    />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/rateUs"
@@ -384,7 +420,7 @@
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp"
                 android:layout_marginTop="1dp"
-                app:cardBackgroundColor="@color/cardBackground">
+                app:cardBackgroundColor="@color/transparent">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -410,7 +446,25 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/button"
+                    />
             </androidx.cardview.widget.CardView>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/button"
+                />
 
 
         </LinearLayout>
