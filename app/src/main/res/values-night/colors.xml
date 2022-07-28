@@ -6,7 +6,7 @@
     <color name="button">#525F78</color>
     <color name="bottomNav">#293346</color>
     <color name="background">#232C3D</color>
-    <color name="background_deep">#232C3D</color>
+    <color name="background_deep">#1B222F</color>
     <color name="textSecondary">#BDBDBD</color>
     <color name="textPrimary">#F2F2F2</color>
     <color name="black">#FF000000</color>
@@ -16,16 +16,16 @@
 
     //Pi chart colors
     <color name="green">#00D09C</color>
-    <color name="green_light">#E6FBF6</color>
+    <color name="green_light">#F2E6FBF6</color>
     <color name="red">#FF585D</color>
-    <color name="red_light">#FFEEEF</color>
+    <color name="red_light">#F2FFEEEF</color>
     <color name="lightBrown">#5367FF</color>
-    <color name="lightBrown_light">#EEF0FF</color>
+    <color name="lightBrown_light">#F2EEF0FF</color>
     <color name="violet">#893168</color>
-    <color name="violet_light">#FFDEF3</color>
+    <color name="violet_light">#F2FFDEF3</color>
     <color name="yellow">#FFB61B</color>
-    <color name="yellow_light">#FFF9EC</color>
+    <color name="yellow_light">#F2FFF9EC</color>
     <color name="lightBlue">#1DA1F2</color>
-    <color name="lightBlue_light">#E8F6FE</color>
+    <color name="lightBlue_light">#F2E8F6FE</color>
 
 </resources>
