@@ -1,4 +1,5 @@
-# Buckoid-Android-App
+# Android-Study-Jams
+Buckoid-Android-App
 
 <b> Problem Statement: </b>
 
